@@ -31,6 +31,7 @@ export default {
 
 .container-card{
   max-width: 90%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
