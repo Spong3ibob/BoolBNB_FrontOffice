@@ -21,6 +21,10 @@ export default {
       <AppCard />
       <AppCard />
       <AppCard />
+      <AppCard />
+      <AppCard />
+      <AppCard />
+      <AppCard />
     </div>
   </main>
 </template>
