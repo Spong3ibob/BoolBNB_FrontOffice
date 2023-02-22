@@ -53,7 +53,7 @@ export default {
         </div>
     </div>
   </nav>
-  <div class="container d-flex justify-content-center">
+  <div class="container d-flex justify-content-center mb-4">
     <div class="">
       <ul class="d-flex list-unstyled">
         <li class="me-3" v-for="service in services"><small>{{ service }}</small></li>
