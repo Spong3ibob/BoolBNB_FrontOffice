@@ -13,6 +13,7 @@
     "axios": "^1.3.2",
     "bootstrap": "^5.2.3",
     "vue": "^3.2.41",
+    "vue-append": "^2.2.0",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
