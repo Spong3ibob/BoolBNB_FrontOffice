@@ -1,27 +1,20 @@
 <template>
-  <div class="container-card">
+  <div class="container">
     <InfoHeader />
+    <SectionAparmentDescription />
   </div>
 </template>
 
 <script>
 import InfoHeader from "../components/apartment-components/InfoHeader.vue";
+import SectionAparmentDescription from "../components/apartment-components/SectionApartmentDescription.vue";
 
 export default {
   components: {
     InfoHeader,
+    SectionAparmentDescription,
   },
 };
 </script>
 
-<style lang="scss" scoped>
-.container-card {
-  max-width: 90%;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  margin: auto;
-}
-</style>
+<style lang="scss" scoped></style>
