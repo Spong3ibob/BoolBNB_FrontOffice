@@ -1,11 +1,16 @@
 <script>
 import AppCarosel from "./AppCarosel.vue";
+
 export default {
   name: "AppCard",
   components: {
     AppCarosel,
   },
+  props: {
+      data: Object,
+  },
 };
+
 </script>
 
 <template>
@@ -13,11 +18,11 @@ export default {
     <AppCarosel />
     <div class="information">
       <div class="left">
-        <h6><b>Luogo,Paese</b></h6>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-        <p><b>prezzo €</b> notte</p>
+        <h6><b>{{ data.title }}</b></h6>
+        <p>{{ data.full_address }}</p>
+        <p><b>{{ data.price }} €</b> notte</p>
       </div>
-      <div class="right"><i class="fa-solid fa-star"></i> 4,82</div>
+      <div class="right"><i class="fa-solid fa-star"></i> 5 </div>
     </div>
   </div>
 </template>
