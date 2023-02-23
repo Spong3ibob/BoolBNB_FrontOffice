@@ -1,31 +1,29 @@
 <template>
-  <div class="container">
-    <h2>Titolo appartamento 1</h2>
+  <h2>Titolo appartamento 1</h2>
 
-    <div class="nav-info-apartment d-flex justify-content-between">
-      <div class="apartment-info-header">
-        <span class="header-info">Visualizzazioni</span>
-        <!-- Divisore Grafico tra le informazioni dell'header -->
-        <span class="spacer-dot">·</span>
+  <div class="nav-info-apartment d-flex justify-content-between">
+    <div class="apartment-info-header">
+      <span class="header-info">Visualizzazioni</span>
+      <!-- Divisore Grafico tra le informazioni dell'header -->
+      <span class="spacer-dot">·</span>
 
-        <span class="header-info">Recensioni/Messaggi</span>
-        <span class="spacer-dot">·</span>
-        <span class="header-info">Sponsor</span>
-        <span class="spacer-dot">·</span>
-        <span class="header-info">Indirizzo</span>
-      </div>
-      <div class="apartment-share">
-        <span class="header-share"
-          ><button type="button">
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>Condividi
-          </button></span
-        >
-        <span class="header-share"
-          ><button type="button">
-            <i class="fa-regular fa-heart"></i> Preferiti
-          </button></span
-        >
-      </div>
+      <span class="header-info">Recensioni/Messaggi</span>
+      <span class="spacer-dot">·</span>
+      <span class="header-info">Sponsor</span>
+      <span class="spacer-dot">·</span>
+      <span class="header-info">Indirizzo</span>
+    </div>
+    <div class="apartment-share">
+      <span class="header-share"
+        ><button type="button">
+          <i class="fa-solid fa-arrow-up-from-bracket"></i>Condividi
+        </button></span
+      >
+      <span class="header-share"
+        ><button type="button">
+          <i class="fa-regular fa-heart"></i> Preferiti
+        </button></span
+      >
     </div>
   </div>
 </template>

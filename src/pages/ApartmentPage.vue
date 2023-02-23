@@ -1,27 +1,20 @@
 <template>
-  <div class="container-card">
+  <div class="container">
     <InfoHeader />
+    <ImageThumbnail />
   </div>
 </template>
 
 <script>
 import InfoHeader from "../components/apartment-components/InfoHeader.vue";
+import ImageThumbnail from "../components/apartment-components/ImageThumbnail.vue";
 
 export default {
   components: {
     InfoHeader,
+    ImageThumbnail,
   },
 };
 </script>
 
-<style lang="scss" scoped>
-.container-card {
-  max-width: 90%;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  margin: auto;
-}
-</style>
+<style lang="scss" scoped></style>
