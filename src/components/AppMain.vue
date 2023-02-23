@@ -1,45 +1,28 @@
 <script>
-import AppCard from './AppCard.vue';
-
+import AppCard from "./AppCard.vue";
+import AppMainDebug from "./debug/AppMainDebug.vue";
 
 export default {
   components: {
     AppCard,
+    AppMainDebug,
   },
 };
-
 </script>
 
 <template>
   <main>
-    <div class="container-card">
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-    </div>
+    <ul>
+      <li>
+        <router-link :to="{ name: 'apartment-page' }">Appartamento</router-link>
+      </li>
+      <li>
+        <router-link :to="{ name: 'main-debug' }"
+          >debug/AppCardContainer</router-link
+        >
+      </li>
+    </ul>
   </main>
 </template>
 
-
-
-<style lang="scss" scoped>
-
-.container-card{
-  max-width: 90%;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  margin: auto;
-}
-</style>
+<style lang="scss" scoped></style>
