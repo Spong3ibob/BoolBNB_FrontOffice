@@ -1,34 +1,26 @@
-<template>
-  <div>
-    <div class="container-card">
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-      <AppCard />
-    </div>
-  </div>
-</template>
-
 <script>
-import AppCard from "../AppCard.vue";
+import ApiCard from '../ApiCard.vue';
 
 export default {
   components: {
-    AppCard,
+    ApiCard,
   },
   setup() {
     return {};
   },
 };
 </script>
+
+
+<template>
+  <div>
+    <div class="container-card">
+      <ApiCard />
+    </div>
+  </div>
+</template>
+
+
 
 <style lang="scss" scoped>
 .container-card {
