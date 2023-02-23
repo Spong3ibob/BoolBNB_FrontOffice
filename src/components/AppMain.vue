@@ -12,17 +12,25 @@ export default {
 
 <template>
   <main>
-    <ul>
-      <li>
-        <router-link :to="{ name: 'apartment-page' }">Appartamento</router-link>
-      </li>
-      <li>
-        <router-link :to="{ name: 'main-debug' }"
-          >debug/AppCardContainer</router-link
-        >
-      </li>
-    </ul>
+    <div class="debug">
+      <ul>
+        <li>
+          <router-link :to="{ name: 'apartment-page' }"
+            >Appartamento</router-link
+          >
+        </li>
+        <li>
+          <router-link :to="{ name: 'main-debug' }"
+            >debug/AppCardContainer</router-link
+          >
+        </li>
+      </ul>
+    </div>
   </main>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.debug {
+  background-color: cyan;
+}
+</style>
