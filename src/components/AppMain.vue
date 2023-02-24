@@ -1,11 +1,9 @@
 <script>
-import AppCard from "./AppCard.vue";
-import AppMainDebug from "./debug/AppMainDebug.vue";
+import ListApartments from "./main-apartment-index/ListApartments.vue";
 
 export default {
   components: {
-    AppCard,
-    AppMainDebug,
+    ListApartments,
   },
 };
 </script>
@@ -20,9 +18,7 @@ export default {
           >
         </li>
         <li>
-          <router-link :to="{ name: 'main-debug' }"
-            >debug/AppCardContainer</router-link
-          >
+          <router-link :to="{ name: 'homepage' }">Homepage</router-link>
         </li>
       </ul>
     </div>

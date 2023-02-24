@@ -4,7 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/HomePage.vue";
 import Page404 from "./pages/Page404.vue";
 import ApartmentPage from "./pages/ApartmentPage.vue";
-import AppMainDebug from "./components/debug/AppMainDebug.vue";
+import ListApartments from "./components/main-apartment-index/ListApartments.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -20,15 +20,15 @@ const router = createRouter({
       component: Page404,
     },
     {
-      path: "/abitazione",
+      path: "/apartament",
       name: "apartment-page",
       component: ApartmentPage,
     },
-    {
-      path: "/debug-main",
-      name: "main-debug",
-      component: AppMainDebug,
-    },
+    // {
+    //   path: "/Apartment-List",
+    //   name: "apartment-list",
+    //   component: ListApartments,
+    // },
   ],
 });
 
