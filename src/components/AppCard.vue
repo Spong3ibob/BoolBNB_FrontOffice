@@ -20,7 +20,7 @@ export default {
     <div class="information">
       <div class="left">
         <h6><b>{{ data.title }}</b></h6>
-        <p>Host Privato/Proffessionista</p>
+        <p>{{data.full_address}}</p>
         <p><b>{{ data.price }} €</b> notte</p>
       </div>
       <div class="right"><i class="fa-solid fa-star"></i></div>

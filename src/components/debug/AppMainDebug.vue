@@ -1,22 +1,25 @@
 <script>
 import ApiCard from '../ApiCard.vue';
+import { store } from '../../store';
+import AppCard from '../AppCard.vue';
 
 export default {
   components: {
     ApiCard,
+    AppCard
   },
-  setup() {
-    return {};
-  },
+  data() {
+    return {
+      store
+    }
+  }
 };
 </script>
 
 
 <template>
-  <div>
-    <div class="container-card">
-      <ApiCard />
-    </div>
+  <div v-for="filteredApartment in this.store.filteredApartments">
+    <AppCard :data="filteredApartment"/>
   </div>
 </template>
 

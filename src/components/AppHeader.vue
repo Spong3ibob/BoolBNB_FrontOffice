@@ -1,8 +1,12 @@
 <script>
+import axios from 'axios';
+import { store } from '../store';
+
 export default {
   name: "AppHeader",
   data() {
     return {
+      store,
       services: [
             'Wifi',
             'Vasca',
@@ -18,6 +22,25 @@ export default {
             'Zona fumatori',
       ]
     }
+  },
+  methods: {
+    searchFieldApi(){
+      if(this.store.searchInput !== ''){
+        axios.get(`http://127.0.0.1:8000/api/search/apartment/${this.store.searchInput}`)
+        .then((res) => {
+          this.store.filteredApartments = res.data;
+        })
+      } else {
+        axios.get("http://127.0.0.1:8000/api/apartments").then((res) => {
+          this.store.filteredApartments = res.data;
+        });
+      }
+    }
+  },
+  created(){
+    axios.get("http://127.0.0.1:8000/api/apartments").then((res) => {
+      this.store.filteredApartments = res.data;
+    });
   }
 }
 </script>
@@ -31,9 +54,7 @@ export default {
         </button>
         <div class="navbar-collapse collapse w-100">
             <ul class="navbar-nav border rounded-pill w-100 p-2">
-              <form class="w-100">
-                <input type="search" class="form-control border-0" placeholder="Cerca un appartamento">
-              </form>
+              <input type="search" class="form-control border-0" placeholder="Cerca un appartamento" v-model="this.store.searchInput" @keyup="this.searchFieldApi">
             </ul>
             <ul class="nav navbar-nav ms-auto w-100 justify-content-end">
                 <li class="nav-item">
