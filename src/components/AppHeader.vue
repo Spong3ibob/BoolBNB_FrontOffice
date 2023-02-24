@@ -26,20 +26,19 @@ export default {
   methods: {
     searchFieldApi(){
       if(this.store.searchInput !== ''){
-        axios.get(`http://127.0.0.1:8000/api/search/apartment/${this.store.searchInput}`)
+        axios.get(`${this.store.backendUrl}/search/apartment/${this.store.searchInput}`)
         .then((res) => {
           this.store.filteredApartments = res.data;
         })
       } else {
-        axios.get("http://127.0.0.1:8000/api/apartments").then((res) => {
-          this.store.filteredApartments = res.data;
-        });
+        this.store.filteredApartments = this.store.apartments;
       }
     }
   },
   created(){
-    axios.get("http://127.0.0.1:8000/api/apartments").then((res) => {
+    axios.get(`${this.store.backendUrl}/apartments`).then((res) => {
       this.store.filteredApartments = res.data;
+      this.store.apartments = this.store.filteredApartments;
     });
   }
 }
