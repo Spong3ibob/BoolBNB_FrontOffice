@@ -1,6 +1,11 @@
 <template>
   <div>
-    <h2>Titolo appartamento 1</h2>
+    <h2 class="title">
+      Titolo appartamento:
+      <span class="apartment-title"> {{ data[0].title }} </span>
+    </h2>
+
+    <p></p>
 
     <div class="nav-info-apartment d-flex justify-content-between">
       <div class="apartment-info-header">
@@ -12,7 +17,9 @@
         <span class="spacer-dot">·</span>
         <span class="header-info">Sponsor</span>
         <span class="spacer-dot">·</span>
-        <span class="header-info">Indirizzo</span>
+        <span class="header-info"
+          ><i>{{ data[0].full_address }}</i></span
+        >
       </div>
       <div class="apartment-share">
         <span class="header-share"
@@ -30,15 +37,26 @@
   </div>
 </template>
 
-<script setup></script>
+<script>
+export default {
+  props: {
+    data: Object,
+  },
+};
+</script>
 
 <style lang="scss" scoped>
+.title {
+  .apartment-title {
+    font-style: italic;
+  }
+}
 .nav-info-apartment {
   .header-info {
-    margin-right: 0.5rem;
+    margin-right: 0.375rem;
 
     &:not(:first-child) {
-      margin-left: 0.5rem;
+      margin-left: 0.375rem;
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-7">
-      <ApartmentMainInfo />
+      <ApartmentMainInfo :info="data" />
     </div>
     <div class="col-3">2</div>
   </div>
@@ -15,8 +15,8 @@ export default {
     ApartmentMainInfo,
   },
 
-  setup() {
-    return {};
+  props: {
+    data: Object,
   },
 };
 </script>

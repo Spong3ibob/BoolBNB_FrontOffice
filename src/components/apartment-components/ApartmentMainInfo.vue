@@ -1,24 +1,24 @@
 <template>
   <section class="title-section line-space-divider">
     <div>
-      <h4>Nome Alloggio: {} - Host: {}</h4>
-      <span>{} camere da letto</span>
+      <h4>
+        Nome Alloggio: {{ info[0].title }} - Host: {{ info[0].user.name }}
+      </h4>
+      <span>{{ info[0].rooms_num }} camere da letto</span>
       <span class="spacer-dot">·</span>
-      <span>{} letti</span>
+      <span>{{ info[0].beds_num }} letti</span>
       <span class="spacer-dot">·</span>
-      <span>{} bagni</span>
+      <span>{{ info[0].baths_num }} bagni</span>
     </div>
   </section>
   <section class="descrizione line-space-divider">
-    <div v-if="p < 400">
+    <div v-if="info[0].description < 200">
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus,
-        necessitatibus dolorum, adipisci amet hic optio esse est aliquid
-        reprehenderit quia totam fugiat quidem ipsa odio numquam expedita
-        corporis vel laudantium.
+        {{ info[0].description }}
       </p>
     </div>
     <div v-else>
+      <p>{{ info[0].description.substring(0, 200) }} ...</p>
       <!-- Button trigger modal -->
       <button
         type="button"
@@ -49,10 +49,7 @@
             </div>
             <div class="modal-body">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Deserunt, unde quidem? Expedita accusantium, asperiores illo
-                possimus in libero commodi quia! Facere culpa enim fugiat nam,
-                excepturi quam iusto quos natus.
+                {{ info[0].description }}
               </p>
             </div>
           </div>
@@ -64,8 +61,8 @@
 
 <script>
 export default {
-  setup() {
-    return {};
+  props: {
+    info: Object,
   },
 };
 </script>
