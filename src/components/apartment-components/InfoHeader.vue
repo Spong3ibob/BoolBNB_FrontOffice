@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <h2>Titolo appartamento 1</h2>
 
     <div class="nav-info-apartment d-flex justify-content-between">
@@ -40,12 +40,6 @@
     &:not(:first-child) {
       margin-left: 0.5rem;
     }
-  }
-  .spacer-dot {
-    color: rgb(113, 113, 113);
-    font-size: 1.125rem;
-    font-weight: 400 !important;
-    margin: 0.5rem 0.5rem 0rem;
   }
 }
 .apartment-share {
