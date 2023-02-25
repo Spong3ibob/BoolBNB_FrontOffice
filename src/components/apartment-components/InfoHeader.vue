@@ -2,7 +2,7 @@
   <div>
     <h2 class="title">
       Titolo appartamento:
-      <span class="apartment-title"> {{ data[0].title }} </span>
+      <!-- <span class="apartment-title"> {{ apartment.title }} </span> -->
     </h2>
 
     <p></p>
@@ -18,7 +18,7 @@
         <span class="header-info">Sponsor</span>
         <span class="spacer-dot">·</span>
         <span class="header-info"
-          ><i>{{ data[0].full_address }}</i></span
+          ><i></i></span
         >
       </div>
       <div class="apartment-share">
@@ -40,7 +40,7 @@
 <script>
 export default {
   props: {
-    data: Object,
+    apartment: Object,
   },
 };
 </script>

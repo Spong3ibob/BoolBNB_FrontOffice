@@ -2,23 +2,23 @@
   <section class="title-section line-space-divider">
     <div>
       <h4>
-        Nome Alloggio: {{ info[0].title }} - Host: {{ info[0].user.name }}
+        <!-- Nome Alloggio: {{ info[0].title }} - Host: {{ info[0].user.name }} -->
       </h4>
-      <span>{{ info[0].rooms_num }} camere da letto</span>
+      <!-- <span>{{ info[0].rooms_num }} camere da letto</span> -->
       <span class="spacer-dot">·</span>
-      <span>{{ info[0].beds_num }} letti</span>
+      <!-- <span>{{ info[0].beds_num }} letti</span> -->
       <span class="spacer-dot">·</span>
-      <span>{{ info[0].baths_num }} bagni</span>
+      <!-- <span>{{ info[0].baths_num }} bagni</span> -->
     </div>
   </section>
   <section class="descrizione line-space-divider">
-    <div v-if="info[0].description < 200">
+    <div v-if="true">
       <p>
-        {{ info[0].description }}
+        <!-- {{ info[0].description }} -->
       </p>
     </div>
     <div v-else>
-      <p>{{ info[0].description.substring(0, 200) }} ...</p>
+      <!-- <p>{{ info[0].description.substring(0, 200) }} ...</p> -->
       <!-- Button trigger modal -->
       <button
         type="button"
@@ -49,7 +49,7 @@
             </div>
             <div class="modal-body">
               <p>
-                {{ info[0].description }}
+                <!-- {{ info[0].description }} -->
               </p>
             </div>
           </div>

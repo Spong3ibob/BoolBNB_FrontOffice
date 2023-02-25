@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-7">
-      <ApartmentMainInfo :info="data" />
+      <ApartmentMainInfo :info="apartment" />
     </div>
     <div class="col-3">2</div>
   </div>
@@ -16,7 +16,7 @@ export default {
   },
 
   props: {
-    data: Object,
+    apartment: Object,
   },
 };
 </script>

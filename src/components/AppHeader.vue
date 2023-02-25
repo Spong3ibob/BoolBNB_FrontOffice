@@ -43,10 +43,12 @@ export default {
     <div class="header-container__top">
       <div class="ms-page-container d-flex justify-content-between align-items-center py-3">
         <!-- top left -->
-        <div class="h-top-left d-flex align-items-center w-25">
-          <img src="../assets/img/logo-icon.png" alt="" style="width: 40px">
-          <h3 class="mb-0 ps-1">BoolBnB</h3>
-        </div>
+        <div class="h-top-left w-25 d-flex">
+          <RouterLink :to="{ name: 'homepage' }" class="d-flex align-items-center text-decoration-none">
+            <img src="../assets/img/logo-icon.png" alt="" style="width: 40px">
+            <h3 class="mb-0 ps-1" style="">BoolBnB</h3>
+          </RouterLink>
+        </div >
 
         <!-- top Center -->
         <div class="h-top-center w-50">
@@ -54,8 +56,8 @@ export default {
         </div>
 
         <!-- top Right -->
-        <div class="h-top-right w-25 d-flex justify-content-end align-items-center ">
-          <a class="ms-3 fw-semibold text-decoration-none text-dark" href="#">Affitta con BoolBnB</a>
+        <div class="h-top-right d-flex justify-content-end align-items-center w-25">
+          <a class="rent rounded-pill py-2 px-3 ms-3 fw-semibold text-decoration-none text-dark" href="#">Affitta con BoolBnB</a>
 
           <!-- Menu -->
           <div class="btn-group rounded-pill ms-3">
@@ -111,6 +113,11 @@ export default {
         }
       }
       & .h-top-right {
+        & .rent {
+          &:hover {
+            background-color: rgba(0,0,0,.05);
+          }
+        }
         & .btn-group {
           border: 1px solid #ced4da;
           & div {
