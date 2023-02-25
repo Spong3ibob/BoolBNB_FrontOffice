@@ -74,7 +74,7 @@ export default {
 
     <!-- Header bottom services -->
     <div class="header-container__bottom">
-      <div class="ms-page-container py-4 d-flex justify-content-between">
+      <div class="ms-page-container py-3 d-flex justify-content-between">
         <div v-for="service in services" class="d-flex flex-column align-items-center justify-content-between">
           <div class="fa-lg fa-fw mb-2" v-html="service.icon"></div>
           <small>{{ service.name }}</small>

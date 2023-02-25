@@ -1,7 +1,6 @@
 <script>
 import AppCarosel from "./AppCarosel.vue";
 
-
 export default {
   name: "AppCard",
   components: {
@@ -11,45 +10,28 @@ export default {
       data: Object,
   },
 };
-
 </script>
 
 <template>
-  <div class="card">
-    <img :src="data.image" alt="">
-    <div class="information">
-      <div class="left">
-        <h6><b>{{ data.title }}</b></h6>
-        <p>{{data.full_address}}</p>
-        <p><b>{{ data.price }} €</b> notte</p>
+  <div class="ms-card mb-5">
+    <img class="ms-card__image rounded-4 mb-3" :src="data.image" alt="">
+
+    <div class="ms-card__information">
+      <h6 class="fw-bold">{{ data.title }}</h6>
+      <div class="text-muted">{{data.mq}} metri quadrati</div>
+      <div class="text-muted my-1">{{data.full_address}}</div>
+      <div class="text-muted">
+        <strong class="text-dark">{{ data.price }} €</strong> notte
       </div>
-      <div class="right"><i class="fa-solid fa-star"></i></div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.card {
-  border: none;
-  border-radius: 0;
-  width: 300px;
-  height: 480px;
-  img{
-      border-radius: 5%;
-      height: 300px;
-      width: 300px;
-      object-fit: cover;
-    }
-  .information {
-    display: flex;
-    padding-top: 15px;
-    .left {
-      width: 90%;
-    }
-    .right {
-      width: 10%;
-    }
+.ms-card {
+  img {
+    width: 100%;
+    height: 310px;
   }
-  
 }
 </style>

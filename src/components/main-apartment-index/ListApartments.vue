@@ -17,21 +17,18 @@ export default {
 </script>
 
 <template>
-  <div class="container-card">
-    <div v-for="filteredApartment in this.store.filteredApartments">
-      <AppCard :data="filteredApartment" />
-    </div>
+  <div class="ms-page-container d-flex flex-wrap">
+    <AppCard  v-for="filteredApartment in this.store.filteredApartments" 
+      class="single-apartment" 
+      :data="filteredApartment" />
   </div>
 </template>
 
 <style lang="scss" scoped>
-.container-card {
-  max-width: 90%;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  margin: auto;
-}
+  div.ms-page-container {
+    & .single-apartment {
+      width: calc(100% / 4 - 24px);
+      margin: 0 12px;
+    }
+  }
 </style>
