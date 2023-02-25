@@ -45,7 +45,7 @@ export default {
         <!-- top left -->
         <div class="h-top-left d-flex align-items-center w-25">
           <img src="../assets/img/logo-icon.png" alt="" style="width: 40px">
-          <h3 class="mb-0 ps-1">Boolbnb</h3>
+          <h3 class="mb-0 ps-1">BoolBnB</h3>
         </div>
 
         <!-- top Center -->
@@ -64,8 +64,8 @@ export default {
               <img class="rounded-pill ms-2" src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3" alt="" style="width: 30px; height: 30px;">
             </div>
             <ul class="dropdown-menu dropdown-menu-end mt-2">
-              <li><button class="dropdown-item" type="button">Registrati</button></li>
-              <li><button class="dropdown-item" type="button">Accedi</button></li>
+              <li><a :href="this.store.backendLoginUrl" class="dropdown-item">Registrati</a></li>
+              <li><a :href="this.store.backendRegisterUrl" class="dropdown-item">Accedi</a></li>
             </ul>
           </div>
         </div>
@@ -92,7 +92,6 @@ export default {
       right: 0;
       background-color: white;
       z-index: 10;
-      margin-bottom: 20px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.18);
     & .header-container__top {
       border-bottom: 1.8px solid #ebebeb;
