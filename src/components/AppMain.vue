@@ -12,14 +12,14 @@ export default {
 <template>
   <main>
     <div class="debug">
-      <ul>
+      <!-- <ul>
         <li>
           <router-link :to="{ name: 'apartment-page' }">Appartamento</router-link>
         </li>
         <li>
           <router-link :to="{ name: 'homepage' }">Homepage</router-link>
         </li>
-      </ul>
+      </ul> -->
     </div>
 
     <router-view></router-view>
