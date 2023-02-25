@@ -2,6 +2,7 @@
 import ListApartments from "./main-apartment-index/ListApartments.vue";
 
 export default {
+  name: "AppMain",
   components: {
     ListApartments,
   },
@@ -13,15 +14,15 @@ export default {
     <div class="debug">
       <ul>
         <li>
-          <router-link :to="{ name: 'apartment-page' }"
-            >Appartamento</router-link
-          >
+          <router-link :to="{ name: 'apartment-page' }">Appartamento</router-link>
         </li>
         <li>
           <router-link :to="{ name: 'homepage' }">Homepage</router-link>
         </li>
       </ul>
     </div>
+
+    <router-view></router-view>
   </main>
 </template>
 

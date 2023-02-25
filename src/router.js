@@ -15,11 +15,6 @@ const router = createRouter({
       component: HomePage,
     },
     {
-      path: "/:pathMatch(.*)*",
-      name: "page-404",
-      component: Page404,
-    },
-    {
       path: "/apartament",
       name: "apartment-page",
       component: ApartmentPage,
@@ -29,6 +24,12 @@ const router = createRouter({
     //   name: "apartment-list",
     //   component: ListApartments,
     // },
+    // Any route not matched will be redirect to 404 - DEVE ESSERE SEMPRE L'ULTIMA ROTTA
+    { 
+      path: '/:pathMatch(.*)*',
+      name: 'page-404',
+      component: Page404,
+  }
   ],
 });
 
