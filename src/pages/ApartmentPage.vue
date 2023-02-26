@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="apartment !== null">
+  <div class="container my-5" v-if="apartment !== null">
     <InfoHeader :data="this.apartment" />
     <SectionAparmentDescription :data="this.apartment" />
   </div>

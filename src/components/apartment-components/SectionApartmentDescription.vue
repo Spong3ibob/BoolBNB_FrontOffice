@@ -14,7 +14,6 @@ export default {
   components: {
     ApartmentMainInfo,
   },
-
   props: {
     data: Object,
   },

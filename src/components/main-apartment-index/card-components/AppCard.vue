@@ -8,10 +8,6 @@ export default {
   },
   props: {
     data: Object,
-  },
-  data() {
-    return {
-    }
   }
 };
 </script>
