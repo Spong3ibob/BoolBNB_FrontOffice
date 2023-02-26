@@ -77,8 +77,8 @@ export default {
     <!-- Header bottom services -->
     <div class="header-container__bottom">
       <div class="ms-page-container py-3 d-flex justify-content-between">
-        <div v-for="service in services" class="d-flex flex-column align-items-center justify-content-between">
-          <div class="fa-lg fa-fw mb-2" v-html="service.icon"></div>
+        <div v-for="service in services" class="service-box text-muted py-1 d-flex flex-column align-items-center justify-content-between">
+          <div class="fa-lg fa-fw mb-1" v-html="service.icon"></div>
           <small>{{ service.name }}</small>
         </div>
       </div>
@@ -126,6 +126,16 @@ export default {
           &:hover {
             box-shadow: 0 2px 4px rgba(0,0,0,0.18);
           }
+        }
+      }
+    }
+    & .header-container__bottom {
+      .service-box {
+        border-bottom: 3px solid transparent;
+        cursor: pointer;
+        &:hover {
+          border-color: rgba(0,0,0,0.18);
+          color: black !important;
         }
       }
     }
