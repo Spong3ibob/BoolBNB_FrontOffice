@@ -2,7 +2,7 @@
   <div>
     <h2 class="title">
       Titolo appartamento:
-      <!-- <span class="apartment-title"> {{ apartment.title }} </span> -->
+      <span class="apartment-title"> {{ data.title }} </span>
     </h2>
 
     <p></p>
@@ -40,7 +40,7 @@
 <script>
 export default {
   props: {
-    apartment: Object,
+    data: Object,
   },
 };
 </script>
