@@ -66,8 +66,8 @@ export default {
               <img class="rounded-pill ms-2" src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3" alt="" style="width: 30px; height: 30px;">
             </div>
             <ul class="dropdown-menu dropdown-menu-end mt-2">
-              <li><a :href="this.store.backendLoginUrl" class="dropdown-item">Registrati</a></li>
-              <li><a :href="this.store.backendRegisterUrl" class="dropdown-item">Accedi</a></li>
+              <li><a :href="this.store.backendRegisterUrl" class="dropdown-item">Registrati</a></li>
+              <li><a :href="this.store.backendLoginUrl" class="dropdown-item">Accedi</a></li>
             </ul>
           </div>
         </div>
