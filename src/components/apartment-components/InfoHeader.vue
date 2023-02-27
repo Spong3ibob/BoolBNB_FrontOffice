@@ -1,7 +1,6 @@
 <template>
   <div>
     <h2 class="title">
-      Titolo appartamento:
       <span class="apartment-title"> {{ data.title }} </span>
     </h2>
 
@@ -35,8 +34,14 @@
       </div>
     </div>
 
-    <div class="images-box">
-      <img :src="data.image" :alt="data.title" />
+    <div class="images-box d-flex">
+      <img :src="data.image_url" :alt="data.title" />
+      <!-- <div class="img-container">
+        <img id="map-container" src="" class="figure-img img-fluid" alt="" />
+        <div class="full-address mb-2">
+          <i class="fa-solid fa-location-dot me-2"></i>{{ data.full_address }}
+        </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -94,9 +99,10 @@ export default {
   margin-top: 0.625rem;
   border-radius: 1rem;
   overflow: hidden;
+  width: 50%;
   img {
     height: 100%;
-    width: 50%;
+    width: 100%;
   }
 }
 </style>
