@@ -1,7 +1,6 @@
 <template>
   <div>
     <h2 class="title">
-      Titolo appartamento:
       <span class="apartment-title"> {{ data.title }} </span>
     </h2>
 
