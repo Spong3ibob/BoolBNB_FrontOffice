@@ -20,6 +20,12 @@ export default {
       } else {
         this.store.filteredApartments = this.store.apartments;
       }
+    },
+    filterByService(service){
+        if(this.store.servicesFilter !== ''){     
+            this.store.servicesFilter.push(service.name) ;
+
+        } 
     }
   },
   created(){
@@ -77,9 +83,11 @@ export default {
     <!-- Header bottom services -->
     <div class="header-container__bottom" v-if="this.$route.name !== 'apartment-page'">
       <div class="ms-page-container py-3 d-flex justify-content-between">
-        <div v-for="service in services" class="service-box text-muted py-1 d-flex flex-column align-items-center justify-content-between">
+        <div v-for="service in services" @click="filterByService(service)" class="service-box text-muted py-1 d-flex flex-column align-items-center justify-content-between">
           <div class="fa-lg fa-fw mb-1" v-html="service.icon"></div>
-          <small>{{ service.name }}</small>
+          <div class="service-name" >
+              <small>{{ service.name }}</small>
+          </div>
         </div>
       </div>
     </div>
