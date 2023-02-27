@@ -18,7 +18,6 @@ export default {
   <div class="ms-page-container d-flex flex-wrap mt-4 mb-5">
     <AppCard
       v-for="filteredApartment in this.store.filteredApartments"
-      class="single-apartment"
       :data="filteredApartment"
     />
   </div>

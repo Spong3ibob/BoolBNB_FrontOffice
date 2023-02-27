@@ -13,13 +13,40 @@ export default {
   methods: {
     searchFieldApi(){
       if(this.store.searchInput !== ''){
-        axios.get(`${this.store.backendUrl}/search/apartment/${this.store.searchInput}`)
-        .then((res) => {
-          this.store.filteredApartments = res.data;
-        })
+        if(this.store.servicesFilter.length === 0) {
+          axios.get(`${this.store.backendUrl}/search/apartment/${this.store.searchInput}`)
+          .then((res) => {
+            this.store.filteredApartments = res.data;
+          })
+        } else {
+          axios.get(`${this.store.backendUrl}/search/apartment/${this.store.searchInput}/${this.store.servicesFilter.toString().toLowerCase()}`)
+          .then((res) => {
+            this.store.filteredApartments = res.data;
+          })
+        }
       } else {
-        this.store.filteredApartments = this.store.apartments;
+        if(this.store.servicesFilter.length === 0) {
+          this.store.filteredApartments = this.store.apartments;
+        }
       }
+    },
+    filterByService(service){
+      let serviceButton = document.getElementById(`${service.name}-${service.id}`);
+
+      if(!this.store.servicesFilter.includes(service.name)){     
+          this.store.servicesFilter.push(service.name) ;
+          serviceButton.classList.add('service-clicked');
+      } else {
+        const index = this.store.servicesFilter.indexOf(service.name);
+        this.store.servicesFilter.splice(index, 1);
+
+        serviceButton.classList.remove('service-clicked');
+      }
+      
+      axios.get(`${this.store.backendUrl}/apartments/${this.store.servicesFilter.toString().toLowerCase()}`)
+      .then((res) => {
+        this.store.filteredApartments = res.data;
+      })
     }
   },
   created(){
@@ -52,7 +79,7 @@ export default {
 
         <!-- top Center -->
         <div class="h-top-center w-50" v-if="this.$route.name !== 'apartment-page'">
-          <input type="search" class="m-auto form-control rounded-pill" placeholder="Cerca un appartamento" v-model="this.store.searchInput" @keyup="this.searchFieldApi">
+          <input type="search" id="search" class="m-auto form-control rounded-pill" placeholder="Cerca un appartamento" v-model="this.store.searchInput" @keyup="this.searchFieldApi">
         </div>
 
         <!-- top Right -->
@@ -77,9 +104,11 @@ export default {
     <!-- Header bottom services -->
     <div class="header-container__bottom" v-if="this.$route.name !== 'apartment-page'">
       <div class="ms-page-container py-3 d-flex justify-content-between">
-        <div v-for="service in services" class="service-box text-muted py-1 d-flex flex-column align-items-center justify-content-between">
+        <div v-for="service in services" @click="filterByService(service)" :id="`${service.name}-${service.id}`" class="service-box text-muted py-1 d-flex flex-column align-items-center justify-content-between">
           <div class="fa-lg fa-fw mb-1" v-html="service.icon"></div>
-          <small>{{ service.name }}</small>
+          <div class="service-name" >
+              <small>{{ service.name }}</small>
+          </div>
         </div>
       </div>
     </div>
@@ -138,6 +167,11 @@ export default {
           color: black !important;
         }
       }
+    }
+
+    .service-clicked {
+      color: black !important;
+      border-color: black !important;
     }
   }
 </style>
