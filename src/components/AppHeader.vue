@@ -13,12 +13,21 @@ export default {
   methods: {
     searchFieldApi(){
       if(this.store.searchInput !== ''){
-        axios.get(`${this.store.backendUrl}/search/apartment/${this.store.searchInput}`)
-        .then((res) => {
-          this.store.filteredApartments = res.data;
-        })
+        if(this.store.servicesFilter.length === 0) {
+          axios.get(`${this.store.backendUrl}/search/apartment/${this.store.searchInput}`)
+          .then((res) => {
+            this.store.filteredApartments = res.data;
+          })
+        } else {
+          axios.get(`${this.store.backendUrl}/search/apartment/${this.store.searchInput}/${this.store.servicesFilter.toString().toLowerCase()}`)
+          .then((res) => {
+            this.store.filteredApartments = res.data;
+          })
+        }
       } else {
-        this.store.filteredApartments = this.store.apartments;
+        if(this.store.servicesFilter.length === 0) {
+          this.store.filteredApartments = this.store.apartments;
+        }
       }
     },
     filterByService(service){
@@ -30,11 +39,11 @@ export default {
       } else {
         const index = this.store.servicesFilter.indexOf(service.name);
         this.store.servicesFilter.splice(index, 1);
-        
+
         serviceButton.classList.remove('service-clicked');
       }
       
-      axios.get(`http://127.0.0.1:8000/api/apartments/${this.store.servicesFilter.toString().toLowerCase()}`)
+      axios.get(`${this.store.backendUrl}/apartments/${this.store.servicesFilter.toString().toLowerCase()}`)
       .then((res) => {
         this.store.filteredApartments = res.data;
       })
@@ -70,7 +79,7 @@ export default {
 
         <!-- top Center -->
         <div class="h-top-center w-50" v-if="this.$route.name !== 'apartment-page'">
-          <input type="search" class="m-auto form-control rounded-pill" placeholder="Cerca un appartamento" v-model="this.store.searchInput" @keyup="this.searchFieldApi">
+          <input type="search" id="search" class="m-auto form-control rounded-pill" placeholder="Cerca un appartamento" v-model="this.store.searchInput" @keyup="this.searchFieldApi">
         </div>
 
         <!-- top Right -->
