@@ -18,7 +18,7 @@
         <span class="header-info">Sponsor</span>
         <span class="spacer-dot">·</span>
         <span class="header-info"
-          ><i> {{ data.full_addres }}</i></span
+          ><i> {{ data.full_address }}</i></span
         >
       </div>
       <div class="apartment-share">
@@ -88,11 +88,12 @@ export default {
     }
   }
 }
+
+// Immagine
 .images-box {
   margin-top: 0.625rem;
   border-radius: 1rem;
   overflow: hidden;
-  height: 400px;
   img {
     height: 100%;
     width: 50%;
