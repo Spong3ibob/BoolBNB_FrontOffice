@@ -3,7 +3,7 @@
     <div class="col-7">
       <ApartmentMainInfo :info="this.data" />
     </div>
-    <div class="col-3">
+    <div class="col-5">
       <PrenotationAsaid :info="this.data"/>
     </div>
   </div>

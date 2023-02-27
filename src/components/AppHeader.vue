@@ -67,8 +67,8 @@ export default {
 <template>
   <header>
     <!-- Header top -->
-    <div class="header-container__top">
-      <div class="ms-page-container d-flex justify-content-between align-items-center py-3">
+    <div class="header-container__top" :class="this.$route.name === 'apartment-page' ? 'border-transparent' : ''">
+      <div class="d-flex justify-content-between align-items-center py-3" :class="this.$route.name !== 'apartment-page' ? 'ms-page-container' : 'ms-page-container-small'">
         <!-- top left -->
         <div class="h-top-left w-25 d-flex">
           <RouterLink :to="{ name: 'homepage' }" class="d-flex align-items-center text-decoration-none">
@@ -172,5 +172,9 @@ export default {
       color: black !important;
       border-color: black !important;
     }
+  }
+
+  .border-transparent {
+    border-color: transparent !important;
   }
 </style>

@@ -2,7 +2,7 @@
   <!-- Informazioni Principali -->
   <section class="title-section line-space-divider">
     <div>
-      <h4>Nome Alloggio: {{ info.title }} - Host: {{ info.user.name }}</h4>
+      <h4>- Host: {{ info.user.name }}</h4>
       <span>{{ info.rooms_num }} camere da letto</span>
       <span class="spacer-dot">·</span>
       <span>{{ info.beds_num }} letti</span>

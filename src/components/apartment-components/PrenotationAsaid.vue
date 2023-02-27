@@ -1,33 +1,43 @@
 <script>
 import axios from 'axios';
+import { store } from '../../store';
 
 export default {
-  props: {
-    info: Object,
-  },
-  data() {
-      return {
-        message: [],
-        email:[],
+    props: {
+        info: Object
+    },
+    data() {
+        return {
+            store,
+            message: '',
+            email: '',
+            is_sent: false
+        };
+    },
+    methods: {
+        publicFunction(){
+            axios.get(`${this.store.backendUrl}/message/create/email=${this.email}&content=${this.message}&apartmentId=${this.info.id}`).then((response) => {
+                if ( response.status == 200 ) {
+                    this.is_sent = true;
+                }
+            })
 
-      };
-    },
-  methods: {
-    publicFunction(){
-      axios.get(`http://localhost:8000/api/message/create/email=${this.email}&content=${this.message}`).then((response) => {
-        console.log(response);
-      })
-    },
+            this.email = '';
+            this.message = '';
+        },
     },
 };
 
 </script>
 
 <template>
-    <div class="container-card">
+    <div class="container-card line-space-divider ms-auto">
         <div class="card">
-            <span><b>{{ info.price }} €</b> notte</span>
-            <div class="container-ceck">
+            <span>
+                <h5 class="d-inline-block">{{ info.price }} € </h5> 
+                notte
+            </span>
+            <div class="container-ceck my-3">
                 <div class="date-ceck">
                     <div class="ceck-left">
                         <h6>CECK-IN</h6>
@@ -63,7 +73,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-danger">Prenota</button>
+            <button type="button" id="prenota-button" class="btn mb-3 text-white">Prenota</button>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#boxMessager">
             Contatta l'host
@@ -73,12 +83,18 @@ export default {
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="boxMessagerLabel">Contatta l'host</h1>
+                    <h1 class="modal-title fs-5" id="boxMessagerLabel">Contatta l'host {{ info.user.name }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="email" placeholder="inserisci email"  v-model="email">
-                    <input type="text" placeholder="inserisci testo"  v-model="message">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="inserisci email" autocomplete="email" v-model="email" required>
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="inserisci testo" v-model="message" required>
+                        <label for="floatingInput">Contenuto messaggio</label>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -89,7 +105,9 @@ export default {
             </div>
         </div>
     </div>
-    
+    <div class="container-card alert alert-success ms-auto mt-3" v-if="this.is_sent">
+        Messaggio inviato all'Host {{ info.user.name }} con successo !
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -138,6 +156,11 @@ export default {
         input{
             border: none;
         }
+    }
+
+    #prenota-button {
+        background-color: var(--red-color);
+        font-weight: bold;
     }
 
 </style>

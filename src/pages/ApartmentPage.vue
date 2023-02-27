@@ -1,10 +1,10 @@
 <template>
-  <div class="ms-page-container my-5" v-if="this.apartment !== null">
+  <div class="ms-page-container-small my-5" v-if="this.apartment !== null">
     <InfoHeader :data="this.apartment" />
     <SectionAparmentDescription :data="this.apartment" />
-    <RouterLink :to="{ name: 'homepage' }" class="btn btn-secondary">Torna indietro</RouterLink>
+    <RouterLink :to="{ name: 'homepage' }" class="btn btn-secondary mt-4">Torna indietro</RouterLink>
   </div>
-  <div class="ms-page-container spinner-container d-flex align-items-center justify-content-center" v-else>
+  <div class="ms-page-container-small spinner-container d-flex align-items-center justify-content-center" v-else>
     <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
       <span class="visually-hidden text-dark">Loading...</span>
     </div>
