@@ -20,6 +20,14 @@ export default {
       } else {
         this.store.filteredApartments = this.store.apartments;
       }
+    },
+    filterWithService(){
+        //this.store.servicesFilter = this.service.name;
+        console.log(this.name);
+        // axios.get(`${this.store.backendUrl}/search/apartment/${this.store.services}`)
+        // .then((res) => {
+        //   this.store.filteredApartments = res.data;
+        // })
     }
   },
   created(){
@@ -78,7 +86,7 @@ export default {
     <div class="header-container__bottom" v-if="this.$route.name !== 'apartment-page'">
       <div class="ms-page-container py-3 d-flex justify-content-between">
         <div v-for="service in services" class="service-box text-muted py-1 d-flex flex-column align-items-center justify-content-between">
-          <div class="fa-lg fa-fw mb-1" v-html="service.icon"></div>
+          <div class="fa-lg fa-fw mb-1" v-html="service.icon" @click="filterWithService()"></div>
           <small>{{ service.name }}</small>
         </div>
       </div>
