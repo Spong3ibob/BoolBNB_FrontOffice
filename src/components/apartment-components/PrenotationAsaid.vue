@@ -77,10 +77,8 @@ export default {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <label for="email">Inserisci l'email</label>
-                    <input type="email" placeholder="inserisci email" name="email" v-model="email">
-                    <label for="text">Inserisci il testo</label>
-                    <input type="text" placeholder="inserisci testo" name="text" v-model="message">
+                    <input type="email" placeholder="inserisci email"  v-model="email">
+                    <input type="text" placeholder="inserisci testo"  v-model="message">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
