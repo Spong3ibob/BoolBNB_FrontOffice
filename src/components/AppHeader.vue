@@ -22,10 +22,22 @@ export default {
       }
     },
     filterByService(service){
-        if(this.store.servicesFilter !== ''){     
-            this.store.servicesFilter.push(service.name) ;
+      let serviceButton = document.getElementById(`${service.name}-${service.id}`);
 
-        } 
+      if(!this.store.servicesFilter.includes(service.name)){     
+          this.store.servicesFilter.push(service.name) ;
+          serviceButton.classList.add('service-clicked');
+      } else {
+        const index = this.store.servicesFilter.indexOf(service.name);
+        this.store.servicesFilter.splice(index, 1);
+        
+        serviceButton.classList.remove('service-clicked');
+      }
+      
+      axios.get(`http://127.0.0.1:8000/api/apartments/${this.store.servicesFilter.toString().toLowerCase()}`)
+      .then((res) => {
+        this.store.filteredApartments = res.data;
+      })
     }
   },
   created(){
@@ -83,7 +95,7 @@ export default {
     <!-- Header bottom services -->
     <div class="header-container__bottom" v-if="this.$route.name !== 'apartment-page'">
       <div class="ms-page-container py-3 d-flex justify-content-between">
-        <div v-for="service in services" @click="filterByService(service)" class="service-box text-muted py-1 d-flex flex-column align-items-center justify-content-between">
+        <div v-for="service in services" @click="filterByService(service)" :id="`${service.name}-${service.id}`" class="service-box text-muted py-1 d-flex flex-column align-items-center justify-content-between">
           <div class="fa-lg fa-fw mb-1" v-html="service.icon"></div>
           <div class="service-name" >
               <small>{{ service.name }}</small>
@@ -146,6 +158,11 @@ export default {
           color: black !important;
         }
       }
+    }
+
+    .service-clicked {
+      color: black !important;
+      border-color: black !important;
     }
   }
 </style>

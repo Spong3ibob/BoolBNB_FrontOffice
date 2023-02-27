@@ -1,5 +1,6 @@
 <script>
 import AppCarosel from "./AppCarosel.vue";
+import { store } from '../../../store';
 
 export default {
   name: "AppCard",
@@ -9,13 +10,18 @@ export default {
   props: {
     data: Object,
   },
+  data() {
+    return {
+      store,
+    }
+  }
 };
 </script>
 
 <template>
   <router-link
     :to="{ name: 'apartment-page', params: { slug: data.slug } }"
-    class="text-dark text-decoration-none mb-5"
+    class="single-apartment text-dark text-decoration-none d-block mb-5"
   >
     <div class="ms-card">
       <img class="ms-card__image rounded-4 mb-3" :src="data.image_url" alt="" />
@@ -38,5 +44,9 @@ export default {
     width: 100%;
     height: 310px;
   }
+}
+.single-apartment {
+  width: calc(100% / 4 - 24px);
+  margin: 0 12px;
 }
 </style>
