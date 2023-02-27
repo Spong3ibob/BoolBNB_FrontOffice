@@ -20,4 +20,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.row {
+  margin-top: 1.25rem;
+}
+</style>

@@ -18,7 +18,7 @@
         <span class="header-info">Sponsor</span>
         <span class="spacer-dot">·</span>
         <span class="header-info"
-          ><i></i></span
+          ><i> {{ data.full_addres }}</i></span
         >
       </div>
       <div class="apartment-share">
@@ -33,6 +33,10 @@
           </button></span
         >
       </div>
+    </div>
+
+    <div class="images-box">
+      <img :src="data.image" :alt="data.title" />
     </div>
   </div>
 </template>
@@ -82,6 +86,16 @@ export default {
     &:not(:last-child) {
       margin-right: 0.5rem;
     }
+  }
+}
+.images-box {
+  margin-top: 0.625rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 400px;
+  img {
+    height: 100%;
+    width: 50%;
   }
 }
 </style>

@@ -5,11 +5,12 @@
 @import "/node_modules/bootstrap/scss/utilities";
 
 :root {
-    --red-color: #ff5a5f;
+  --red-color: #ff5a5f;
+  --divider-color: #cac8c8;
 }
 
 .ms-page-container {
-    width: 100%;
-    max-width: 1550px;
-    margin: auto;
+  width: 100%;
+  max-width: 1550px;
+  margin: auto;
 }
