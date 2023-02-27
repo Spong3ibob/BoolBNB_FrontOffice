@@ -30,6 +30,12 @@ export default {
         <h6 class="fw-bold">{{ data.title }}</h6>
         <div class="text-muted">{{ data.mq }} metri quadrati</div>
         <div class="text-muted my-1">{{ data.full_address }}</div>
+        <div class="my-1">
+          <strong>Servizi: </strong>
+          <span class="text-muted" v-for="(service, index) in data.services">
+            {{ index == data.services.length - 1 ? service.name : service.name + ', ' }}
+          </span> 
+        </div>
         <div class="text-muted">
           <strong class="text-dark">{{ data.price }} €</strong> notte
         </div>
