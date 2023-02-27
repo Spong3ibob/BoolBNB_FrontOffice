@@ -38,7 +38,7 @@
         type="button"
         class="show-more-button"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#textModal"
       >
         <span class="show-more">Mostra Altro</span>
         <i class="fa-solid fa-chevron-right"></i>
@@ -47,9 +47,9 @@
       <!-- Modal -->
       <div
         class="modal fade"
-        id="exampleModal"
+        id="textModal"
         tabindex="-1"
-        aria-labelledby="exampleModalLabel"
+        aria-labelledby="textModalLabel"
         aria-hidden="true"
       >
         <div class="modal-dialog modal-dialog-scrollable">
