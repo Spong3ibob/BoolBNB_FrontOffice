@@ -51,7 +51,7 @@ export default {
         </div >
 
         <!-- top Center -->
-        <div class="h-top-center w-50">
+        <div class="h-top-center w-50" v-if="this.$route.name !== 'apartment-page'">
           <input type="search" class="m-auto form-control rounded-pill" placeholder="Cerca un appartamento" v-model="this.store.searchInput" @keyup="this.searchFieldApi">
         </div>
 
@@ -75,7 +75,7 @@ export default {
     </div>
 
     <!-- Header bottom services -->
-    <div class="header-container__bottom">
+    <div class="header-container__bottom" v-if="this.$route.name !== 'apartment-page'">
       <div class="ms-page-container py-3 d-flex justify-content-between">
         <div v-for="service in services" class="service-box text-muted py-1 d-flex flex-column align-items-center justify-content-between">
           <div class="fa-lg fa-fw mb-1" v-html="service.icon"></div>
