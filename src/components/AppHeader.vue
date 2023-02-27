@@ -168,7 +168,6 @@ export default {
         }
       }
     }
-
     .service-clicked {
       color: black !important;
       border-color: black !important;

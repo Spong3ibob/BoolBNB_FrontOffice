@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <h2 class="title">
+  <div class="">
+    <h2 class="title mb-0">
       <span class="apartment-title"> {{ data.title }} </span>
     </h2>
 
     <p></p>
 
-    <div class="nav-info-apartment d-flex justify-content-between">
+    <div class="nav-info-apartment d-flex justify-content-between align-items-center">
       <div class="apartment-info-header">
         <span class="header-info">Visualizzazioni</span>
         <!-- Divisore Grafico tra le informazioni dell'header -->
@@ -16,21 +16,20 @@
         <span class="spacer-dot">·</span>
         <span class="header-info">Sponsor</span>
         <span class="spacer-dot">·</span>
-        <span class="header-info"
-          ><i> {{ data.full_address }}</i></span
-        >
+        <span class="header-info text-decoration-underline"><i> {{ data.full_address }}</i></span>
       </div>
       <div class="apartment-share">
-        <span class="header-share"
-          ><button type="button">
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>Condividi
-          </button></span
-        >
-        <span class="header-share"
+        <span class="header-share">
+          <button type="button">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            <span class="text-decoration-underline">Condividi</span>
+          </button>
+        </span>
+        <!-- <span class="header-share"
           ><button type="button">
             <i class="fa-regular fa-heart"></i> Preferiti
           </button></span
-        >
+        > -->
       </div>
     </div>
 
@@ -99,7 +98,7 @@ export default {
   margin-top: 0.625rem;
   border-radius: 1rem;
   overflow: hidden;
-  width: 50%;
+  width: 40%;
   img {
     height: 100%;
     width: 100%;

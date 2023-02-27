@@ -14,13 +14,7 @@
   <section class="bool-cover line-space-divider">
     <h3><span class="red">bool</span>cover</h3>
     <p>
-      Con Bool Cover Otterai un Lorem ipsum dolor sit amet consectetur
-      adipisicing elit. Illo iusto vero atque ut ullam tenetur maiores quasi,
-      magnam autem voluptas assumenda repellendus, dolor excepturi qui. Illum
-      labore aliquam temporibus ea? Lorem, ipsum dolor sit amet consectetur
-      adipisicing elit. Laudantium quisquam quos quam facilis vitae magnam
-      distinctio magni voluptatibus amet cum, animi aliquid similique, nam
-      dolorum illum deserunt consequatur quaerat eos.
+      Ogni prenotazione include una protezione gratuita in caso di cancellazione da parte dell'host, di inesattezze dell'annuncio e di altri problemi come le difficoltà in fase di check-in.
     </p>
   </section>
 
@@ -55,6 +49,7 @@
         <div class="modal-dialog modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
+              <h4 class="mb-0">Informazioni su questo spazio</h4>
               <button
                 type="button"
                 class="btn-close"

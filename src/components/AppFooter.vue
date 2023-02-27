@@ -6,7 +6,7 @@ export default {
 
 <template>
   <Footer>
-    <div class="ms-page-container d-flex justify-content-between py-3">
+    <div class="ms-page-container d-flex justify-content-between py-3" v-if="this.$route.name !== 'apartment-page'">
       <div class="footer__left">
         <span class="me-2">© 2023 BoolBnB, Inc </span>
         ·<a class="me-2 ps-3" href="">Privacy</a>
