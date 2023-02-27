@@ -131,10 +131,11 @@ export default {
   }
 
   .w-33 {
-    width: 33%;
+    width: 33.33%;
   }
   .service {
     align-items: center;
+    padding-bottom: 0.625rem;
     .service-name {
       padding-left: 0.625rem;
       font-size: 1.125rem;
