@@ -38,7 +38,7 @@ export default {
                 notte
             </span>
             <div class="container-ceck my-3">
-                <div class="date-ceck">
+                <div class="date-ceck p-4">
                     <div class="ceck-left">
                         <h6>CECK-IN</h6>
                         <input type="date" >
@@ -48,7 +48,7 @@ export default {
                         <input type="date" >
                     </div>
                 </div>
-                <div class="number-person">
+                <div class="number-person p-4">
                     <h6>OSPITI</h6>
                     <div class="btn-group">
                         <button class="btn btn-light btn-lg dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -73,9 +73,9 @@ export default {
                     </div>
                 </div>
             </div>
-            <button type="button" id="prenota-button" class="btn mb-3 text-white">Prenota</button>
+            <button type="button" id="prenota-button" class="my-btn mb-3">Prenota</button>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#boxMessager">
+            <button type="button" class="my-btn" data-bs-toggle="modal" data-bs-target="#boxMessager">
             Contatta l'host
             </button>
                 <!-- Modal -->
@@ -83,8 +83,8 @@ export default {
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="boxMessagerLabel">Contatta l'host {{ info.user.name }}</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-5" id="host-button"><strong>Contatta l'host {{ info.user.name }}</strong> </h1>
+                    <button type="button" class="my-btn" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="form-floating mb-3">
@@ -105,9 +105,13 @@ export default {
             </div>
         </div>
     </div>
-    <div class="container-card alert alert-success ms-auto mt-3" v-if="this.is_sent">
-        Messaggio inviato all'Host {{ info.user.name }} con successo !
+    <div class="alert alert-success alert-dismissible fade show mt-3 container-card ms-auto mt-4 " role="alert" >
+        Messaggio inviato all'host con successo.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    
+
+        
 </template>
 
 <style lang="scss" scoped>
@@ -116,14 +120,47 @@ export default {
         border: 1px solid lightgray;
         border-radius: 10px;
         padding: 20px;
+        -webkit-box-shadow: 0px 8px 11px 2px rgba(0,0,0,0.36); 
+        box-shadow: 0px 8px 11px 2px rgba(0,0,0,0.36);
         .card{
             width: 360px;
             border: none;
-            margin: auto;
+            margin: auto;     
+
+            .my-btn{
+                width: 70%;
+                font-family: Roboto, sans-serif;
+                font-weight: 0;
+                font-size: 14px;
+                color: #fff;
+                background: linear-gradient(158deg, #fa4546 0%, #d4029f 100%);
+                padding: 10px 30px;
+                border: none;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                border-radius: 15px;
+                transition : 113ms;
+                transform: translateY(0);
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                align-self: center;
+                cursor: pointer;
+            }
+            .my-btn:hover{
+                transition : 113ms;
+                padding: 10px 33px;
+                transform : translateY(-2px);
+                background: linear-gradient(158deg, #fa4546 0%, #d4029f 100%);
+                color: #ffffff;
+                border: none;
+            }
+
+            
         }
     }
     .container-ceck{
-        border: 1px solid black;
+        border: 1px solid rgba(0, 0, 0, 0.346);
         border-radius: 10px;
     }
     .date-ceck{
@@ -150,7 +187,7 @@ export default {
         }
     }
     .number-person{
-        border-top: 1px solid black;
+        border-top: 1px solid rgba(0, 0, 0, 0.337);
     }
     li{
         input{
