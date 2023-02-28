@@ -105,7 +105,7 @@ export default {
             </div>
         </div>
     </div>
-    <div class="alert alert-success alert-dismissible fade show mt-3 container-card ms-auto mt-4 " role="alert" >
+    <div class="alert alert-success alert-dismissible fade show mt-3 container-card ms-auto mt-4" role="alert" v-if="this.is-visible">
         Messaggio inviato all'host con successo.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
