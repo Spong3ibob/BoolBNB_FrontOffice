@@ -89,11 +89,11 @@ export default {
                 <div class="modal-body">
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="floatingInput" placeholder="inserisci email" autocomplete="email" v-model="email" required>
-                        <label for="floatingInput">Email address</label>
+                        <label for="floatingInput">Email address*</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingInput" placeholder="inserisci testo" v-model="message" required>
-                        <label for="floatingInput">Contenuto messaggio</label>
+                        <label for="floatingInput">Contenuto messaggio*</label>
                     </div>
                 </div>
                 <div class="modal-footer">
