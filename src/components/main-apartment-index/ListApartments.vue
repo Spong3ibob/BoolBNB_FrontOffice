@@ -41,16 +41,17 @@ export default {
     height: 350px;
     object-fit: cover;
     object-position: center;
-    border-bottom: 3px solid var(--red-color);
+    border-bottom: 2px solid var(--red-color);
   }
   .evidence {
     background-color: var(--red-color);
     color: white;
     position: absolute;
     left: 50%;
-    bottom: -25px;
+    bottom: -29px;
     transform: translate(-50%, 0);
-    padding: 5px 10px;
+    padding: 8px 15px;
+    border-radius: 18px;
   }
 }
 div.ms-page-container {
