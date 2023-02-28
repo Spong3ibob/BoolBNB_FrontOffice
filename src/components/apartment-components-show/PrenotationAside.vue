@@ -4,15 +4,17 @@ import { store } from '../../store';
 
 export default {
     props: {
-        info: Object
+        info: Object,
     },
     data() {
         return {
             store,
-            message: '',
             email: '',
+            ceckIn:'',
+            ceckOut:'',
+            message: `Buongiorno signor {info.user.name} la contatto per prenotare dal giorno ${this.ceckIn} al giorno ${this.ceckOut},`,
             is_sent: false
-        };
+        }
     },
     methods: {
         publicFunction(){
@@ -22,11 +24,12 @@ export default {
                 }
             })
 
-            this.email = '';
-            this.message = '';
         },
     },
+    
 };
+
+
 
 </script>
 
@@ -41,39 +44,16 @@ export default {
                 <div class="date-ceck p-4">
                     <div class="ceck-left">
                         <h6>CECK-IN</h6>
-                        <input type="date" >
+                        <input type="date" v-model="ceckIn" required>
                     </div>
                     <div class="ceck-right">
                         <h6>CECK-OUT</h6>
-                        <input type="date" >
-                    </div>
-                </div>
-                <div class="number-person p-4">
-                    <h6>OSPITI</h6>
-                    <div class="btn-group">
-                        <button class="btn btn-light btn-lg dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        1
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <label for="adulti">Adulti</label>
-                                <input type="number" name="adulti" placeholder="1"></li>
-                            <li>
-                                <label for="bambini">Bambini</label>
-                                <input type="number" name="bambini" placeholder="0"></li>
-                            <li>
-                                <label for="neonati">Neonati</label>
-                                <input type="number" name="neonati" placeholder="0"></li>
-                            <li>
-                                <label for="animali">Animali domestici</label>
-                                <a href="">Viaggi con un animale di servizio?</a>
-                                <input type="number" name="animali" placeholder="0">
-                            </li>
-                        </ul>
+                        <input type="date" v-model="ceckOut" required>
                     </div>
                 </div>
             </div>
-            <button type="button" id="prenota-button" class="my-btn mb-3">Prenota</button>
+                <!-- Bottone prenota da implementare  -->
+            <!-- <button type="button" id="prenota-button" class="my-btn mb-3">Prenota</button> -->
             <!-- Button trigger modal -->
             <button type="button" class="my-btn" data-bs-toggle="modal" data-bs-target="#boxMessager">
             Contatta l'host
@@ -91,14 +71,14 @@ export default {
                         <input type="email" class="form-control" id="floatingInput" placeholder="inserisci email" autocomplete="email" v-model="email" required>
                         <label for="floatingInput">Email address*</label>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="inserisci testo" v-model="message" required>
+                    <div class="form-floating mb-4">
+                        <textarea class="form-control my-textarea" id="floatingInput" cols="30" rows="10"  required placeholder="Cotenuto messaggio*" v-model="message" ></textarea>
                         <label for="floatingInput">Contenuto messaggio*</label>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" @click="publicFunction">Invia</button>
+                    <button type="button" class="my-btn2" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="my-btn2"  data-bs-dismiss="modal" @click="publicFunction">Invia</button>
                 </div>
                 </div>
             </div>
@@ -117,7 +97,7 @@ export default {
 <style lang="scss" scoped>
     .container-card{
         width: 400px;
-        border: 1px solid lightgray;
+        border: 1px solid #fa4546;
         border-radius: 10px;
         padding: 20px;
         -webkit-box-shadow: 0px 8px 11px 2px rgba(0,0,0,0.36); 
@@ -186,18 +166,41 @@ export default {
             border: none;
         }
     }
-    .number-person{
-        border-top: 1px solid rgba(0, 0, 0, 0.337);
-    }
-    li{
-        input{
-            border: none;
-        }
-    }
 
     #prenota-button {
         background-color: var(--red-color);
         font-weight: bold;
+    }
+    .my-btn2{
+        width: 30%;
+        font-family: Roboto, sans-serif;
+        font-weight: 0;
+        font-size: 14px;
+        color: #fff;
+        background: linear-gradient(158deg, #fa4546 0%, #d4029f 100%);
+        padding: 10px 30px;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        border-radius: 15px;
+        transition : 113ms;
+        transform: translateY(0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        cursor: pointer;
+    }
+    .my-btn2:hover{
+        transition : 113ms;
+        padding: 10px 33px;
+        transform : translateY(-2px);
+        background: linear-gradient(158deg, #fa4546 0%, #d4029f 100%);
+        color: #ffffff;
+        border: none;
+    }
+    .my-textarea{
+        height: 200px;
     }
 
 </style>
