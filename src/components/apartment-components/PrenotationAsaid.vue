@@ -16,7 +16,7 @@ export default {
     },
     methods: {
         publicFunction(){
-            axios.get(`${this.store.backendUrl}/message/create/email=${this.email}&content=${this.message}&apartmentId=${this.info.id}`).then((response) => {
+            axios.post(`${this.store.backendUrl}/message/create/email=${this.email}&content=${this.message}&apartmentId=${this.info.id}`).then((response) => {
                 if ( response.status == 200 ) {
                     this.is_sent = true;
                 }
