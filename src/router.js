@@ -4,7 +4,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/HomePage.vue";
 import Page404 from "./pages/Page404.vue";
 import ApartmentPage from "./pages/ApartmentPage.vue";
-import ListApartments from "./components/main-apartment-index/ListApartments.vue";
 
 const router = createRouter({
   history: createWebHistory(),
