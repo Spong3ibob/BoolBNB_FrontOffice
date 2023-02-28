@@ -11,3 +11,17 @@
   padding: 1.25rem 0;
   border-bottom: 1px solid var(--divider-color);
 }
+
+// CUSTOM CONTAINERS
+
+.ms-page-container {
+  width: 100%;
+  max-width: 1550px;
+  margin: auto;
+}
+
+.ms-page-container-small {
+  width: 100%;
+  max-width: 1280px;
+  margin: auto;
+}
