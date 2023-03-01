@@ -6,10 +6,17 @@
                     <div v-if="this.searchFilters.invalid_filter === true" class="alert alert-danger">
                         Parametri di ricerca non validi.
                     </div>
+<<<<<<< HEAD
                     <div class="radius-range py-3 ">
                         <label for="radius-range" class="form-label">Ricerca appartamenti a <strong>{{ this.$route.params.address }}</strong> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
                         <input id="radius-range" class="form-range" type="range" min="1" max="300" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
                         Appartamenti trovati: <strong>{{ this.apartments.length }} </strong>   
+=======
+                    <div>
+                        <label for="radius-range" class="form-label">Ricerca appartamenti a <span class="text-capitalize">{{ this.$route.params.address }}</span> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
+                        <input id="radius-range" class="form-range" type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
+                        Appartamenti trovati: {{ this.apartments.length }}    
+>>>>>>> f22b248dd45fc510631c946a9113ac3d7a893937
                     </div>
                     <hr>
                     <div class="rooms-number py-3">
@@ -53,7 +60,7 @@ export default {
             apartments: '',
             services: [],
             searchFilters: {
-                radiusStart: 2,
+                radiusStart: 5,
                 rooms: 1,
                 beds: 1,
                 servicesFilter: [],
@@ -76,7 +83,7 @@ export default {
         },
         sendRequestApi() {
             const filters = this.searchFilters;
-            if( filters.radiusStart < 1 || filters.radiusStart > 300 || filters.rooms < 1 || filters.rooms > 15 || filters.beds < 1 || filters.beds > 15) {
+            if( filters.radiusStart < 1 || filters.radiusStart > 35|| filters.rooms < 1 || filters.rooms > 15 || filters.beds < 1 || filters.beds > 15) {
                 filters.invalid_filter = true
             } else {
                 filters.invalid_filter = false
@@ -105,16 +112,16 @@ export default {
                 dragPan: !isMobileOrTablet(),
                 // Longitude and Latitude
                 center: [this.currentAddressCoords.longitude, this.currentAddressCoords.latitude],
-                zoom: 15
+                zoom: 10
             });
             map.addControl(new tt.FullscreenControl());
             map.addControl(new tt.NavigationControl());
 
-            function createMarker(position, color, popupText) {
+            function createMarker(position, color, popupText, classColor) {
                 var markerElement = document.createElement('div');
                 markerElement.className = 'marker';
                 var markerContentElement = document.createElement('div');
-                markerContentElement.className = 'marker-content';
+                markerContentElement.className = classColor;
                 markerContentElement.style.backgroundColor = color;
                 markerElement.appendChild(markerContentElement);
                 var iconElement = document.createElement('div');
@@ -141,16 +148,36 @@ export default {
             }
 
             this.apartments.forEach(elm => {
-                createMarker([elm.longitude, elm.latitude], 'red', `
-                    <div class="mb-1"><b>${elm.title}</b></div>
-                    <img src="${elm.image_url}" class="w-100 mb-1"></br>
-                    <div class="mt-1">${elm.full_address}</div>
-                    <div class="text-center">
-                        <span class="me-1">${elm.rooms_num} <i class="fa-solid fa-house"></i></span>
-                        <span class="ms-1">${elm.beds_num} <i class="fa-solid fa-bed fa-lg"></i></span>
-                    </div>
-                    <a href="http://localhost:5174/apartament/${elm.slug}" class="d-block btn btn-danger p-0 mt-2 mx-3">Visualizza appartamento</a>
-                `);
+                let is_sponsored = false;
+                this.store.filteredApartments.forEach(element => {
+                    if( elm.id === element.id) {
+                        is_sponsored = true;
+                    }
+                });
+
+                if(is_sponsored === true ) {
+                    createMarker([elm.longitude, elm.latitude], '', `
+                        <div class="mb-1"><b>${elm.title}</b></div>
+                        <img src="${elm.image_url}" class="w-100 mb-1"></br>
+                        <div class="mt-1">${elm.full_address}</div>
+                        <div class="text-center">
+                            <span class="me-1">${elm.rooms_num} <i class="fa-solid fa-house"></i></span>
+                            <span class="ms-1">${elm.beds_num} <i class="fa-solid fa-bed fa-lg"></i></span>
+                        </div>
+                        <a href="http://localhost:5174/apartament/${elm.slug}" class="d-block btn btn-danger p-0 mt-2 mx-3">Visualizza appartamento</a>
+                    `, 'marker-content-yellow');
+                } else {
+                    createMarker([elm.longitude, elm.latitude], '', `
+                        <div class="mb-1"><b>${elm.title}</b></div>
+                        <img src="${elm.image_url}" class="w-100 mb-1"></br>
+                        <div class="mt-1">${elm.full_address}</div>
+                        <div class="text-center">
+                            <span class="me-1">${elm.rooms_num} <i class="fa-solid fa-house"></i></span>
+                            <span class="ms-1">${elm.beds_num} <i class="fa-solid fa-bed fa-lg"></i></span>
+                        </div>
+                        <a href="http://localhost:5174/apartament/${elm.slug}" class="d-block btn btn-danger p-0 mt-2 mx-3">Visualizza appartamento</a>
+                    `, 'marker-content-red');
+                }
             });
         }
     },
