@@ -2,22 +2,24 @@
     <div class="ms-page-container">
         <div class="m-4 filtering-container d-flex justify-content-center">
             <div class="col-left-filters p-4">
-                <form action="" @submit.prevent="this.filterByRadius">
+                <form action="" @submit.prevent="this.filterByRadius()" @keypress.enter.prevent>
+                    <div v-if="this.searchFilters.invalid_filter === true" class="alert alert-danger">
+                        Parametri di ricerca non validi.
+                    </div>
                     <div>
                         <label for="radius-range" class="form-label">Ricerca appartamenti a {{ this.$route.params.address }} nel raggio di {{ this.searchFilters.radiusStart }}km</label>
                         <input id="radius-range" class="form-range" type="range" min="1" max="300" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
                         Appartamenti trovati: {{ this.apartments.length }}    
                     </div>
                     <div>
-                        <label for="">Numero minimo di stanze</label>
+                        <label for="">Numero minimo di stanze*</label>
                         <input type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
                     </div>
                     <div>
-                        <label for="">Numero minimo di letti</label>
+                        <label for="">Numero minimo di letti*</label>
                         <input type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
                     </div>
 
-                    {{ this.searchFilters.servicesFilter }}
                     <div v-for="service in this.services">
                         <div class="form-check" @change="pushServicesFilter(service.name), sendRequestApi()">
                             <input class="form-check-input" type="checkbox" :id="service.name + '-' + service.id">
@@ -27,7 +29,7 @@
                         </div>
                     </div>
 
-                    <button class="d-none" type="submit" id="form-button">INVIA</button>
+                    <button id="submit-form-search" class="d-none"></button>
                 </form>
             </div>
             <div class="col-right-map">
@@ -51,7 +53,8 @@ export default {
                 radiusStart: 2,
                 rooms: 1,
                 beds: 1,
-                servicesFilter: []
+                servicesFilter: [],
+                invalid_filter: false
             },
             currentAddressCoords: {
                 latitude: '',
@@ -69,13 +72,25 @@ export default {
             }
         },
         sendRequestApi() {
-            document.getElementById('form-button').click();
+            const filters = this.searchFilters;
+            if( filters.radiusStart < 1 || filters.radiusStart > 300 || filters.rooms < 1 || filters.rooms > 15 || filters.beds < 1 || filters.beds > 15) {
+                filters.invalid_filter = true
+            } else {
+                filters.invalid_filter = false
+            }
+
+            if (filters.invalid_filter === false) {
+                document.getElementById('submit-form-search').click();
+            }
         },
         filterByRadius() {
-            axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.searchFilters.radiusStart}&rooms=${this.searchFilters.rooms}&beds=${this.searchFilters.beds}`)
+            axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.searchFilters.radiusStart}&rooms=${this.searchFilters.rooms}&beds=${this.searchFilters.beds}&services${this.searchFilters.servicesFilter.length > 0 ?  `=${this.searchFilters.servicesFilter}` : ''}`)
             .then((res) => {
                 this.apartments = res.data[0];
                 this.updateMapInfo();
+            })
+            .catch((err) => {
+                console.log(err);
             })
         },
         updateMapInfo() {
@@ -137,11 +152,15 @@ export default {
         }
     },
     created() {
-        axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.searchFilters.radiusStart}&rooms=${this.searchFilters.rooms}&beds=${this.searchFilters.beds}`)
+        axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.searchFilters.radiusStart}&rooms=${this.searchFilters.rooms}&beds=${this.searchFilters.beds}&services${this.searchFilters.servicesFilter.length > 0 ?  `=${this.searchFilters.servicesFilter}` : ''}`)
         .then((res) => {
+            // Save coords from the current address
             this.currentAddressCoords.latitude = res.data[1].position.lat.toString();
             this.currentAddressCoords.longitude = res.data[1].position.lon.toString();
+
             this.apartments = res.data[0];
+
+            // Show map
             this.updateMapInfo();
         })
 
