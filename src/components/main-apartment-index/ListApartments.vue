@@ -18,7 +18,7 @@ export default {
   <div class="hero mb-5">
     <img
       class="w-100"
-      src="https://static9.depositphotos.com/1007593/1127/i/450/depositphotos_11276642-stock-photo-luxury-place-resort.jpg"
+      src="../../assets/img/208-2083192_six-senses-yao-noi-.jpg"
       alt=""
     />
     <h4 class="evidence">APPARTAMENTI IN EVIDENZA</h4>
