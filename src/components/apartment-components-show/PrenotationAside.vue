@@ -13,46 +13,30 @@ export default {
             email: '',
             ceckIn:'',
             ceckOut:'',
-            message: '',
+            message: ``,
             is_sent: false
         }
     },
     methods: {
         publicFunction(){
-            const textArea = document.querySelector('.my-textarea');
-
-            axios.post(`${this.store.backendUrl}/message/create/name=${this.name}&email=${this.email}&content=${textArea.innerHTML}&apartmentId=${this.info.id}`).then((response) => {
+            axios.post(`${this.store.backendUrl}/message/create/name=${this.name}&email=${this.email}&content=${this.message}&apartmentId=${this.info.id}`).then((response) => {
                 if ( response.status == 200 ) {
                     this.is_sent = true;
                 }
             })
         },
+        setEmailMessage() {
+            this.message = `Buongiorno signor ${this.info.user.name} la contatto per chiederle delle informazioni in merito al suo appartamento ${this.info.title}, situato a ${this.info.full_address}, per il periodo che va dal ${this.ceckIn} al ${this.ceckOut}`;
+        }
     },
-    // mounted() {
-    //     const boxMessage = document.getElementById('boxMessage')
-    //     boxMessage.addEventListener('show.bs.modal', event => {
-    //     // Button that triggered the modal
-    //     const button = event.relatedTarget
-    //     // Extract info from data-bs-* attributes
-    //     const recipient = button.getAttribute('data-bs-whatever')
-    //     // If necessary, you could initiate an AJAX request here
-    //     // and then do the updating in a callback.
-    //     //
-    //     // Update the modal's content.
-    //     const modalTitle = boxMessage.querySelector('.modal-title')
-    //     const modalBodyInput = boxMessage.querySelector('.modal-body input')
-
-    //     // modalTitle.textContent = `New message to ${recipient}`
-    //     modalBodyInput.value = recipient
-    //     })
-    // }
 };
-
-
-
 </script>
 
 <template>
+    <div class="alert alert-success alert-dismissible fade show mt-3 container-card ms-auto mt-4 d-flex align-items-center" role="alert" v-if="this.is_sent">
+        <div>Messaggio inviato all'host con successo.</div>
+        <button type="button" class="btn-close me-4 p-0 h-100" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     <div class="container-card line-space-divider ms-auto">
         <form class="card" @submit.prevent>
             <span>
@@ -62,12 +46,12 @@ export default {
             <div class="container-ceck my-3">
                 <div class="date-ceck p-4">
                     <div class="ceck-left">
-                        <h6>CECK-IN</h6>
-                        <input type="date" v-model="ceckIn" required>
+                        <h6>CHECK-IN</h6>
+                        <input type="date" v-model="this.ceckIn" required>
                     </div>
                     <div class="ceck-right">
-                        <h6>CECK-OUT</h6>
-                        <input type="date" v-model="ceckOut" required>
+                        <h6>CHECK-OUT</h6>
+                        <input type="date" v-model="this.ceckOut" required>
                     </div>
                 </div>
             </div>
@@ -75,7 +59,7 @@ export default {
             <!-- <button type="button" id="prenota-button" class="my-btn mb-3">Prenota</button> -->
             <!-- Button trigger modal -->
             <div v-if="this.ceckIn !== '' && this.ceckOut !== ''">
-                <button type="submit" class="my-btn mx-auto" data-bs-toggle="modal" data-bs-target="#boxMessage">
+                <button type="submit" class="my-btn mx-auto" data-bs-toggle="modal" data-bs-target="#boxMessage" @click="setEmailMessage()">
                     Contatta l'host
                 </button>
                 <!-- Modal -->
@@ -109,27 +93,19 @@ export default {
                     </div>
                     <div class="mb-3">
                         <label for="message-text">Contenuto messaggio *</label>
-                        <textarea class="form-control my-textarea" id="message-text" cols="30" rows="10"  required placeholder="Cotenuto messaggio*">Buongiorno signor {{ this.info.user.name}} la contatto per prenotare dal giorno {{ this.ceckIn }} al giorno {{ this.ceckOut }}</textarea>
+                        <textarea class="form-control my-textarea" id="message-text" cols="30" rows="10"  required placeholder="Cotenuto messaggio*" v-model="message"></textarea>
                     </div>
             </div>
             <div class="modal-footer">
                     <button type="button" class="my-btn2" data-bs-dismiss="modal">Close</button>
-                    <div class="d-inline" v-if="(this.name !== '' && this.email !== '' && this.email.includes( '@') )">
+                    <div class="d-inline" v-if="(this.name !== '' && this.email !== '' && this.email.includes('@') )">
                         <button type="submit" class="my-btn2" data-bs-dismiss="modal">Invia</button>
                     </div>
             </div>
         </form>
         </div>
     </div>
-    </div>
-
-<div class="alert alert-success alert-dismissible fade show mt-3 container-card ms-auto mt-4" role="alert" v-if="this.is_sent">
-    Messaggio inviato all'host con successo.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-    
-
-        
+    </div>        
 </template>
 
 <style lang="scss" scoped>
@@ -242,6 +218,16 @@ export default {
         height: 200px;
     }
 
+    .alert.alert-success {
+        position: fixed;
+        bottom: 0;
+        left: 1%;
+        top: 90% !important;
+        border-color: green;
+        & button:focus {
+            box-shadow: none;
+        }
+    }
     // .modal{
     //     z-index: 2000 !important; 
     //     position: fixed;
