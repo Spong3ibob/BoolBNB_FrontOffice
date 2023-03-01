@@ -27,7 +27,25 @@ export default {
                 }
             })
         },
-    }
+    },
+    // mounted() {
+    //     const boxMessage = document.getElementById('boxMessage')
+    //     boxMessage.addEventListener('show.bs.modal', event => {
+    //     // Button that triggered the modal
+    //     const button = event.relatedTarget
+    //     // Extract info from data-bs-* attributes
+    //     const recipient = button.getAttribute('data-bs-whatever')
+    //     // If necessary, you could initiate an AJAX request here
+    //     // and then do the updating in a callback.
+    //     //
+    //     // Update the modal's content.
+    //     const modalTitle = boxMessage.querySelector('.modal-title')
+    //     const modalBodyInput = boxMessage.querySelector('.modal-body input')
+
+    //     // modalTitle.textContent = `New message to ${recipient}`
+    //     modalBodyInput.value = recipient
+    //     })
+    // }
 };
 
 
@@ -57,47 +75,53 @@ export default {
             <!-- <button type="button" id="prenota-button" class="my-btn mb-3">Prenota</button> -->
             <!-- Button trigger modal -->
             <div v-if="this.ceckIn !== '' && this.ceckOut !== ''">
-                <button type="submit" class="my-btn mx-auto" data-bs-toggle="modal" data-bs-target="#boxMessager">
+                <button type="submit" class="my-btn mx-auto" data-bs-toggle="modal" data-bs-target="#boxMessage">
                 Contatta l'host
                 </button>
                 <!-- Modal -->
             </div>
             <div v-else>
-                <button class="my-btn">
+                <button class="my-btn mx-auto">
                 Contatta l'host
                 </button>
                 <!-- Modal -->
             </div>
         </form>
     </div>
-<div class="modal fade" id="boxMessager" tabindex="-1" aria-labelledby="boxMessagerLabel" aria-hidden="true">
+
+    <!-- Modal Message -->
+    <div class="modal fade" id="boxMessage" tabindex="-1" aria-labelledby="boxMessageLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form class="modal-content">
+        <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="host-button"><strong>Contatta l'host {{ info.user.name }}</strong> </h1>
+            <h1 class="modal-title fs-5" id="host-button"> <strong>Contatta l'host {{ info.user.name }}</strong> </h1>
             <button type="button" class="my-btn" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="inserisci nome" autocomplete="name" v-model="name" required>
-                <label for="floatingInput">Nome*</label>
+        <form @submit.prevent="publicFunction">
+            <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="recipient-name">Nome</label>
+                        <input type="text" class="form-control" id="recipient-name" placeholder="inserisci nome" autocomplete="name" v-model="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-email">Email Addres *</label>
+                        <input type="email" class="form-control" id="recipient-name" placeholder="inserisci email" autocomplete="email" v-model="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text">Contenuto messaggio *</label>
+                        <textarea class="form-control my-textarea" id="message-text" cols="30" rows="10"  required placeholder="Cotenuto messaggio*">Buongiorno signor {{ this.info.user.name}} la contatto per prenotare dal giorno {{ this.ceckIn }} al giorno {{ this.ceckOut }}</textarea>
+                    </div>
             </div>
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="inserisci email" autocomplete="email" v-model="email" required>
-                <label for="floatingInput">Email address*</label>
+            <div class="modal-footer">
+                    <button type="button" class="my-btn2" data-bs-dismiss="modal">Close</button>
+                    <div class="d-inline" v-if="(this.name !== '' && this.email !== '' && this.email.includes( '@') )">
+                        <button type="submit" class="my-btn2" data-bs-dismiss="modal">Invia</button>
+                    </div>
             </div>
-            <div class="form-floating mb-4">
-                <textarea class="form-control my-textarea" id="floatingInput" cols="30" rows="10"  required placeholder="Cotenuto messaggio*">Buongiorno signor {{ this.info.user.name}} la contatto per prenotare dal giorno {{ this.ceckIn }} al giorno {{ this.ceckOut }},</textarea>
-                <label for="floatingInput">Contenuto messaggio*</label>
-            </div>
+        </form>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="my-btn2" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="my-btn2"  data-bs-dismiss="modal" @click="publicFunction">Invia</button>
-        </div>
-    </form>
     </div>
-</div>
+    </div>
 
 <div class="alert alert-success alert-dismissible fade show mt-3 container-card ms-auto mt-4" role="alert" v-if="this.is_sent">
     Messaggio inviato all'host con successo.
