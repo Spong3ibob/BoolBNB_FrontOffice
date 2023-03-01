@@ -65,7 +65,17 @@ export default {
                 iconElement.style.backgroundImage =
                     'url(https://api.tomtom.com/maps-sdk-for-web/cdn/static/' + icon + ')';
                 markerContentElement.appendChild(iconElement);
-                var popup = new tt.Popup({offset: 30}).setText(popupText);
+                var popupOffsets = {
+                    top: [0, 0],
+                    bottom: [0, -50],
+                    "bottom-right": [0, -50],
+                    "bottom-left": [0, -50],
+                    left: [25, -35],
+                    right: [-25, -35],
+                }
+                var popup = new tt.Popup({ offset: popupOffsets }).setHTML(
+                    popupText
+                )
                 // add marker to map
                 new tt.Marker({element: markerElement, anchor: 'bottom'})
                     .setLngLat(position)
@@ -74,7 +84,12 @@ export default {
             }
 
             this.apartments.forEach(elm => {
-                createMarker('accident.colors-white.svg', [elm.longitude, elm.latitude], 'red', 'Ciao');
+                createMarker('accident.colors-white.svg', [elm.longitude, elm.latitude], 'red', `
+                    <div class="mb-1"><b>${elm.title}</b></div>
+                    <img src="${elm.image}" class="w-100 mb-1"></br>
+                    <div class="mt-1">${elm.full_address}</div>
+                    <a href="http://localhost:5174/apartament/${elm.slug}" class="d-block btn btn-danger p-0 mt-2 mx-3">Visualizza appartamento</a>
+                `);
             });
         }
     },
