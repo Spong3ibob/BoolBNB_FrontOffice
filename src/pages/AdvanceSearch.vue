@@ -1,0 +1,112 @@
+<template>
+    <div class="ms-page-container">
+        <div class="m-4 filtering-container d-flex justify-content-center">
+            <div class="col-left-filters p-4">
+                <div>
+                    <label for="radius-range" class="form-label">Ricerca appartamenti a {{ this.$route.params.address }} nel raggio di {{ this.radiusStart }}km</label>
+                    <input id="radius-range" class="form-range" type="range" min="1" max="300" v-model="this.radiusStart" step="1" @click="filterByRadius()">
+                    Appartamenti trovati: {{ this.apartments.length }}    
+                </div>
+            </div>
+            <div class="col-right-map">
+                <div id='map' class='map'></div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import axios from 'axios';
+import { store } from '../store';
+
+export default {
+    data() {
+        return {
+            store,
+            apartments: '',
+            radiusStart: 2,
+            currentAddressCoords: {
+                latitude: '',
+                longitude: '',
+            }
+        }
+    },
+    methods: {
+        filterByRadius() {
+            axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.radiusStart}`)
+            .then((res) => {
+                this.apartments = res.data[0];
+                this.updateMapInfo();
+            })
+        },
+        updateMapInfo() {
+            // Define your product name and version.
+            tt.setProductInfo('Codepen Examples', '${analytics.productVersion}');
+            var map = tt.map({
+                key: 'S7Di8WQbB2pqxqTH8RYmhO63cZwgtNgp',
+                container: 'map',
+                dragPan: !isMobileOrTablet(),
+                // Longitude and Latitude
+                center: [this.currentAddressCoords.longitude, this.currentAddressCoords.latitude],
+                zoom: 15
+            });
+            map.addControl(new tt.FullscreenControl());
+            map.addControl(new tt.NavigationControl());
+
+            function createMarker(icon, position, color, popupText) {
+                var markerElement = document.createElement('div');
+                markerElement.className = 'marker';
+                var markerContentElement = document.createElement('div');
+                markerContentElement.className = 'marker-content';
+                markerContentElement.style.backgroundColor = color;
+                markerElement.appendChild(markerContentElement);
+                var iconElement = document.createElement('div');
+                iconElement.className = 'marker-icon';
+                iconElement.style.backgroundImage =
+                    'url(https://api.tomtom.com/maps-sdk-for-web/cdn/static/' + icon + ')';
+                markerContentElement.appendChild(iconElement);
+                var popup = new tt.Popup({offset: 30}).setText(popupText);
+                // add marker to map
+                new tt.Marker({element: markerElement, anchor: 'bottom'})
+                    .setLngLat(position)
+                    .setPopup(popup)
+                    .addTo(map);
+            }
+
+            this.apartments.forEach(elm => {
+                createMarker('accident.colors-white.svg', [elm.longitude, elm.latitude], 'red', 'Ciao');
+            });
+        }
+    },
+    created() {
+        axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.radiusStart}`)
+        .then((res) => {
+            this.currentAddressCoords.latitude = res.data[1].position.lat.toString();
+            this.currentAddressCoords.longitude = res.data[1].position.lon.toString();
+            this.apartments = res.data[0];
+            this.updateMapInfo();
+        })
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+    .filtering-container {
+        // background-color: gray;
+        width: 100%;
+        height: 600px;
+        & .col-left-filters {
+            width: 20%;
+            // background-color: red;
+        }
+        & .col-right-map {
+            width: 65%;
+            // background-color: green;
+            & .map {
+                width: 100%;
+                max-width: 1000px;
+                height: 600px;
+            }
+        }
+    }
+</style>

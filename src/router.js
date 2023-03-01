@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/HomePage.vue";
 import Page404 from "./pages/Page404.vue";
 import ApartmentPage from "./pages/ApartmentPage.vue";
+import AdvanceSearch from './pages/AdvanceSearch.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -17,6 +18,11 @@ const router = createRouter({
       path: "/apartament/:slug",
       name: "apartment-page",
       component: ApartmentPage,
+    },
+    {
+      path: "/advance/search-apartments/:address",
+      name: "advance-search",
+      component: AdvanceSearch,
     },
     // Any route not matched will be redirect to 404 - DEVE ESSERE SEMPRE L'ULTIMA ROTTA
     { 

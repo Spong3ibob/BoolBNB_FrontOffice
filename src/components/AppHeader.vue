@@ -7,18 +7,54 @@ export default {
   data() {
     return {
       store,
+      searchField: 'cas',
+      is_invalid: false
     }
   },
   methods: {
-    prova() {
-      return this.$router.push({ name: 'advance-search' });
+    advanceSearchApartments() {
+      if( this.searchField !== '' ) {
+        return this.$router.push({ name: 'advance-search', params: { address: this.searchField}});
+      } else {
+        this.is_invalid = true;
+      }
     }
+  },
+  mounted() {
+    var options = {
+      searchOptions: {
+          key: "S7Di8WQbB2pqxqTH8RYmhO63cZwgtNgp",
+          language: "it-IT",
+          limit: 5,
+      },
+      autocompleteOptions: {
+          key: "S7Di8WQbB2pqxqTH8RYmhO63cZwgtNgp",
+          language: "it-IT",
+      },
+    }
+    var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
+    var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+
+    const inputContainer = document.getElementById('input-search');
+    inputContainer.append(searchBoxHTML);
+
+    const searchBox = document.querySelector('.tt-search-box');
+    searchBox.classList.add('m-0');
+
+    const searchBoxInput = document.querySelector('.tt-search-box-input');
+    searchBoxInput.placeholder = "Cerca un appartamento"
+
+    searchBoxInput.addEventListener('keyup', function(e) {
+      if (e.key === 'Enter' && searchBoxInput.value !== '') {
+        window.location.href = `/advance/search-apartments/${searchBoxInput.value}`
+      }
+    })
   },
   created() {
     axios.get('http://127.0.0.1:8000/api/sponsored-apartments')
     .then( (res) => {
       this.store.filteredApartments = res.data;
-    })
+    });
   }
 }
 </script>
@@ -37,15 +73,7 @@ export default {
         </div >
 
         <!-- top Center -->
-        <div class="h-top-center w-50" v-if="this.$route.name !== 'apartment-page'">
-          <div class="input-container text-center rounded-pill d-flex align-items-center ">
-            <div>
-              <input type="search" id="search" class="rounded-pill form-control" placeholder="Cerca un appartamento" @keypress.enter="prova()">
-            </div>
-            <div @click="prova()">
-              <i class="search-icon fa-solid fa-magnifying-glass fa-lg fa-fw"></i>
-            </div>
-          </div>
+        <div class="h-top-center w-50" id="input-search">
         </div>
 
         <!-- top Right -->
@@ -99,28 +127,6 @@ export default {
         }
       }
       & .h-top-center{
-        & .input-container {
-          background-color: transparent;
-          width: 100%;
-          max-width: 550px;
-          margin: auto;
-          border: 1px solid #ced4da;
-          &:hover {
-            box-shadow: 0 2px 4px rgba(0,0,0,0.18);
-          }
-        }
-        & input {
-          width: 510px;
-          padding: 12px 20px;
-          border: none;
-          &:focus {
-            box-shadow: none;
-          }
-        }
-        & .search-icon {
-          cursor: pointer;
-          color: var(--red-color);
-        }
       }
       & .h-top-right {
         & .rent {
