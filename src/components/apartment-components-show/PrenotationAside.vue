@@ -76,7 +76,7 @@ export default {
             <!-- Button trigger modal -->
             <div v-if="this.ceckIn !== '' && this.ceckOut !== ''">
                 <button type="submit" class="my-btn mx-auto" data-bs-toggle="modal" data-bs-target="#boxMessage">
-                Contatta l'host
+                    Contatta l'host
                 </button>
                 <!-- Modal -->
             </div>
@@ -95,7 +95,7 @@ export default {
         <div class="modal-content">
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="host-button"> <strong>Contatta l'host {{ info.user.name }}</strong> </h1>
-            <button type="button" class="my-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="my-btn" data-bs-dismiss="modal" disabled aria-label="Close"></button>
         </div>
         <form @submit.prevent="publicFunction">
             <div class="modal-body">
