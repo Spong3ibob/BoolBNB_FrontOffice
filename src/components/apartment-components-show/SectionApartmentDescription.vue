@@ -4,9 +4,9 @@
       <ApartmentMainInfo :info="this.data" />
     </div>
     <div class="col-5">
-      <div class="sticky">
+      <!-- <div class="sticky"> -->
         <PrenotationAside :info="this.data" />
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -31,9 +31,4 @@ export default {
   margin-top: 1.25rem;
 }
 
-.sticky {
-  position: -webkit-sticky;
-  position: sticky !important;
-  top: 30%;
-}
 </style>

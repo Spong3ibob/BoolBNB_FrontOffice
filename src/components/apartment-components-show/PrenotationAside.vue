@@ -59,36 +59,37 @@ export default {
             Contatta l'host
             </button>
                 <!-- Modal -->
-            <div class="modal fade" id="boxMessager" tabindex="-1" aria-labelledby="boxMessagerLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="host-button"><strong>Contatta l'host {{ info.user.name }}</strong> </h1>
-                    <button type="button" class="my-btn" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="inserisci email" autocomplete="email" v-model="email" required>
-                        <label for="floatingInput">Email address*</label>
-                    </div>
-                    <div class="form-floating mb-4">
-                        <textarea class="form-control my-textarea" id="floatingInput" cols="30" rows="10"  required placeholder="Cotenuto messaggio*">Buongiorno signor {{ this.info.user.name}} la contatto per prenotare dal giorno {{ this.ceckIn }} al giorno {{ this.ceckOut }},</textarea>
-                        <label for="floatingInput">Contenuto messaggio*</label>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="my-btn2" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="my-btn2"  data-bs-dismiss="modal" @click="publicFunction">Invia</button>
-                </div>
-                </div>
             </div>
+    </div>
+<div class="modal fade" id="boxMessager" tabindex="-1" aria-labelledby="boxMessagerLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="host-button"><strong>Contatta l'host {{ info.user.name }}</strong> </h1>
+            <button type="button" class="my-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="inserisci email" autocomplete="email" v-model="email" required>
+                <label for="floatingInput">Email address*</label>
+            </div>
+            <div class="form-floating mb-4">
+                <textarea class="form-control my-textarea" id="floatingInput" cols="30" rows="10"  required placeholder="Cotenuto messaggio*">Buongiorno signor {{ this.info.user.name}} la contatto per prenotare dal giorno {{ this.ceckIn }} al giorno {{ this.ceckOut }},</textarea>
+                <label for="floatingInput">Contenuto messaggio*</label>
             </div>
         </div>
+        <div class="modal-footer">
+            <button type="button" class="my-btn2" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="my-btn2"  data-bs-dismiss="modal" @click="publicFunction">Invia</button>
+        </div>
+        </div>
     </div>
-    <div class="alert alert-success alert-dismissible fade show mt-3 container-card ms-auto mt-4" role="alert" v-if="this.is_sent">
-        Messaggio inviato all'host con successo.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+</div>
+
+<div class="alert alert-success alert-dismissible fade show mt-3 container-card ms-auto mt-4" role="alert" v-if="this.is_sent">
+    Messaggio inviato all'host con successo.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
     
 
         
@@ -102,43 +103,44 @@ export default {
         padding: 20px;
         -webkit-box-shadow: 0px 8px 11px 2px rgba(0,0,0,0.36); 
         box-shadow: 0px 8px 11px 2px rgba(0,0,0,0.36);
+        position: sticky;
+        top: 30%;
         .card{
             width: 360px;
             border: none;
-            margin: auto;     
-
-            .my-btn{
-                width: 70%;
-                font-family: Roboto, sans-serif;
-                font-weight: 0;
-                font-size: 14px;
-                color: #fff;
-                background: linear-gradient(158deg, #fa4546 0%, #d4029f 100%);
-                padding: 10px 30px;
-                border: none;
-                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-                border-radius: 15px;
-                transition : 113ms;
-                transform: translateY(0);
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                align-self: center;
-                cursor: pointer;
-            }
-            .my-btn:hover{
-                transition : 113ms;
-                padding: 10px 33px;
-                transform : translateY(-2px);
-                background: linear-gradient(158deg, #fa4546 0%, #d4029f 100%);
-                color: #ffffff;
-                border: none;
-            }
-
-            
+            margin: auto;                 
         }
     }
+
+    .my-btn{
+            width: 70%;
+            font-family: Roboto, sans-serif;
+            font-weight: 0;
+            font-size: 14px;
+            color: #fff;
+            background: linear-gradient(158deg, #fa4546 0%, #d4029f 100%);
+            padding: 10px 30px;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            border-radius: 15px;
+            transition : 113ms;
+            transform: translateY(0);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            cursor: pointer;
+        }
+        .my-btn:hover{
+            transition : 113ms;
+            padding: 10px 33px;
+            transform : translateY(-2px);
+            background: linear-gradient(158deg, #fa4546 0%, #d4029f 100%);
+            color: #ffffff;
+            border: none;
+        }
+
     .container-ceck{
         border: 1px solid rgba(0, 0, 0, 0.346);
         border-radius: 10px;
@@ -203,4 +205,8 @@ export default {
         height: 200px;
     }
 
+    // .modal{
+    //     z-index: 2000 !important; 
+    //     position: fixed;
+    // }
 </style>
