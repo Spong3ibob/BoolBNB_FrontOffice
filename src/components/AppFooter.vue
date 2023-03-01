@@ -6,7 +6,7 @@ export default {
 
 <template>
   <!-- Footer homepage -->
-  <footer id="footer_one" v-if="this.$route.name !== 'apartment-page'">
+  <footer id="footer_one" v-if="this.$route.name !== 'apartment-page' && this.$route.name !== 'advance-search'">
     <div class="ms-page-container d-flex justify-content-between py-3">
       <div class="footer__left">
         <span class="me-2">© 2023 BoolBnB, Inc </span>
@@ -28,9 +28,8 @@ export default {
       </div>
     </div>
   </footer>
-
   <!-- Footer Single-page-show -->
-  <footer id="footer_two" v-else class="">
+  <footer id="footer_two" v-else-if="this.$route.name !== 'advance-search'" class="">
     <div class="ms-page-container-small footer-top py-5 d-flex">
       <nav>
         <h3 class="mb-3">Assistenza</h3>

@@ -1,34 +1,35 @@
 <template>
     <div class="ms-page-container mt-3">
         <div class="m-4 filtering-container d-flex justify-content-center">
-            <div class="col-left-filters ">
-                <form action="" @submit.prevent="this.filterByRadius()" @keypress.enter.prevent>
-                    <div v-if="this.searchFilters.invalid_filter === true" class="alert alert-danger">
-                        Parametri di ricerca non validi.
-                    </div>
-<<<<<<< HEAD
-                    <div class="radius-range py-3 ">
-                        <label for="radius-range" class="form-label">Ricerca appartamenti a <strong>{{ this.$route.params.address }}</strong> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
-                        <input id="radius-range" class="form-range" type="range" min="1" max="300" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
-                        Appartamenti trovati: <strong>{{ this.apartments.length }} </strong>   
-=======
-                    <div>
-                        <label for="radius-range" class="form-label">Ricerca appartamenti a <span class="text-capitalize">{{ this.$route.params.address }}</span> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
+            <div class="col-left-filters">
+                <div class="px-2 py-2 m-0 advanced-header">
+                    RICERCA AVANZATA APPARTAMENTI
+                </div>
+
+                <div class="px-3 py-2">
+                    Appartamenti trovati: <strong>{{ this.apartments.length }} </strong>   
+                </div>
+                
+                <div v-if="this.searchFilters.invalid_filter === true" class="alert alert-danger">
+                    Parametri di ricerca non validi.
+                </div>
+                
+                <form action="" class="py-1" @submit.prevent="this.filterByRadius()" @keypress.enter.prevent>
+                    <div class="radius-range pt-2 px-3">
+                        <label for="radius-range" class="form-label">Ricerca appartamenti a <strong class="text-capitalize">{{ this.$route.params.address }}</strong> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
                         <input id="radius-range" class="form-range" type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
-                        Appartamenti trovati: {{ this.apartments.length }}    
->>>>>>> f22b248dd45fc510631c946a9113ac3d7a893937
                     </div>
-                    <hr>
-                    <div class="rooms-number py-3">
-                        <label class="me-2" for="">Numero minimo di stanze*</label>
-                        <input class="ps-2  rounded-pill" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
+                    <div class="row mx-1 rooms-beds-container">
+                        <div class="col-6 rooms-number">
+                            <label class="form-label" for="rooms-number-input">Numero minimo di stanze*</label>
+                            <input class="form-control" id="rooms-number-input" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
+                        </div>
+                        <div class="col-6 beds-number">
+                            <label class="form-label" for="beds-number-input">Numero minimo di letti*</label>
+                            <input class="form-control" id="beds-number-input" type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
+                        </div>
                     </div>
-                    <div class="beds-number py-3">
-                        <label class="me-2" for="">Numero minimo di letti*</label>
-                        <input class="ps-2 rounded-pill" type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
-                    </div>
-                    <hr>
-                    <div class="all-services pb-4">
+                    <div class="all-services p-3">
                         <div class="service" v-for="service in this.services">
                             <div class="form-check" @change="pushServicesFilter(service.name), sendRequestApi()">
                                 <input class="form-check-input " type="checkbox" :id="service.name + '-' + service.id">
@@ -205,26 +206,32 @@ export default {
 
 <style lang="scss" scoped>
 .ms-page-container{
-    border: 2px solid rgb(215, 207, 207) ;
-    border-radius: 20px;
-    height: 800px;
-    background-color: #fa4545d7;
-    color: rgb(242, 240, 240);
+    .advanced-header {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        border-bottom: 1px solid white;
+    }
     .filtering-container {
         width: 100%;
         height: 600px;
         
         & .col-left-filters {
-            width: 20%;
+            background-color: #fa4545d7;
+            width: 30%;
             height: fit-content;
             border-radius: 15px;
-
+            overflow-y: auto;
             & .radius-range{
-                & .form-range {
-                    appearance: auto;
-                }
-                
+                border-top: 1px solid white;
+                border-bottom: 1px solid white;
             }
+            & .rooms-beds-container {
+                border-bottom: 1px solid white;
+            }
+            
             & .all-service {
                 & .service {
                     & .form-check {
@@ -244,7 +251,7 @@ export default {
             & .map {
                 width: 100%;
                 max-width: 1000px;
-                height: 750px;
+                height: 667px;
                 border-radius: 20px;
             }
         }
