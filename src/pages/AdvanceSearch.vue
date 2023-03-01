@@ -53,7 +53,7 @@ export default {
             map.addControl(new tt.FullscreenControl());
             map.addControl(new tt.NavigationControl());
 
-            function createMarker(icon, position, color, popupText) {
+            function createMarker(position, color, popupText) {
                 var markerElement = document.createElement('div');
                 markerElement.className = 'marker';
                 var markerContentElement = document.createElement('div');
@@ -63,7 +63,7 @@ export default {
                 var iconElement = document.createElement('div');
                 iconElement.className = 'marker-icon';
                 iconElement.style.backgroundImage =
-                    'url(https://api.tomtom.com/maps-sdk-for-web/cdn/static/' + icon + ')';
+                    'url(https://download.tomtom.com/open/manuals/vio/html/en-gb/residentialarea.png)';
                 markerContentElement.appendChild(iconElement);
                 var popupOffsets = {
                     top: [0, 0],
@@ -84,7 +84,7 @@ export default {
             }
 
             this.apartments.forEach(elm => {
-                createMarker('accident.colors-white.svg', [elm.longitude, elm.latitude], 'red', `
+                createMarker([elm.longitude, elm.latitude], 'red', `
                     <div class="mb-1"><b>${elm.title}</b></div>
                     <img src="${elm.image}" class="w-100 mb-1"></br>
                     <div class="mt-1">${elm.full_address}</div>
@@ -107,16 +107,13 @@ export default {
 
 <style lang="scss" scoped>
     .filtering-container {
-        // background-color: gray;
         width: 100%;
         height: 600px;
         & .col-left-filters {
             width: 20%;
-            // background-color: red;
         }
         & .col-right-map {
             width: 65%;
-            // background-color: green;
             & .map {
                 width: 100%;
                 max-width: 1000px;
