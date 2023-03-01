@@ -9,6 +9,7 @@ export default {
     data() {
         return {
             store,
+            name: '',
             email: '',
             ceckIn:'',
             ceckOut:'',
@@ -20,7 +21,7 @@ export default {
         publicFunction(){
             const textArea = document.querySelector('.my-textarea');
 
-            axios.post(`${this.store.backendUrl}/message/create/email=${this.email}&content=${textArea.innerHTML}&apartmentId=${this.info.id}`).then((response) => {
+            axios.get(`${this.store.backendUrl}/message/create/name=${this.name}&email=${this.email}&content=${textArea.innerHTML}&apartmentId=${this.info.id}`).then((response) => {
                 if ( response.status == 200 ) {
                     this.is_sent = true;
                 }
@@ -69,6 +70,10 @@ export default {
             <button type="button" class="my-btn" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="inserisci nome" autocomplete="name" v-model="name" required>
+                <label for="floatingInput">Nome*</label>
+            </div>
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="floatingInput" placeholder="inserisci email" autocomplete="email" v-model="email" required>
                 <label for="floatingInput">Email address*</label>
