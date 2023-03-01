@@ -16,6 +16,17 @@
                         <label for="">Numero minimo di letti</label>
                         <input type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
                     </div>
+
+                    {{ this.searchFilters.servicesFilter }}
+                    <div v-for="service in this.services">
+                        <div class="form-check" @change="pushServicesFilter(service.name), sendRequestApi()">
+                            <input class="form-check-input" type="checkbox" :id="service.name + '-' + service.id">
+                            <label class="form-check-label" :for="service.name + '-' + service.id">
+                                {{ service.name }}
+                            </label>
+                        </div>
+                    </div>
+
                     <button class="d-none" type="submit" id="form-button">INVIA</button>
                 </form>
             </div>
@@ -35,10 +46,12 @@ export default {
         return {
             store,
             apartments: '',
+            services: [],
             searchFilters: {
                 radiusStart: 2,
                 rooms: 1,
                 beds: 1,
+                servicesFilter: []
             },
             currentAddressCoords: {
                 latitude: '',
@@ -47,6 +60,14 @@ export default {
         }
     },
     methods: {
+        pushServicesFilter(service){
+            if(!this.searchFilters.servicesFilter.includes(service)) {
+                this.searchFilters.servicesFilter.push(service);
+            } else {
+                let index = this.searchFilters.servicesFilter.indexOf(service);
+                this.searchFilters.servicesFilter.splice(index, 1);
+            }
+        },
         sendRequestApi() {
             document.getElementById('form-button').click();
         },
@@ -122,6 +143,12 @@ export default {
             this.currentAddressCoords.longitude = res.data[1].position.lon.toString();
             this.apartments = res.data[0];
             this.updateMapInfo();
+        })
+
+        // Get all services
+        axios.get(`${this.store.backendUrl}/services`)
+        .then((res) => {
+            this.services = res.data;
         })
     }
 }
