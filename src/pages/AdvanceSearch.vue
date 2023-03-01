@@ -140,7 +140,7 @@ export default {
             this.apartments.forEach(elm => {
                 createMarker([elm.longitude, elm.latitude], 'red', `
                     <div class="mb-1"><b>${elm.title}</b></div>
-                    <img src="${elm.image}" class="w-100 mb-1"></br>
+                    <img src="${elm.image_url}" class="w-100 mb-1"></br>
                     <div class="mt-1">${elm.full_address}</div>
                     <div class="text-center">
                         <span class="me-1">${elm.rooms_num} <i class="fa-solid fa-house"></i></span>
