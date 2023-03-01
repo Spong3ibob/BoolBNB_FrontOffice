@@ -6,20 +6,16 @@
                     RICERCA AVANZATA APPARTAMENTI
                 </div>
 
-                <div class="px-3 py-2">
+                <div class="p-3">
                     Appartamenti trovati: <strong>{{ this.apartments.length }} </strong>   
                 </div>
-                
-                <div v-if="this.searchFilters.invalid_filter === true" class="alert alert-danger">
-                    Parametri di ricerca non validi.
-                </div>
-                
+
                 <form action="" class="py-1" @submit.prevent="this.filterByRadius()" @keypress.enter.prevent>
-                    <div class="radius-range pt-2 px-3">
+                    <div class="radius-range p-3">
                         <label for="radius-range" class="form-label">Ricerca appartamenti a <strong class="text-capitalize">{{ this.$route.params.address }}</strong> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
                         <input id="radius-range" class="form-range" type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
                     </div>
-                    <div class="row mx-1 rooms-beds-container">
+                    <div class="row rooms-beds-container p-3">
                         <div class="col-6 rooms-number">
                             <label class="form-label" for="rooms-number-input">Numero minimo di stanze*</label>
                             <input class="form-control" id="rooms-number-input" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
@@ -30,6 +26,7 @@
                         </div>
                     </div>
                     <div class="all-services p-3">
+                        <h5>Servizi</h5>
                         <div class="service" v-for="service in this.services">
                             <div class="form-check" @change="pushServicesFilter(service.name), sendRequestApi()">
                                 <input class="form-check-input " type="checkbox" :id="service.name + '-' + service.id">
@@ -44,6 +41,9 @@
                 </form>
             </div>
             <div class="col-right-map ps-3">
+                <div  class="alert alert-danger error-params-search w-50 fw-bold text-center" v-if="this.searchFilters.invalid_filter === true">
+                    Parametri di ricerca non validi.
+                </div>
                 <div id='map' class='map'></div>
             </div>
         </div>
@@ -223,7 +223,6 @@ export default {
             width: 30%;
             height: fit-content;
             border-radius: 15px;
-            overflow-y: auto;
             & .radius-range{
                 border-top: 1px solid white;
                 border-bottom: 1px solid white;
@@ -248,6 +247,14 @@ export default {
         }
         & .col-right-map {
             width: 65%;
+            position: relative;
+            & .error-params-search {
+                position: absolute;
+                top: 0px;
+                left: 50%;
+                transform: translate(-50%, 0);
+                z-index: 1000;
+            }
             & .map {
                 width: 100%;
                 max-width: 1000px;
