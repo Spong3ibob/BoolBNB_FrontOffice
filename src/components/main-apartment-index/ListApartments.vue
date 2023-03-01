@@ -21,7 +21,7 @@ export default {
       src="../../assets/img/hero.jpg"
       alt=""
     />
-    <h4 class="evidence">APPARTAMENTI IN EVIDENZA</h4>
+    <h5 class="evidence">APPARTAMENTI IN EVIDENZA</h5>
   </div>
   <div
     class="ms-page-container d-flex flex-wrap mt-4 mb-5"
@@ -54,11 +54,12 @@ export default {
     border-bottom: 2px solid var(--red-color);
   }
   .evidence {
-    background-color: var(--red-color);
-    color: white;
+    background-color: white;
+    border: 2px solid var(--red-color);
+    color: var(--red-color);
     position: absolute;
     left: 50%;
-    bottom: -29px;
+    bottom: -26px;
     transform: translate(-50%, 0);
     padding: 8px 15px;
     border-radius: 18px;
