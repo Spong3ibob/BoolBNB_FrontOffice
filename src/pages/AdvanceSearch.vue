@@ -3,9 +3,17 @@
         <div class="m-4 filtering-container d-flex justify-content-center">
             <div class="col-left-filters p-4">
                 <div>
-                    <label for="radius-range" class="form-label">Ricerca appartamenti a {{ this.$route.params.address }} nel raggio di {{ this.radiusStart }}km</label>
-                    <input id="radius-range" class="form-range" type="range" min="1" max="300" v-model="this.radiusStart" step="1" @click="filterByRadius()">
+                    <label for="radius-range" class="form-label">Ricerca appartamenti a {{ this.$route.params.address }} nel raggio di {{ this.searchFilters.radiusStart }}km</label>
+                    <input id="radius-range" class="form-range" type="range" min="1" max="300" v-model="this.searchFilters.radiusStart" step="1" @click="filterByRadius()">
                     Appartamenti trovati: {{ this.apartments.length }}    
+                </div>
+                <div>
+                    <label for="">Numero minimo di stanze</label>
+                    <input type="number" min="1" max="15" value="1">
+                </div>
+                <div>
+                    <label for="">Numero minimo di letti</label>
+                    <input type="number" min="1" max="15" value="1">
                 </div>
             </div>
             <div class="col-right-map">
@@ -24,7 +32,9 @@ export default {
         return {
             store,
             apartments: '',
-            radiusStart: 2,
+            searchFilters: {
+                radiusStart: 2,
+            },
             currentAddressCoords: {
                 latitude: '',
                 longitude: '',
@@ -33,7 +43,7 @@ export default {
     },
     methods: {
         filterByRadius() {
-            axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.radiusStart}`)
+            axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.searchFilters.radiusStart}&rooms=1&beds=1`)
             .then((res) => {
                 this.apartments = res.data[0];
                 this.updateMapInfo();
@@ -94,7 +104,7 @@ export default {
         }
     },
     created() {
-        axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.radiusStart}`)
+        axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.searchFilters.radiusStart}&rooms=1&beds=1`)
         .then((res) => {
             this.currentAddressCoords.latitude = res.data[1].position.lat.toString();
             this.currentAddressCoords.longitude = res.data[1].position.lon.toString();
