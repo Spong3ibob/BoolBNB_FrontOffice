@@ -21,7 +21,7 @@ export default {
         publicFunction(){
             const textArea = document.querySelector('.my-textarea');
 
-            axios.get(`${this.store.backendUrl}/message/create/name=${this.name}&email=${this.email}&content=${textArea.innerHTML}&apartmentId=${this.info.id}`).then((response) => {
+            axios.post(`${this.store.backendUrl}/message/create/name=${this.name}&email=${this.email}&content=${textArea.innerHTML}&apartmentId=${this.info.id}`).then((response) => {
                 if ( response.status == 200 ) {
                     this.is_sent = true;
                 }
