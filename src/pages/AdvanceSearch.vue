@@ -8,7 +8,7 @@
                     </div>
                     <div>
                         <label for="radius-range" class="form-label">Ricerca appartamenti a {{ this.$route.params.address }} nel raggio di {{ this.searchFilters.radiusStart }}km</label>
-                        <input id="radius-range" class="form-range" type="range" min="1" max="300" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
+                        <input id="radius-range" class="form-range" type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
                         Appartamenti trovati: {{ this.apartments.length }}    
                     </div>
                     <div>
@@ -50,7 +50,7 @@ export default {
             apartments: '',
             services: [],
             searchFilters: {
-                radiusStart: 2,
+                radiusStart: 5,
                 rooms: 1,
                 beds: 1,
                 servicesFilter: [],
@@ -73,7 +73,7 @@ export default {
         },
         sendRequestApi() {
             const filters = this.searchFilters;
-            if( filters.radiusStart < 1 || filters.radiusStart > 300 || filters.rooms < 1 || filters.rooms > 15 || filters.beds < 1 || filters.beds > 15) {
+            if( filters.radiusStart < 1 || filters.radiusStart > 35|| filters.rooms < 1 || filters.rooms > 15 || filters.beds < 1 || filters.beds > 15) {
                 filters.invalid_filter = true
             } else {
                 filters.invalid_filter = false
@@ -102,7 +102,7 @@ export default {
                 dragPan: !isMobileOrTablet(),
                 // Longitude and Latitude
                 center: [this.currentAddressCoords.longitude, this.currentAddressCoords.latitude],
-                zoom: 15
+                zoom: 10
             });
             map.addControl(new tt.FullscreenControl());
             map.addControl(new tt.NavigationControl());
