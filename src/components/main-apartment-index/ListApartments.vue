@@ -18,7 +18,7 @@ export default {
   <div class="hero mb-5">
     <img
       class="w-100"
-      src="../../assets/img/208-2083192_six-senses-yao-noi-.jpg"
+      src="../../assets/img/hero.jpg"
       alt=""
     />
     <h4 class="evidence">APPARTAMENTI IN EVIDENZA</h4>
