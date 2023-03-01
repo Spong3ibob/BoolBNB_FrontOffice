@@ -1,6 +1,11 @@
 <template>
     <div class="ms-page-container mt-3">
-        <div class="m-4 filtering-container d-flex justify-content-center">
+        <div v-if="this.services.length === 0" class="my-5 pt-5 d-flex justify-content-center align-items-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>    
+        </div>
+        <div v-else class="m-4 filtering-container d-flex justify-content-center">
             <div class="col-left-filters">
                 <div class="px-2 py-2 m-0 advanced-header">
                     RICERCA AVANZATA APPARTAMENTI
@@ -183,6 +188,12 @@ export default {
         }
     },
     created() {
+        // Get all services
+        axios.get(`${this.store.backendUrl}/services`)
+        .then((res) => {
+            this.services = res.data;
+        })
+
         axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.searchFilters.radiusStart}&rooms=${this.searchFilters.rooms}&beds=${this.searchFilters.beds}&services${this.searchFilters.servicesFilter.length > 0 ?  `=${this.searchFilters.servicesFilter}` : ''}`)
         .then((res) => {
             // Save coords from the current address
@@ -193,12 +204,6 @@ export default {
 
             // Show map
             this.updateMapInfo();
-        })
-
-        // Get all services
-        axios.get(`${this.store.backendUrl}/services`)
-        .then((res) => {
-            this.services = res.data;
         })
     }
 }
