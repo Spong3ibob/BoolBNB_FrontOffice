@@ -34,6 +34,6 @@ export default {
 .sticky {
   position: -webkit-sticky;
   position: sticky !important;
-  top: 0;
+  top: 30%;
 }
 </style>
