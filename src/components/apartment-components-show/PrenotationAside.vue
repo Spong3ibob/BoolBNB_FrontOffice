@@ -36,7 +36,7 @@ export default {
 
 <template>
     <div class="container-card line-space-divider ms-auto">
-        <div class="card">
+        <form class="card" @submit.prevent>
             <span>
                 <h5 class="d-inline-block">{{ info.price }} € </h5> 
                 notte
@@ -56,15 +56,23 @@ export default {
                 <!-- Bottone prenota da implementare  -->
             <!-- <button type="button" id="prenota-button" class="my-btn mb-3">Prenota</button> -->
             <!-- Button trigger modal -->
-            <button type="button" class="my-btn" data-bs-toggle="modal" data-bs-target="#boxMessager">
-            Contatta l'host
-            </button>
+            <div v-if="this.ceckIn !== '' && this.ceckOut !== ''">
+                <button type="submit" class="my-btn mx-auto" data-bs-toggle="modal" data-bs-target="#boxMessager">
+                Contatta l'host
+                </button>
                 <!-- Modal -->
             </div>
+            <div v-else>
+                <button class="my-btn">
+                Contatta l'host
+                </button>
+                <!-- Modal -->
+            </div>
+        </form>
     </div>
 <div class="modal fade" id="boxMessager" tabindex="-1" aria-labelledby="boxMessagerLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <form class="modal-content">
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="host-button"><strong>Contatta l'host {{ info.user.name }}</strong> </h1>
             <button type="button" class="my-btn" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -87,7 +95,7 @@ export default {
             <button type="button" class="my-btn2" data-bs-dismiss="modal">Close</button>
             <button type="button" class="my-btn2"  data-bs-dismiss="modal" @click="publicFunction">Invia</button>
         </div>
-        </div>
+    </form>
     </div>
 </div>
 
