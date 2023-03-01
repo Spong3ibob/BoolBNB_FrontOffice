@@ -14,8 +14,8 @@
     height: 30px;
     width: 30px;
 }
-.marker-content {
-    background: #c30b82;
+.marker-content-yellow {
+    background: yellow;
     border-radius: 50% 50% 50% 0;
     height: 30px;
     left: 50%;
@@ -25,7 +25,19 @@
     transform: rotate(-45deg);
     width: 30px;
 }
-.marker-content::before {
+.marker-content-red {
+    background: red;
+    border-radius: 50% 50% 50% 0;
+    height: 30px;
+    left: 50%;
+    margin: -15px 0 0 -15px;
+    position: absolute;
+    top: 50%;
+    transform: rotate(-45deg);
+    width: 30px;
+}
+.marker-content-yellow::before,
+.marker-content-red::before {
     background: #ffffff;
     border-radius: 50%;
     content: "";

@@ -7,7 +7,7 @@
                         Parametri di ricerca non validi.
                     </div>
                     <div>
-                        <label for="radius-range" class="form-label">Ricerca appartamenti a {{ this.$route.params.address }} nel raggio di {{ this.searchFilters.radiusStart }}km</label>
+                        <label for="radius-range" class="form-label">Ricerca appartamenti a <span class="text-capitalize">{{ this.$route.params.address }}</span> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
                         <input id="radius-range" class="form-range" type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
                         Appartamenti trovati: {{ this.apartments.length }}    
                     </div>
@@ -107,11 +107,11 @@ export default {
             map.addControl(new tt.FullscreenControl());
             map.addControl(new tt.NavigationControl());
 
-            function createMarker(position, color, popupText) {
+            function createMarker(position, color, popupText, classColor) {
                 var markerElement = document.createElement('div');
                 markerElement.className = 'marker';
                 var markerContentElement = document.createElement('div');
-                markerContentElement.className = 'marker-content';
+                markerContentElement.className = classColor;
                 markerContentElement.style.backgroundColor = color;
                 markerElement.appendChild(markerContentElement);
                 var iconElement = document.createElement('div');
@@ -138,16 +138,36 @@ export default {
             }
 
             this.apartments.forEach(elm => {
-                createMarker([elm.longitude, elm.latitude], 'red', `
-                    <div class="mb-1"><b>${elm.title}</b></div>
-                    <img src="${elm.image_url}" class="w-100 mb-1"></br>
-                    <div class="mt-1">${elm.full_address}</div>
-                    <div class="text-center">
-                        <span class="me-1">${elm.rooms_num} <i class="fa-solid fa-house"></i></span>
-                        <span class="ms-1">${elm.beds_num} <i class="fa-solid fa-bed fa-lg"></i></span>
-                    </div>
-                    <a href="http://localhost:5174/apartament/${elm.slug}" class="d-block btn btn-danger p-0 mt-2 mx-3">Visualizza appartamento</a>
-                `);
+                let is_sponsored = false;
+                this.store.filteredApartments.forEach(element => {
+                    if( elm.id === element.id) {
+                        is_sponsored = true;
+                    }
+                });
+
+                if(is_sponsored === true ) {
+                    createMarker([elm.longitude, elm.latitude], '', `
+                        <div class="mb-1"><b>${elm.title}</b></div>
+                        <img src="${elm.image_url}" class="w-100 mb-1"></br>
+                        <div class="mt-1">${elm.full_address}</div>
+                        <div class="text-center">
+                            <span class="me-1">${elm.rooms_num} <i class="fa-solid fa-house"></i></span>
+                            <span class="ms-1">${elm.beds_num} <i class="fa-solid fa-bed fa-lg"></i></span>
+                        </div>
+                        <a href="http://localhost:5174/apartament/${elm.slug}" class="d-block btn btn-danger p-0 mt-2 mx-3">Visualizza appartamento</a>
+                    `, 'marker-content-yellow');
+                } else {
+                    createMarker([elm.longitude, elm.latitude], '', `
+                        <div class="mb-1"><b>${elm.title}</b></div>
+                        <img src="${elm.image_url}" class="w-100 mb-1"></br>
+                        <div class="mt-1">${elm.full_address}</div>
+                        <div class="text-center">
+                            <span class="me-1">${elm.rooms_num} <i class="fa-solid fa-house"></i></span>
+                            <span class="ms-1">${elm.beds_num} <i class="fa-solid fa-bed fa-lg"></i></span>
+                        </div>
+                        <a href="http://localhost:5174/apartament/${elm.slug}" class="d-block btn btn-danger p-0 mt-2 mx-3">Visualizza appartamento</a>
+                    `, 'marker-content-red');
+                }
             });
         }
     },
