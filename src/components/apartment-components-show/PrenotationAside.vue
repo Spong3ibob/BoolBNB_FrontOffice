@@ -72,7 +72,7 @@ export default {
                         <label for="floatingInput">Email address*</label>
                     </div>
                     <div class="form-floating mb-4">
-                        <textarea class="form-control my-textarea" id="floatingInput" cols="30" rows="10"  required placeholder="Cotenuto messaggio*">Buongiorno signor {{ this.info.user.name}} la contatto per prenotare dal giorno {{ this.ceckIn }} al giorno {{ this.ceckOut }}</textarea>
+                        <textarea class="form-control my-textarea" id="floatingInput" cols="30" rows="10"  required placeholder="Cotenuto messaggio*">Buongiorno signor {{ this.info.user.name}} la contatto per prenotare dal giorno {{ this.ceckIn }} al giorno {{ this.ceckOut }},</textarea>
                         <label for="floatingInput">Contenuto messaggio*</label>
                     </div>
                 </div>
