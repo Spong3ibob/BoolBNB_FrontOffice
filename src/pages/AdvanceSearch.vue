@@ -9,11 +9,11 @@
                 </div>
                 <div>
                     <label for="">Numero minimo di stanze</label>
-                    <input type="number" min="1" max="15" value="1">
+                    <input type="number" min="1" max="15" v-model="this.searchFilters.rooms" @change="filterByRadius()">
                 </div>
                 <div>
                     <label for="">Numero minimo di letti</label>
-                    <input type="number" min="1" max="15" value="1">
+                    <input type="number" min="1" max="15" v-model="this.searchFilters.beds" @change="filterByRadius()">
                 </div>
             </div>
             <div class="col-right-map">
@@ -34,6 +34,8 @@ export default {
             apartments: '',
             searchFilters: {
                 radiusStart: 2,
+                rooms: 1,
+                beds: 1,
             },
             currentAddressCoords: {
                 latitude: '',
@@ -43,7 +45,7 @@ export default {
     },
     methods: {
         filterByRadius() {
-            axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.searchFilters.radiusStart}&rooms=1&beds=1`)
+            axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.searchFilters.radiusStart}&rooms=${this.searchFilters.rooms}&beds=${this.searchFilters.beds}`)
             .then((res) => {
                 this.apartments = res.data[0];
                 this.updateMapInfo();
@@ -98,13 +100,17 @@ export default {
                     <div class="mb-1"><b>${elm.title}</b></div>
                     <img src="${elm.image}" class="w-100 mb-1"></br>
                     <div class="mt-1">${elm.full_address}</div>
+                    <div class="text-center">
+                        <span class="me-1">${elm.rooms_num} <i class="fa-solid fa-house"></i></span>
+                        <span class="ms-1">${elm.beds_num} <i class="fa-solid fa-bed fa-lg"></i></span>
+                    </div>
                     <a href="http://localhost:5174/apartament/${elm.slug}" class="d-block btn btn-danger p-0 mt-2 mx-3">Visualizza appartamento</a>
                 `);
             });
         }
     },
     created() {
-        axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.searchFilters.radiusStart}&rooms=1&beds=1`)
+        axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.searchFilters.radiusStart}&rooms=${this.searchFilters.rooms}&beds=${this.searchFilters.beds}`)
         .then((res) => {
             this.currentAddressCoords.latitude = res.data[1].position.lat.toString();
             this.currentAddressCoords.longitude = res.data[1].position.lon.toString();
