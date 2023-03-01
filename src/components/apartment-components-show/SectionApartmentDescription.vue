@@ -4,7 +4,9 @@
       <ApartmentMainInfo :info="this.data" />
     </div>
     <div class="col-5">
-      <PrenotationAside :info="this.data" />
+      <div class="sticky">
+        <PrenotationAside :info="this.data" />
+      </div>
     </div>
   </div>
 </template>
@@ -27,5 +29,11 @@ export default {
 <style lang="scss" scoped>
 .row {
   margin-top: 1.25rem;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky !important;
+  top: 0;
 }
 </style>
