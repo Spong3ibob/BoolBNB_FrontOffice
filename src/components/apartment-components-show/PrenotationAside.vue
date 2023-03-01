@@ -12,21 +12,21 @@ export default {
             email: '',
             ceckIn:'',
             ceckOut:'',
-            message: `Buongiorno signor {info.user.name} la contatto per prenotare dal giorno ${this.ceckIn} al giorno ${this.ceckOut},`,
+            message: '',
             is_sent: false
         }
     },
     methods: {
         publicFunction(){
-            axios.post(`${this.store.backendUrl}/message/create/email=${this.email}&content=${this.message}&apartmentId=${this.info.id}`).then((response) => {
+            const textArea = document.querySelector('.my-textarea');
+
+            axios.post(`${this.store.backendUrl}/message/create/email=${this.email}&content=${textArea.innerHTML}&apartmentId=${this.info.id}`).then((response) => {
                 if ( response.status == 200 ) {
                     this.is_sent = true;
                 }
             })
-
         },
-    },
-    
+    }
 };
 
 
@@ -72,7 +72,7 @@ export default {
                         <label for="floatingInput">Email address*</label>
                     </div>
                     <div class="form-floating mb-4">
-                        <textarea class="form-control my-textarea" id="floatingInput" cols="30" rows="10"  required placeholder="Cotenuto messaggio*" v-model="message" ></textarea>
+                        <textarea class="form-control my-textarea" id="floatingInput" cols="30" rows="10"  required placeholder="Cotenuto messaggio*">Buongiorno signor {{ this.info.user.name}} la contatto per prenotare dal giorno {{ this.ceckIn }} al giorno {{ this.ceckOut }}</textarea>
                         <label for="floatingInput">Contenuto messaggio*</label>
                     </div>
                 </div>
