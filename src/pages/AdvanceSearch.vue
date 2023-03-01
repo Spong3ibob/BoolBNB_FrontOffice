@@ -2,19 +2,22 @@
     <div class="ms-page-container">
         <div class="m-4 filtering-container d-flex justify-content-center">
             <div class="col-left-filters p-4">
-                <div>
-                    <label for="radius-range" class="form-label">Ricerca appartamenti a {{ this.$route.params.address }} nel raggio di {{ this.searchFilters.radiusStart }}km</label>
-                    <input id="radius-range" class="form-range" type="range" min="1" max="300" v-model="this.searchFilters.radiusStart" step="1" @click="filterByRadius()">
-                    Appartamenti trovati: {{ this.apartments.length }}    
-                </div>
-                <div>
-                    <label for="">Numero minimo di stanze</label>
-                    <input type="number" min="1" max="15" v-model="this.searchFilters.rooms" @change="filterByRadius()">
-                </div>
-                <div>
-                    <label for="">Numero minimo di letti</label>
-                    <input type="number" min="1" max="15" v-model="this.searchFilters.beds" @change="filterByRadius()">
-                </div>
+                <form action="" @submit.prevent="this.filterByRadius">
+                    <div>
+                        <label for="radius-range" class="form-label">Ricerca appartamenti a {{ this.$route.params.address }} nel raggio di {{ this.searchFilters.radiusStart }}km</label>
+                        <input id="radius-range" class="form-range" type="range" min="1" max="300" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
+                        Appartamenti trovati: {{ this.apartments.length }}    
+                    </div>
+                    <div>
+                        <label for="">Numero minimo di stanze</label>
+                        <input type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
+                    </div>
+                    <div>
+                        <label for="">Numero minimo di letti</label>
+                        <input type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
+                    </div>
+                    <button class="d-none" type="submit" id="form-button">INVIA</button>
+                </form>
             </div>
             <div class="col-right-map">
                 <div id='map' class='map'></div>
@@ -44,6 +47,9 @@ export default {
         }
     },
     methods: {
+        sendRequestApi() {
+            document.getElementById('form-button').click();
+        },
         filterByRadius() {
             axios.get(`${this.store.backendUrl}/near-apartments-to/address=${this.$route.params.address}&radius=${this.searchFilters.radiusStart}&rooms=${this.searchFilters.rooms}&beds=${this.searchFilters.beds}`)
             .then((res) => {
