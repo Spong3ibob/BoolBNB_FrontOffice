@@ -38,12 +38,12 @@ export default {
                     <h3 class="card-title mb-5">About Us</h3>
                     <div class="about-us-item p-1 mb-4">
                         <h4 class="card-subtitle mb-2">Mission</h4>
-                        <p class="card-text"><i class="fa-solid fa-quote-left"></i> Airbnb's mission is to help create a world where you can belong anywhere and where people can live in a place, instead of just traveling to it.<i class="fa-solid fa-quote-right"></i> </p>
+                        <p class="card-text"><i class="fa-solid fa-quote-left"></i> La missione di BoolBnB è aiutare a creare un mondo in cui puoi appartenere ovunque e in cui le persone possono vivere in un luogo, invece di limitarsi a viaggiare verso di esso. <i class="fa-solid fa-quote-right"></i> </p>
                     </div>
                     <hr>
                     <div class="business-item p-1 mb-4">
                         <h4 class="card-subtitle mb-2">Business</h4>
-                        <p class="card-text"><i class="fa-solid fa-quote-left"></i> Airbnb was born in 2007 when two Hosts welcomed three guests to their San Francisco home, and has since grown to over 4 million Hosts who have welcomed 1.4 billion guest arrivals in almost every country across the globe. Every day, Hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way. <i class="fa-solid fa-quote-right"></i> </p>
+                        <p class="card-text"><i class="fa-solid fa-quote-left"></i> BoolBnB è nato nel 2023 quando due host hanno accolto tre ospiti nella loro casa di San Francisco e da allora è cresciuto fino a superare i 4 milioni di host che hanno accolto 200 milioni di ospiti in arrivo in quasi tutti i paesi del mondo. Ogni giorno, gli host offrono soggiorni ed esperienze uniche che consentono agli ospiti di entrare in contatto con le comunità in modo più autentico. <i class="fa-solid fa-quote-right"></i> </p>
                     </div>
                     <hr>
                     <div class="our-team-item p-1 mb-4">
