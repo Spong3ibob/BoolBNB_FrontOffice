@@ -55,7 +55,7 @@
         }
 }
 
-//  992px BREAKPOINT
+//  991px BREAKPOINT
 
 @media screen and (max-width: 991px) {
 
@@ -95,6 +95,14 @@
         }
 }
 
+// 768px BREAKPOINT
+@media screen and (max-width: 767px) {
+        // FOOTER
+        .footer-top{
+                display: none !important;
+        }
+}
+
 // 500px BREAKPOINT
 
 @media screen and (max-width: 500px) {
@@ -103,7 +111,7 @@
         .ms-page-container-small{
                 width: 100%;
                 max-width: 320px;
-        }        
+        } 
         
         // LEFT COLUMN SHOW   
         .images-box{
@@ -128,4 +136,5 @@
                         }
                 }
         }
+
 }
