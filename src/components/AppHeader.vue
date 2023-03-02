@@ -69,13 +69,13 @@ export default {
 <template>
   <header>
     <!-- Header top -->
-    <div class="header-container__top" :class="this.$route.name === 'apartment-page' ? 'border-transparent' : ''">
+    <div class="header-container__top " :class="this.$route.name === 'apartment-page' ? 'border-transparent' : ''">
       <div class="d-flex justify-content-between align-items-center py-3" :class="this.$route.name !== 'apartment-page' ? 'ms-page-container' : 'ms-page-container-small'">
         <!-- top left -->
         <div class="h-top-left w-25 d-flex">
           <RouterLink :to="{ name: 'homepage' }" class="d-flex align-items-center text-decoration-none">
             <img src="../assets/img/logo-icon.png" alt="" style="width: 40px">
-            <h2 class="mb-0 ps-1 m-text-cursive">BoolBnB</h2>
+            <h2 class="mb-0 ps-1 m-text-cursive d-none d-md-inline">BoolBnB</h2>
           </RouterLink>
         </div >
 
@@ -85,7 +85,7 @@ export default {
 
         <!-- top Right -->
         <div class="h-top-right d-flex justify-content-end align-items-center w-25">
-          <a class="rent rounded-pill py-2 px-3 ms-3 fw-semibold text-decoration-none text-dark" href="#">Affitta con BoolBnB</a>
+          <a class="rent rounded-pill py-2 px-3 ms-3 fw-semibold text-decoration-none text-dark d-none d-lg-inline" href="#">Affitta con BoolBnB</a>
 
           <!-- Menu -->
           <div class="btn-group rounded-pill ms-3">
