@@ -60,7 +60,11 @@ export default {
   created() {
     axios.get(`${this.store.backendUrl}/sponsored-apartments`)
     .then( (res) => {
-      this.store.filteredApartments = res.data;
+      this.store.filteredApartments = res.data.data;
+      
+      // Store pagination info
+      this.store.currentPage = res.data.current_page;
+      this.store.lastPage = res.data.last_page;
     });
   }
 }
