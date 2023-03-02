@@ -48,7 +48,7 @@ export default {
     searchBoxInputContainer.classList.add('rounded-pill');
 
     const searchBoxResultListContainer = document.querySelector('.tt-search-box-result-list-container');
-    searchBoxResultListContainer.classList.add('mt-2' ,'rounded');
+    searchBoxResultListContainer.classList.add('mt-1' ,'rounded');
     
 
     searchBoxInput.addEventListener('keyup', function(e) {
