@@ -190,7 +190,7 @@ export default {
                         <div class="service col-1" v-for="service in this.services">
                             <div class=" d-flex flex-column justify-content-center align-items-center" @click="pushServicesFilter(service.name), sendRequestApi()">
                                 <div class="form-check-icon d-flex flex-column justify-content-center align-items-center"  v-html="service.icon" :id="service.name + '-' + service.id"></div>
-                                <div class="form-check-label text-center" :for="service.name + '-' + service.id">
+                                <div class="form-check-label d-flex flex-column justify-content-center align-items-center" :for="service.name + '-' + service.id">
                                     {{ service.name }}
                                 </div>
                             </div>
