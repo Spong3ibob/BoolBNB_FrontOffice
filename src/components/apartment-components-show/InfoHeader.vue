@@ -5,10 +5,10 @@
     </h2>
 
     <div
-      class="nav-info-apartment d-flex justify-content-between align-items-center"
+      class="nav-info-apartment d-flex justify-content-between align-items-center mt-lg-0 mt-sm-2 mt-xs-2"
     >
       <!-- Informazioni  Via/Sponsor -->
-      <div class="apartment-info-header">
+      <div class="apartment-info-header ">
         <div class="visuals d-none d-xl-inline">
           <span class="header-info">Visualizzazioni</span>
           <span class="spacer-dot">·</span>
@@ -324,10 +324,4 @@ export default {
 
 // Responsive <= 1440px
 
-@media screen and (max-width: 1024px){
-    .visuals{
-      display: block;
-      display: none;
-    }
-}
 </style>

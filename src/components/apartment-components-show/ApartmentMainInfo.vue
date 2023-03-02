@@ -2,12 +2,13 @@
   <!-- Informazioni Principali -->
   <section class="title-section line-space-divider">
     <div>
-      <h4>- Host: {{ info.user.name }}</h4>
-      <span>{{ info.rooms_num }} camere da letto</span>
+      <h4>Host: {{ info.user.name }}</h4>
+      <!-- Logica stanze < 1 -->
+      <span>{{ info.rooms_num }} <span v-if="info.rooms_num <= '1'"> camera da letto</span> <span v-else> camere da letto </span></span>
       <span class="spacer-dot">·</span>
-      <span>{{ info.beds_num }} letti</span>
+      <span>{{ info.beds_num }} <span v-if="info.beds_num <= '1'"> letto</span> <span v-else>letti</span></span>
       <span class="spacer-dot">·</span>
-      <span>{{ info.baths_num }} bagni</span>
+      <span>{{ info.baths_num }} <span v-if="info.baths_num <= '1'"> bagno</span> <span v-else> bagni</span></span>
     </div>
   </section>
 
