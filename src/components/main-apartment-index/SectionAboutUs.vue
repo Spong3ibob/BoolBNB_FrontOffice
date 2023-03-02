@@ -2,7 +2,7 @@
 
 
 export default {
-  name: "SectionChiSiamo",
+  name: "SectionAboutUs",
   components: {
 
   },
