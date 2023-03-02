@@ -51,8 +51,8 @@ export default {
     height: 310px;
   }
 }
-.single-apartment {
-  width: calc(100% / 4 - 24px);
-  margin: 0 12px;
-}
+// .single-apartment {
+//   width: calc(100% / 4 - 24px);
+//   margin: 0 12px;
+// }
 </style>
