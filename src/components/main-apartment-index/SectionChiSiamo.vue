@@ -97,6 +97,7 @@ export default {
             background-color: transparent;
             border: none;
             box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px; 
+            // Typography //
             & h3 {
                 font-size: 3.5rem;
                 text-align: center;

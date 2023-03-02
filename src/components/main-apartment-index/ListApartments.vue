@@ -21,7 +21,7 @@ export default {
       src="../../assets/img/hero.jpg"
       alt=""
     />
-    <h5 class="evidence m-text-cursive">APPARTAMENTI IN EVIDENZA</h5>
+    <h3 class="evidence m-text-cursive">APPARTAMENTI IN EVIDENZA</h3>
   </div>
   <div
     class="ms-page-container d-flex flex-wrap mt-4 mb-5"
