@@ -4,9 +4,7 @@
       <ApartmentMainInfo :info="this.data" />
     </div>
     <div class="col-lg-5 col-xs-12 col-right">
-      <!-- <div class="sticky"> -->
         <PrenotationAside :info="this.data" />
-      <!-- </div> -->
     </div>
   </div>
 </template>

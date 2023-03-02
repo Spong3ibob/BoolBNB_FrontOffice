@@ -2,9 +2,6 @@
   <div class="ms-page-container-small my-5" v-if="this.apartment !== null">
     <InfoHeader :data="this.apartment" />
     <SectionAparmentDescription :data="this.apartment" />
-    <RouterLink :to="{ name: 'homepage' }" class="btn btn-secondary mt-4"
-      >Torna indietro</RouterLink
-    >
   </div>
   <div
     class="ms-page-container-small spinner-container d-flex align-items-center justify-content-center"
