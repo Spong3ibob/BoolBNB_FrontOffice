@@ -1,11 +1,11 @@
 <script>
 import ListApartments from "../components/main-apartment-index/ListApartments.vue";
-import SectionChiSiamo from "../components/main-apartment-index/SectionChiSiamo.vue";
+import SectionAboutUs from "../components/main-apartment-index/SectionAboutUs.vue";
 
 export default {
   name: "HomePage",
   components: {
-    SectionChiSiamo,
+    SectionAboutUs,
     ListApartments,
   },
 };
@@ -13,7 +13,7 @@ export default {
 
 <template>
   <ListApartments />
-  <SectionChiSiamo />
+  <SectionAboutUs />
 </template>
 
 <style lang="scss" scoped></style>
