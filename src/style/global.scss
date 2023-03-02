@@ -1,4 +1,17 @@
 /*----------------------------------------
+    IMPORT GOOGLE FONTS CURSIVE
+-----------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+* {  
+    font-family: 'Montserrat', sans-serif;
+}
+
+.m-text-cursive {
+    font-family: 'Dancing Script', cursive !important;
+}
+
+/*----------------------------------------
     IMPORT BOOTSTRAP
 -----------------------------------------*/
 @import "/node_modules/bootstrap/scss/bootstrap";
@@ -13,7 +26,3 @@
     IMPORT MARKERS MAP TOM TOM STYLE
 ------------------------------------*/
 @import "./markers-map.scss";
-
-* {  
-    font-family: 'Montserrat', sans-serif;
-}
