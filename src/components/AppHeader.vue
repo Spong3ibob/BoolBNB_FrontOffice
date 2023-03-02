@@ -47,6 +47,10 @@ export default {
     const searchBoxInputContainer = document.querySelector('.tt-search-box-input-container');
     searchBoxInputContainer.classList.add('rounded-pill');
 
+    const searchBoxResultListContainer = document.querySelector('.tt-search-box-result-list-container');
+    searchBoxResultListContainer.classList.add('mt-2' ,'rounded');
+    
+
     searchBoxInput.addEventListener('keyup', function(e) {
       if (e.key === 'Enter' && searchBoxInput.value !== '') {
         window.location.href = `/advance/search-apartments/${searchBoxInput.value}`
