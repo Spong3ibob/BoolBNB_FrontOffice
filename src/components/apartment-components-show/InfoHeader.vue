@@ -9,18 +9,21 @@
     >
       <!-- Informazioni  Via/Sponsor -->
       <div class="apartment-info-header">
-        <span class="header-info">Visualizzazioni</span>
-        <span class="spacer-dot">·</span>
-
-        <span class="header-info">Recensioni/Messaggi</span>
-        <span class="spacer-dot">·</span>
-        <div v-if="data.sponsorships.length" class="d-inline">
-          <span class="header-info"
+        <div class="visuals d-none d-xl-inline">
+          <span class="header-info">Visualizzazioni</span>
+          <span class="spacer-dot">·</span>
+        </div>
+        <div class="review d-none d-xl-inline">
+          <span class="header-info">Recensioni/Messaggi</span>
+          <span class="spacer-dot">·</span>
+        </div>
+        <div v-if="data.sponsorships.length" class="d-none d-lg-inline ">
+          <span class="header-info sponsor"
             ><i class="icon fa-solid fa-medal"></i>Sponsorizzato</span
           >
           <span class="spacer-dot">·</span>
         </div>
-        <span class="header-info text-decoration-underline"
+        <span class="header-info text-decoration-underline address"
           ><i> {{ data.full_address }}</i></span
         >
       </div>
@@ -115,12 +118,6 @@
 
     <div class="images-box d-flex">
       <img :src="data.image_url" :alt="data.title" />
-      <!-- <div class="img-container">
-        <img id="map-container" src="" class="figure-img img-fluid" alt="" />
-        <div class="full-address mb-2">
-          <i class="fa-solid fa-location-dot me-2"></i>{{ data.full_address }}
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
@@ -323,5 +320,14 @@ export default {
     height: 100%;
     width: 100%;
   }
+}
+
+// Responsive <= 1440px
+
+@media screen and (max-width: 1024px){
+    .visuals{
+      display: block;
+      display: none;
+    }
 }
 </style>

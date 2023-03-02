@@ -37,7 +37,7 @@ export default {
         <div>Messaggio inviato all'host con successo.</div>
         <button type="button" class="btn-close me-4 p-0 h-100" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    <div class="container-card line-space-divider ms-auto">
+    <div class="container-card line-space-divider ms-xl-auto m-xs-auto">
         <form class="card" @submit.prevent>
             <span>
                 <h5 class="d-inline-block">{{ info.price }} € </h5> 
@@ -55,7 +55,7 @@ export default {
                     </div>
                 </div>
             </div>
-                <!-- Bottone prenota da implementare  -->
+            <!-- Bottone prenota da implementare  -->
             <!-- <button type="button" id="prenota-button" class="my-btn mb-3">Prenota</button> -->
             <!-- Button trigger modal -->
             <div v-if="this.ceckIn !== '' && this.ceckOut !== ''">
@@ -66,7 +66,7 @@ export default {
             </div>
             <div v-else>
                 <button class="my-btn mx-auto">
-                Contatta l'host
+                    Contatta l'host
                 </button>
                 <!-- Modal -->
             </div>
