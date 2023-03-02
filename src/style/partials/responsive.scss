@@ -5,39 +5,54 @@
 // 1400px BREAKPOINT
 
 @media screen and (max-width: 1400px) {
-        
-        // body {
-        //         background-color: red;
-        // }
+
         // CONTAINERS
         .ms-page-container-small{
                 width: 100%;
-                max-width: 1100px;
+                max-width: 1080px;
         }        
+        
+        // LEFT COLUMN SHOW   
+        .images-box{
+                width: 50% !important;
+        }
+
+        // RIGHT COLUMN CONTACTS SHOW       
+        // CONTACTS CARD
+        .container-card{
+                width: 80% !important;
+        }
 }
 
 // 1200px BREAKPOINT    
 
 @media screen and (max-width: 1200px) {
         
-        // body {
-        //         background-color: red;
-        // }
         // CONTAINERS
         .ms-page-container-small{
                 width: 100%;
                 max-width: 992px;
-        }        
+        }
 
-
-        // CONTACTS CARD
-                .date-check{
-                        flex-direction: column;
-
-                        .check-left{
-                                margin-bottom: 10px !important;
-                        }
+        // LEFT COLUMN SHOW   
+        .images-box{
+                width: 60% !important;
+        }
+        .services{
+                .w-33{
+                        width: 50% !important;
                 }
+        }
+
+        // RIGHT COLUMN CONTACTS SHOW
+        // CONTACTS CARD
+        .date-check{
+                flex-direction: column;
+
+                .check-left{
+                        margin-bottom: 10px !important;
+                }
+        }
 }
 
 //  992px BREAKPOINT
@@ -49,7 +64,21 @@
                 width: 100%;
                 max-width: 720px;
         }        
+
+        // LEFT COLUMN SHOW   
+        .images-box{
+                width: 100% !important;
+        }
+
+
+        /*----------------------------*/
         
+        // RIGHT COLUMN CONTACTS SHOW
+        .col-div{
+                .col-right{
+                        margin-top: 20px !important;
+                }
+        }
         
         // CONTACTS CARD
         .container-card{
@@ -69,12 +98,24 @@
 // 500px BREAKPOINT
 
 @media screen and (max-width: 500px) {
+
         // CONTAINERS
         .ms-page-container-small{
                 width: 100%;
-                max-width: 360px;
+                max-width: 320px;
         }        
         
+        // LEFT COLUMN SHOW   
+        .images-box{
+                width: 100% !important;
+        }
+        .services{
+                .w-33{
+                        width: 100% !important;
+                }
+        }
+        
+        // RIGHT COLUMN CONTACTS SHOW
         // CONTACTS CARD
         .container-card{
                 width: 100% !important;

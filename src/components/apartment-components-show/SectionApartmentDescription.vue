@@ -1,11 +1,11 @@
 <template>
-  <div class="row">
-    <div class="col-lg-7 col-xs-12">
+  <div class="row col-div">
+    <div class="col-lg-7 col-xs-12 col-left">
       <ApartmentMainInfo :info="this.data" />
     </div>
-    <div class="col-lg-5 col-xs-12">
+    <div class="col-lg-5 col-xs-12 col-right">
       <!-- <div class="sticky"> -->
-        <PrenotationAside class="mx-xs-auto" :info="this.data" />
+        <PrenotationAside :info="this.data" />
       <!-- </div> -->
     </div>
   </div>
