@@ -9,20 +9,34 @@ export default {
   <footer id="footer_one" v-if="this.$route.name !== 'apartment-page' && this.$route.name !== 'advance-search'">
     <div class="ms-page-container d-flex justify-content-between py-3">
       <div class="footer__left">
-        <span class="me-2">© 2023 BoolBnB, Inc </span>
-        ·<a class="me-2 ps-3" href="">Privacy</a>
-        ·<a class="me-2 ps-3" href="">Termini</a> 
-        ·<a class="me-2 ps-3" href="">Mappa del sito</a> 
-        ·<a class="me-2 ps-3" href="">Dettagli dell'azienda</a>
+        <div class="d-inline">
+          <span class="me-2">© 2023 BoolBnB, Inc </span>
+        </div>
+        <div class="d-none d-lg-inline">
+          <span class="spacer-dot">·</span>
+          <span><a class="me-2 ps-3" href="">Privacy</a></span>
+        </div>
+        <div class="d-none d-lg-inline">
+          <span class="spacer-dot">·</span>
+          <span><a class="me-2 ps-3" href="">Termini</a></span>
+        </div>
+        <div class="d-none d-lg-inline">
+          <span class="spacer-dot">·</span>
+          <span><a class="me-2 ps-3" href="">Mappa del sito</a></span>
+        </div>
+        <div class="d-none d-lg-inline">
+          <span class="spacer-dot">·</span>
+          <span><a class="me-2 ps-3" href="">MDettagli dell'azienda</a></span>
+        </div>
       </div>
       <div class="footer__right d-flex align-items-center">
         <div class="ms-4">
           <i class="fa-solid fa-globe"></i> Italiano (IT)
         </div>
-        <div class="ms-4">
+        <div class="ms-4 d-none d-sm-inline">
           <i class="fa-solid fa-euro-sign"></i> EUR
         </div>
-        <div class="ms-4">
+        <div class="ms-4 d-none d-xl-flex">
           Supporto e risorse
         </div>
       </div>
