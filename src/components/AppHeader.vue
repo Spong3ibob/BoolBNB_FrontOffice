@@ -44,6 +44,9 @@ export default {
     const searchBoxInput = document.querySelector('.tt-search-box-input');
     searchBoxInput.placeholder = "Cerca un appartamento"
 
+    const searchBoxInputContainer = document.querySelector('.tt-search-box-input-container');
+    searchBoxInputContainer.classList.add('rounded-pill');
+
     searchBoxInput.addEventListener('keyup', function(e) {
       if (e.key === 'Enter' && searchBoxInput.value !== '') {
         window.location.href = `/advance/search-apartments/${searchBoxInput.value}`
@@ -118,16 +121,17 @@ export default {
       background-color: white;
       z-index: 10;
       box-shadow: 0 2px 4px rgba(0,0,0,0.18);
-    & .header-container__top {
-      border-bottom: 1.8px solid #ebebeb;
-      & .h-top-left {
-        & h2 {
-          display: inline-block;
-          color: var(--red-color);
-        }
-      }
-      & .h-top-center{
-      }
+
+      & .header-container__top {
+          border-bottom: 1.8px solid #ebebeb;
+          & .h-top-left {
+              & h2 {
+                  display: inline-block;
+                  color: var(--red-color);
+                }
+            }
+            & .h-top-center{
+            }
       & .h-top-right {
         & .rent {
           &:hover {
