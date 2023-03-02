@@ -89,7 +89,7 @@ export default {
                     </div>
                     <div class="mb-3">
                         <label for="recipient-email">Email Addres *</label>
-                        <input type="email" class="form-control" id="recipient-name" placeholder="inserisci email" autocomplete="email" v-model="email" required>
+                        <input type="email" class="form-control" id="recipient-email" placeholder="inserisci email" autocomplete="email" v-model="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="message-text">Contenuto messaggio *</label>
