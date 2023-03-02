@@ -1,63 +1,7 @@
-<template>
-    <div class="ms-page-container mt-3">
-        <div v-if="this.services.length === 0" class="my-5 pt-5 d-flex justify-content-center align-items-center">
-            <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>    
-        </div>
-        <div v-else class="m-4 filtering-container d-flex justify-content-center">
-            <div class="col-left-filters">
-                <div class="px-2 py-2 m-0 advanced-header">
-                    RICERCA AVANZATA APPARTAMENTI
-                </div>
-
-                <div class="p-3">
-                    Appartamenti trovati: <strong>{{ this.apartments.length }} </strong>   
-                </div>
-
-                <form action="" class="py-1" @submit.prevent="this.filterByRadius()" @keypress.enter.prevent>
-                    <div class="radius-range p-3">
-                        <label for="radius-range" class="form-label">Ricerca appartamenti a <strong class="text-capitalize">{{ this.$route.params.address }}</strong> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
-                        <input id="radius-range" class="form-range" type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
-                    </div>
-                    <div class="row rooms-beds-container p-3">
-                        <div class="col-6 rooms-number">
-                            <label class="form-label" for="rooms-number-input">Numero minimo di stanze*</label>
-                            <input class="form-control" id="rooms-number-input" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
-                        </div>
-                        <div class="col-6 beds-number">
-                            <label class="form-label" for="beds-number-input">Numero minimo di letti*</label>
-                            <input class="form-control" id="beds-number-input" type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
-                        </div>
-                    </div>
-                    <div class="all-services p-3">
-                        <h5>Servizi</h5>
-                        <div class="service" v-for="service in this.services">
-                            <div class="form-check" @change="pushServicesFilter(service.name), sendRequestApi()">
-                                <input class="form-check-input " type="checkbox" :id="service.name + '-' + service.id">
-                                <label class="form-check-label" :for="service.name + '-' + service.id">
-                                    {{ service.name }}
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button id="submit-form-search" class="d-none"></button>
-                </form>
-            </div>
-            <div class="col-right-map ps-3">
-                <div  class="alert alert-danger error-params-search w-50 fw-bold text-center" v-if="this.searchFilters.invalid_filter === true">
-                    Parametri di ricerca non validi.
-                </div>
-                <div id='map' class='map'></div>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script>
 import axios from 'axios';
 import { store } from '../store';
+import AppCard from '.././components/main-apartment-index/card-components/AppCard.vue'
 
 export default {
     data() {
@@ -77,6 +21,13 @@ export default {
                 longitude: '',
             }
         }
+        
+    },
+    components: {
+    AppCard,
+    },
+    props:{
+        data:Object,
     },
     methods: {
         pushServicesFilter(service){
@@ -185,7 +136,7 @@ export default {
                     `, 'marker-content-red');
                 }
             });
-        }
+        },
     },
     created() {
         // Get all services
@@ -209,8 +160,85 @@ export default {
 }
 </script>
 
+
+<template>
+    <div class="ms-page-container mt-3">
+        <div v-if="this.services.length === 0" class="my-5 pt-5 d-flex justify-content-center align-items-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>    
+        </div>
+        <div v-else class="ms-page-container">
+
+                <form action="" class="py-1" @submit.prevent="this.filterByRadius()" @keypress.enter.prevent>
+                    
+                    <div class="row rooms-beds-container p-3">
+                        <div class=" col-4 radius_range">
+                            <label for="radius-range" class="form-label">Ricerca appartamenti a <strong class="text-capitalize">{{ this.$route.params.address }}</strong> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
+                            <input id="radius-range" class="form-range" type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
+                        </div>
+                        <div class="col-4 rooms-number">
+                            <label class="form-label" for="rooms-number-input">Numero minimo di stanze*</label>
+                            <input class="form-control" id="rooms-number-input" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
+                        </div>
+                        <div class="col-4 beds-number">
+                            <label class="form-label" for="beds-number-input">Numero minimo di letti*</label>
+                            <input class="form-control" id="beds-number-input" type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
+                        </div>
+                    </div>
+                    <div class="all-services p-2 d-flex justify-content-center align-items-center">
+                        <div class="service col-1" v-for="service in this.services">
+                            <div class="form-check d-flex flex-column justify-content-center align-items-center" @click="pushServicesFilter(service.name), sendRequestApi()">
+                                <div class="form-check-icon "  v-html="service.icon" :id="service.name + '-' + service.id"></div>
+                                <label class="form-check-label" :for="service.name + '-' + service.id">
+                                    {{ service.name }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="submit-form-search" class="d-none"></button>
+                    <div class="d-flex justify-content-center">
+                        Appartamenti trovati &nbsp <strong>{{ this.apartments.length }} </strong>   
+                    </div>
+                </form>
+        </div>
+        <div class="m-4 card-container d-flex justify-content-center">
+            <div class="col-left-card">
+                <div
+                class="apartment-search"
+                v-if="this.apartments.length !== 0"
+                >
+                    <AppCard
+                    v-for="apartment in this.apartments"
+                    :data="apartment"
+                    />
+                </div>
+                <div v-else>
+                    <div
+                    class="apartment-search"
+                    >
+                        <div class="alert alert-danger mt-5">
+                            <i class="fa-solid fa-ban fa-lg fa-fw"></i> Ci dispiace in questa zona non sono ancora presenti degli appartamenti.
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="col-right-map ps-3">
+                    <div  class="alert alert-danger error-params-search w-50 fw-bold text-center" v-if="this.searchFilters.invalid_filter === true">
+                        Parametri di ricerca non validi.
+                    </div>
+                    <div id='map' class='map'></div>
+                </div>
+        </div>
+    </div>
+</template>
+
+
+
 <style lang="scss" scoped>
 .ms-page-container{
+
     .advanced-header {
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
@@ -219,37 +247,18 @@ export default {
         text-align: center;
         border-bottom: 1px solid white;
     }
-    .filtering-container {
-        width: 100%;
-        height: 600px;
-        
-        & .col-left-filters {
-            background-color: #fa4545d7;
-            width: 30%;
-            height: fit-content;
-            border-radius: 15px;
-            & .radius-range{
-                border-top: 1px solid white;
-                border-bottom: 1px solid white;
-            }
-            & .rooms-beds-container {
-                border-bottom: 1px solid white;
-            }
-            
-            & .all-service {
-                & .service {
-                    & .form-check {
-                        & .form-check-input {
-                            & .form-check-input:checked  {
-    
-                                background-color: red;
-                            }
 
-                        }
-                    }
-                }
-            }
+    .card-container {
+        width: 100%;
+        height: 650px;
+        & .col-left-card {
+            width: 30%;
+            height: 100%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
         }
+
         & .col-right-map {
             width: 65%;
             position: relative;
@@ -270,4 +279,6 @@ export default {
     }
     
 }
+
+
 </style>
