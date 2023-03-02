@@ -68,7 +68,7 @@ export default {
         <div class="h-top-left w-25 d-flex">
           <RouterLink :to="{ name: 'homepage' }" class="d-flex align-items-center text-decoration-none">
             <img src="../assets/img/logo-icon.png" alt="" style="width: 40px">
-            <h3 class="mb-0 ps-1" style="">BoolBnB</h3>
+            <h3 class="mb-0 ps-1 m-text-cursive">BoolBnB</h3>
           </RouterLink>
         </div >
 

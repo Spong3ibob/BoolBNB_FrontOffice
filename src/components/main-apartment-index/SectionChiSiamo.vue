@@ -35,7 +35,7 @@ export default {
         <div class="container d-flex">
             <div class="card text-light">
                 <div class="card-body">
-                    <h3 class="card-title mb-5">About Us</h3>
+                    <h3 class="card-title m-text-cursive mb-5">About Us</h3>
                     <div class="about-us-item p-1 mb-4">
                         <h4 class="card-subtitle mb-2">Mission</h4>
                         <p class="card-text"><i class="fa-solid fa-quote-left"></i> La missione di BoolBnB è aiutare a creare un mondo in cui puoi appartenere ovunque e in cui le persone possono vivere in un luogo, invece di limitarsi a viaggiare verso di esso. <i class="fa-solid fa-quote-right"></i> </p>
@@ -98,7 +98,7 @@ export default {
             border: none;
             box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px; 
             & h3 {
-                font-size: 2.5rem;
+                font-size: 3.5rem;
                 text-align: center;
                 color: rgb(240, 215, 215);
                 text-shadow: 3px 3px #151010eb;
