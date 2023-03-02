@@ -37,19 +37,19 @@ export default {
         <div>Messaggio inviato all'host con successo.</div>
         <button type="button" class="btn-close me-4 p-0 h-100" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    <div class="container-card line-space-divider ms-xl-auto m-xs-auto">
+    <div class="container-card line-space-divider ms-lg-auto m-auto m-lg-0">
         <form class="card" @submit.prevent>
             <span>
                 <h5 class="d-inline-block">{{ info.price }} € </h5> 
                 notte
             </span>
-            <div class="container-ceck my-3">
-                <div class="date-ceck p-4">
-                    <div class="ceck-left">
+            <div class="container-check my-3">
+                <div class="date-check p-4 d-">
+                    <div class="check-left ">
                         <h6>CHECK-IN</h6>
                         <input type="date" v-model="this.ceckIn" required>
                     </div>
-                    <div class="ceck-right">
+                    <div class="check-right">
                         <h6>CHECK-OUT</h6>
                         <input type="date" v-model="this.ceckOut" required>
                     </div>
@@ -110,7 +110,7 @@ export default {
 
 <style lang="scss" scoped>
     .container-card{
-        width: 400px;
+        width: 70%;
         border: 1px solid #fa4546;
         border-radius: 10px;
         padding: 20px;
@@ -119,7 +119,7 @@ export default {
         position: sticky;
         top: 30%;
         .card{
-            width: 360px;
+            width: 100%;
             border: none;
             margin: auto;                 
         }
@@ -154,16 +154,16 @@ export default {
             border: none;
         }
 
-    .container-ceck{
+    .container-check{
         border: 1px solid rgba(0, 0, 0, 0.346);
         border-radius: 10px;
     }
-    .date-ceck{
+    .date-check{
         display: flex;
         justify-content: space-around;
         align-items: center;
     }
-    .ceck-left{
+    .check-left{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -172,7 +172,7 @@ export default {
             border: none;
         }
     }
-    .ceck-right{
+    .check-right{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -228,8 +228,4 @@ export default {
             box-shadow: none;
         }
     }
-    // .modal{
-    //     z-index: 2000 !important; 
-    //     position: fixed;
-    // }
 </style>

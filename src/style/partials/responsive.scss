@@ -2,4 +2,89 @@
         RESPONSIVE SHOW
 -----------------------------*/
 
+// 1400px BREAKPOINT
 
+@media screen and (max-width: 1400px) {
+        
+        // body {
+        //         background-color: red;
+        // }
+        // CONTAINERS
+        .ms-page-container-small{
+                width: 100%;
+                max-width: 1100px;
+        }        
+}
+
+// 1200px BREAKPOINT    
+
+@media screen and (max-width: 1200px) {
+        
+        // body {
+        //         background-color: red;
+        // }
+        // CONTAINERS
+        .ms-page-container-small{
+                width: 100%;
+                max-width: 992px;
+        }        
+
+
+        // CONTACTS CARD
+                .date-check{
+                        flex-direction: column;
+
+                        .check-left{
+                                margin-bottom: 10px !important;
+                        }
+                }
+}
+
+//  992px BREAKPOINT
+
+@media screen and (max-width: 991px) {
+
+        // CONTAINERS
+        .ms-page-container-small{
+                width: 100%;
+                max-width: 720px;
+        }        
+        
+        
+        // CONTACTS CARD
+        .container-card{
+                width: 80% !important;
+
+                .date-check{
+                        flex-direction:row;
+
+                        .check-left{
+                                margin-bottom: 0px !important;
+                        }
+                        // display: none !important;
+                }
+        }
+}
+
+// 500px BREAKPOINT
+
+@media screen and (max-width: 500px) {
+        // CONTAINERS
+        .ms-page-container-small{
+                width: 100%;
+                max-width: 360px;
+        }        
+        
+        // CONTACTS CARD
+        .container-card{
+                width: 100% !important;
+
+                .date-check{
+                        flex-direction: column;
+
+                        .check-left{
+                                margin-bottom: 10px !important;
+                        }
+                }
+        }
+}
