@@ -58,7 +58,7 @@ export default {
     })
   },
   created() {
-    axios.get('http://127.0.0.1:8000/api/sponsored-apartments')
+    axios.get(`${this.store.backendUrl}/sponsored-apartments`)
     .then( (res) => {
       this.store.filteredApartments = res.data;
     });
@@ -101,18 +101,6 @@ export default {
         </div>
       </div>
     </div>
-
-    <!-- Header bottom services -->
-    <!-- <div class="header-container__bottom" v-if="this.$route.name === 'advanced-search-apartment'">
-      <div class="ms-page-container py-3 d-flex justify-content-between">
-        <div v-for="service in services" @click="filterByService(service)" :id="`${service.name}-${service.id}`" class="service-box text-muted py-1 d-flex flex-column align-items-center justify-content-between">
-          <div class="fa-lg fa-fw mb-1" v-html="service.icon"></div>
-          <div class="service-name" >
-              <small>{{ service.name }}</small>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </header>
 </template>
 
