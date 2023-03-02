@@ -46,7 +46,7 @@ export default {
 
         <!-- Prev button -->
         <li class="page-item">
-          <button class="page-link text-dark" :class="this.store.currentPage === this.store.firstPage ? 'disabled' : ''" @click="getPaginationResults(this.store.currentPage - 1)">Precedente</button>
+          <button class="page-link text-dark" :class="this.store.currentPage === this.store.firstPage ? 'disabled gray-disabled' : ''" @click="getPaginationResults(this.store.currentPage - 1)">Precedente</button>
         </li>
         
         <!-- Single numeric buttons -->
@@ -56,7 +56,7 @@ export default {
 
         <!-- Next button -->
         <li class="page-item">
-          <button class="page-link text-dark" :class="this.store.currentPage === this.store.lastPage ? 'disabled' : ''" @click="getPaginationResults(this.store.currentPage + 1)">Successiva</button>
+          <button class="page-link text-dark" :class="this.store.currentPage === this.store.lastPage ? 'disabled gray-disabled' : ''" @click="getPaginationResults(this.store.currentPage + 1)">Successiva</button>
         </li>
       </ul>
     </nav>
@@ -104,5 +104,8 @@ div.ms-page-container {
 .red-pagination {
   background-color: var(--red-color) !important;
   color: white !important;
+}
+.gray-disabled {
+  background-color: lightgray !important;
 }
 </style>
