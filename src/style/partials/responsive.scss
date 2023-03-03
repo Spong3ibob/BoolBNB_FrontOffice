@@ -16,6 +16,11 @@
         .grid{
                 grid-template-columns: repeat(4, 1fr) !important;
         }
+        .chi-siamo{
+                & .card{
+                        width: 90% !important;
+                }
+        }
         
         // LEFT COLUMN SHOW   
         .images-box{
@@ -82,6 +87,19 @@
                 }
         }
 
+        //INDEX HOMEPAGE
+        .chi-siamo{
+                h3{
+                        font-size: 30px !important;
+                }
+                h4{
+                        font-size: 18px !important;
+                }
+                p{
+                        font-size: 14px !important;
+                }
+        }
+
 
         // LEFT COLUMN SHOW   
         .images-box{
@@ -115,6 +133,16 @@
 // 768px BREAKPOINT
 @media screen and (max-width: 767px) {
 
+        //INDEX HOMEPAGE
+        .chi-siamo{
+                h3{
+                        font-size: 30px !important;
+                }
+                .business-item{
+                        display: none !important;
+                }
+        }
+
         // FOOTER
         .footer-top{
                 display: none !important;
@@ -146,6 +174,12 @@
                         font-size: 18px !important;
                 }
         }
+        .chi-siamo{
+                & .card{
+                        top: 37% !important;
+                }
+
+        }
 }
 
 // 500px BREAKPOINT
@@ -176,17 +210,14 @@
         } 
         .chi-siamo{
                 & .card{
-
-                        width: 90%;
+                        top: 20% !important;
+                        transform: translate(-50%, 0%) !important; 
                 }
-                h3{
-                        font-size: 20px !important;
+                hr{
+                        display: none !important;
                 }
-                h4{
-                        font-size: 18px !important;
-                }
-                p{
-                        font-size: 14px !important;
+                .about-us-item{
+                        display: none !important;
                 }
         }
         
@@ -215,7 +246,7 @@
         }
 }
 
-// 520px BREAKPOINT
+// 320px BREAKPOINT
 @media screen and (max-width: 320px) {
         // HEADER
         .h-top-right{
@@ -243,18 +274,12 @@
 
         .chi-siamo{
                 & .card{
-                        width: 90% !important;
-                        top: 0% !important;
+                        top: 10% !important;
+                        transform: translate(-50%, 0) !important; 
                 }
                 h3{
                         display: none !important;
                         font-size: 20px !important;
-                }
-                h4{
-                        font-size: 18px !important;
-                }
-                p{
-                        font-size: 14px !important;
                 }
         }
 }
