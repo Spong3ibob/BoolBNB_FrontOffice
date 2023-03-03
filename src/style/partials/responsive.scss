@@ -176,7 +176,7 @@
         } 
         .chi-siamo{
                 & .card{
-                        // top: 0% !important;
+
                         width: 90%;
                 }
                 h3{
@@ -257,4 +257,171 @@
                         font-size: 14px !important;
                 }
         }
+}
+
+
+/*-----------------------------
+   RESPONSIVE ADVANCE SEARCH
+-----------------------------*/
+
+// 1400px BREAKPOINT
+
+@media screen and (max-width: 1400px) {
+
+        // CONTAINERS
+        .ms-page-container{
+                width: 100%;
+                max-width: 1080px;
+        }        
+        
+        // SERVIZI
+        .all-services{
+                width: 1080px;
+        
+                & .container-service{
+                    width: 100%;
+                    overflow-x: auto;
+                    display: flex;
+                    flex-direction: row;
+                }
+            }
+}
+
+// 1200px BREAKPOINT    
+
+@media screen and (max-width: 1200px) {
+        
+        // CONTAINERS
+        .ms-page-container{
+                width: 100%;
+                max-width: 992px;
+        }
+
+         // SERVIZI
+         .all-services{
+                width: 992px;
+        
+                & .container-service{
+                    width: 100%;
+                    overflow-x: auto;
+                    display: flex;
+                    flex-direction: row;
+                }
+            }
+}
+
+//  991px BREAKPOINT
+
+@media screen and (max-width: 991px) {
+
+        // CONTAINERS
+        .ms-page-container{
+                width: 100%;
+                max-width: 720px;
+        }   
+
+         //FILTER
+         .rooms-beds-container{
+                display: flex !important;
+                flex-direction: row !important;
+        }
+        
+       // SERVIZI
+       .all-services{
+                width: 720px;
+
+                & .container-service{
+                width: 100%;
+                overflow-x: auto;
+                display: flex;
+                flex-direction: row;
+                }
+        }
+
+        // CONTAINER
+        .card-container{
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                height: auto;
+                width: 100%;
+
+                & .col-left-card{
+                        width: 100% !important;
+                }
+
+                & .col-right-map{
+                        display: none;
+                }
+
+               
+        } 
+
+}
+
+// 500px BREAKPOINT
+
+@media screen and (max-width: 500px) {
+        // HEADER
+        .h-top-right{
+                width: 30% !important;
+        }
+
+        // CONTAINERS
+        .ms-page-container{
+                width: 100%;
+                max-width: 400px;
+        } 
+
+        //FILTER
+        .rooms-beds-container{
+                display: flex !important;
+                flex-direction: row !important;
+        }
+        
+       // SERVIZI
+       .all-services{
+                width: 400px;
+
+                & .container-service{
+                width: 100%;
+                overflow-x: auto;
+                display: flex;
+                flex-direction: row;
+                }
+        }
+
+        // CONTAINER
+        .card-container{
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                height: auto;
+                width: 100%;
+
+                & .col-left-card{
+                        width: 100% !important;
+                }
+
+                & .col-right-map{
+                        display: none;
+                }
+
+               
+        } 
+}
+
+// 520px BREAKPOINT
+@media screen and (max-width: 320px) {
+        // HEADER
+        .h-top-right{
+                width: 30% !important;
+
+        }
+
+        // CONTAINERS
+        .ms-page-container-small{
+                width: 100%;
+                max-width: 320px !important;
+        } 
 }
