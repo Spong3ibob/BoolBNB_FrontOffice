@@ -31,11 +31,15 @@ export default {
     },
     methods: {
         pushServicesFilter(service){
-            if(!this.searchFilters.servicesFilter.includes(service)) {
-                this.searchFilters.servicesFilter.push(service);
+            const serviceBox = document.getElementById(`${service.name}-${service.id}`)
+
+            if(!this.searchFilters.servicesFilter.includes(service.name)) {
+                this.searchFilters.servicesFilter.push(service.name);
+                serviceBox.classList.add('service-clicked');
             } else {
-                let index = this.searchFilters.servicesFilter.indexOf(service);
+                let index = this.searchFilters.servicesFilter.indexOf(service.name);
                 this.searchFilters.servicesFilter.splice(index, 1);
+                serviceBox.classList.remove('service-clicked');
             }
         },
         sendRequestApi() {
@@ -169,39 +173,36 @@ export default {
             </div>    
         </div>
         <div v-else class="ms-page-container">
-
-                <form action="" class="py-1" @submit.prevent="this.filterByRadius()" @keypress.enter.prevent>
-                    
-                    <div class="row rooms-beds-container p-3">
-                        <div class=" col-4 radius_range">
-                            <label for="radius-range" class="form-label">Ricerca appartamenti a <strong class="text-capitalize">{{ this.$route.params.address }}</strong> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
-                            <input id="radius-range" class="form-range" type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
-                        </div>
-                        <div class="col-4 rooms-number">
-                            <label class="form-label" for="rooms-number-input">Numero minimo di stanze*</label>
-                            <input class="form-control" id="rooms-number-input" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
-                        </div>
-                        <div class="col-4 beds-number">
-                            <label class="form-label" for="beds-number-input">Numero minimo di letti*</label>
-                            <input class="form-control" id="beds-number-input" type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
+            <form action="" class="py-1" @submit.prevent="this.filterByRadius()" @keypress.enter.prevent>
+                
+                <div class="row rooms-beds-container p-3">
+                    <div class=" col-4 radius_range">
+                        <label for="radius-range" class="form-label">Ricerca appartamenti a <strong class="text-capitalize">{{ this.$route.params.address }}</strong> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
+                        <input id="radius-range" class="form-range" type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
+                    </div>
+                    <div class="col-4 rooms-number">
+                        <label class="form-label" for="rooms-number-input">Numero minimo di stanze*</label>
+                        <input class="form-control" id="rooms-number-input" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
+                    </div>
+                    <div class="col-4 beds-number">
+                        <label class="form-label" for="beds-number-input">Numero minimo di letti*</label>
+                        <input class="form-control" id="beds-number-input" type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
+                    </div>
+                </div>
+                <div class="all-services">
+                    <div class="service-container d-flex justify-content-between">
+                        <div class="service-box d-flex flex-column align-items-center pb-1" v-for="service in this.services" :id="service.name + '-' + service.id" @click="pushServicesFilter(service)">
+                            <span v-html="service.icon"></span>
+                            <span>{{ service.name }}</span>
                         </div>
                     </div>
-                    <div class="all-services">
-                        <div class="service-container d-flex justify-content-between">
-                            <div class="service-box d-flex flex-column align-items-center" v-for="service in this.services" @click="pushServicesFilter(service)">
-                                <span v-html="service.icon"></span>
-                                {{ service.name }}
-                            </div>
-                        </div>
-                    </div>
+                </div>
 
-                    {{ this.store.servicesFilter }}
-
-                    <button id="submit-form-search" class="d-none"></button>
-                    <div class="d-flex justify-content-center">
-                        Appartamenti trovati &nbsp <strong>{{ this.apartments.length }} </strong>   
-                    </div>
-                </form>
+                <button id="submit-form-search" class="d-none"></button>
+                <div class="d-flex justify-content-center">
+                    Appartamenti trovati &nbsp <strong>{{ this.apartments.length }} </strong>   
+                </div>
+            </form>
         </div>
         <div class="card-container d-flex justify-content-center">
             <div class="col-left-card">
