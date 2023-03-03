@@ -140,7 +140,7 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 20px;
+    z-index: 20;
     border-top: 1.8px solid #ebebeb;
   }
 

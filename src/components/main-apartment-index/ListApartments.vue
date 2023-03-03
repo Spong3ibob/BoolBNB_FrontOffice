@@ -21,6 +21,12 @@ export default {
         // Store pagination info
         this.store.currentPage = res.data.current_page;
         this.store.lastPage = res.data.last_page;
+        // scroll page when clicked 
+        window.scroll({
+          top: 250,
+          left: 0,
+          behavior: 'smooth'
+        })
       });
     }
   }
@@ -35,8 +41,8 @@ export default {
   </div>
 
   <!-- Sponsors apartments -->
-  <div class="ms-page-container" v-if="this.store.filteredApartments.length !== 0">
-    <div class=" d-flex flex-wrap mt-4 mb-2">
+  <div class="ms-page-container " v-if="this.store.filteredApartments.length !== 0">
+    <div class="grid">
       <AppCard v-for="filteredApartment in this.store.filteredApartments" :data="filteredApartment"/>
     </div>
     
@@ -90,12 +96,22 @@ export default {
     transform: translate(-50%, 0);
     padding: 8px 15px;
     border-radius: 18px;
+    text-align: center;
   }
 }
 div.ms-page-container {
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+  }
   & .single-apartment {
-    width: calc(100% / 4 - 24px);
+    // width: calc(100% / 4 - 24px);
     margin: 0 12px;
+    // margin-top: 0;
+    // width: 100%;
+
+
   }
 }
 
