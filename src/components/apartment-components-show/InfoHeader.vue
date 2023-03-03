@@ -113,8 +113,22 @@
         </div>
       </div>
     </div>
+    <!-- Button larger image on clickl -->
     <div class="images-box d-flex">
-      <img :src="data.image_url" :alt="data.title" />
+      <img :src="data.image_url" :alt="data.title" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: zoom-in;"/>
+    </div>
+  </div>
+
+  <!-- Button larger image on clickl -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button id="bigger-image-click" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+          <img class="w-100" :src="data.image_url" :alt="data.title" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -176,6 +190,14 @@ export default {
     }
   }
 }
+
+#bigger-image-click {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 8px;
+  background-color: white;
+}
 .apartment-share {
   .header-share {
     margin-left: 0.5rem;
@@ -201,7 +223,6 @@ export default {
   }
 
   // Custom Share Modal
-
   .modal {
     top: 20%;
   }
