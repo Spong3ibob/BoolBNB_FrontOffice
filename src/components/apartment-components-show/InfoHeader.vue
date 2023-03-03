@@ -68,7 +68,7 @@
                 ></button>
               </div>
               <div class="modal-body">
-                <p>Share this link via</p>
+                <p>Condividi pagina tramite</p>
                 <div class="d-flex align-items-center icons">
                   <a
                     href="#"
@@ -101,13 +101,11 @@
                     <span class="fab fa-telegram-plane"></span>
                   </a>
                 </div>
-                <p>Or copy link</p>
-                <div
-                  class="field d-flex align-items-center justify-content-between"
-                >
+                <p class="m-0">Oppure copia il seguente link</p>
+                <div class="field d-flex align-items-center justify-content-between">
                   <span class="fas fa-link text-center"></span>
-                  <input type="text" value="some.com/share" />
-                  <button>Copy</button>
+                  <input id="share-page-link" type="text" :value="this.fullPathUrl" disabled>
+                  <button id="copy-button" @click="copyToClipboard()">Copia</button>
                 </div>
               </div>
             </div>
@@ -115,7 +113,6 @@
         </div>
       </div>
     </div>
-
     <div class="images-box d-flex">
       <img :src="data.image_url" :alt="data.title" />
     </div>
@@ -127,6 +124,34 @@ export default {
   props: {
     data: Object,
   },
+  data() {
+    return {
+      fullPathUrl: ''
+    }
+  },
+  methods: {
+    copyToClipboard() {
+      // Get the text field
+      const copyButton = document.getElementById('copy-button');
+      var copyText = document.getElementById("share-page-link");
+
+      // Select the text field
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); // For mobile devices
+
+      // Copy the text inside the text field
+      navigator.clipboard.writeText(copyText.value);
+
+      copyButton.innerHTML = 'Copiato'
+
+      setTimeout(() => {
+        copyButton.innerHTML = 'Copia'
+      }, 1100);
+    }
+  },
+  created() {
+    this.fullPathUrl = window.location.href;
+  }
 };
 </script>
 
