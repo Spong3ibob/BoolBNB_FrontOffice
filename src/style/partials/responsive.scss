@@ -10,7 +10,12 @@
         .ms-page-container-small{
                 width: 100%;
                 max-width: 1080px;
-        }        
+        }
+
+        // // INDEX HOMEPAGE
+        .grid{
+                grid-template-columns: repeat(4, 1fr) !important;
+        }
         
         // LEFT COLUMN SHOW   
         .images-box{
@@ -34,6 +39,11 @@
                 max-width: 992px;
         }
 
+        // // INDEX HOMEPAGE
+        .grid{
+                grid-template-columns: repeat(2, 1fr) !important;
+        }
+
         // LEFT COLUMN SHOW   
         .images-box{
                 width: 60% !important;
@@ -43,6 +53,7 @@
                         width: 50% !important;
                 }
         }
+
 
         // RIGHT COLUMN CONTACTS SHOW
         // CONTACTS CARD
@@ -64,6 +75,13 @@
                 width: 100%;
                 max-width: 720px;
         }        
+
+        .hero{
+                img{
+                        height: 300px !important;
+                }
+        }
+
 
         // LEFT COLUMN SHOW   
         .images-box{
@@ -96,9 +114,37 @@
 
 // 768px BREAKPOINT
 @media screen and (max-width: 767px) {
+
         // FOOTER
         .footer-top{
                 display: none !important;
+        }
+}
+
+// 667px BREAKPOINT
+@media screen and (max-width: 667px) {
+
+        //INDEX HOMEPAGE
+        .grid{
+                grid-template-columns: repeat(1, 1fr) !important;
+        }
+        .page-navigation{
+                margin-top: 40px !important;
+        }
+        .single-apartment{
+                margin: 0 4px !important;
+                &:not(:first-child) {
+                        margin-top: 40px !important;
+                }
+        }
+        .hero{
+                img{
+                        height: 280px !important;
+                }
+                h4{
+        
+                        font-size: 18px !important;
+                }
         }
 }
 
@@ -115,6 +161,34 @@
                 width: 100%;
                 max-width: 400px;
         } 
+
+        
+        // INDEX HOMEPAGE
+        .hero{
+                img{
+                        height: 240px !important;
+                }
+                h4{
+ 
+                        font-size: 16px !important;
+                        width: 70% !important;
+                }
+        } 
+        .chi-siamo{
+                & .card{
+
+                        width: 90%;
+                }
+                h3{
+                        font-size: 20px !important;
+                }
+                h4{
+                        font-size: 18px !important;
+                }
+                p{
+                        font-size: 14px !important;
+                }
+        }
         
         // LEFT COLUMN SHOW   
         .images-box{
@@ -153,7 +227,36 @@
         .ms-page-container-small{
                 width: 100%;
                 max-width: 320px !important;
+                padding: 0 6px !important;
         } 
+
+        // INDEX HOMEPAGE
+        .hero{
+                img{
+                        height: 200px !important;
+                }
+                h4{
+                        font-size: 16px !important;
+                        width: 80% !important;
+                }
+        }
+
+        .chi-siamo{
+                & .card{
+                        width: 90% !important;
+                        top: 0% !important;
+                }
+                h3{
+                        display: none !important;
+                        font-size: 20px !important;
+                }
+                h4{
+                        font-size: 18px !important;
+                }
+                p{
+                        font-size: 14px !important;
+                }
+        }
 }
 
 
