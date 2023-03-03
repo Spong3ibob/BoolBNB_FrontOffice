@@ -50,6 +50,14 @@ export default {
     const searchBoxResultListContainer = document.querySelector('.tt-search-box-result-list-container');
     searchBoxResultListContainer.classList.add('mt-1' ,'rounded');
     
+    const searchIcon = document.querySelector('.tt-search-box-input-container svg');
+    searchIcon.classList.add('cursor-pointer');
+    
+    searchIcon.addEventListener('click', function() {
+      if ( searchBoxInput.value !== '' ) {
+        window.location.href = `/advance/search-apartments/${searchBoxInput.value}`
+      }
+    });
 
     searchBoxInput.addEventListener('keyup', function(e) {
       if (e.key === 'Enter' && searchBoxInput.value !== '') {
