@@ -35,19 +35,19 @@ export default {
         <div class="container d-flex">
             <div class="card text-light">
                 <div class="card-body">
-                    <h3 class="card-title m-text-cursive mb-md-5 mb-0">About Us</h3>
-                    <div class="about-us-item p-1 mb-4 d-none">
-                        <h4 class="card-subtitle mb-2">Mission</h4>
-                        <p class="card-text"><i class="fa-solid fa-quote-left"></i> La missione di BoolBnB è aiutare a creare un mondo in cui puoi appartenere ovunque e in cui le persone possono vivere in un luogo, invece di limitarsi a viaggiare verso di esso. <i class="fa-solid fa-quote-right"></i> </p>
+                    <h3 class="card-title m-text-cursive mb-md-3 mb-0">About Us</h3>
+                    <div class="about-us-item mb-4 d-none">
+                        <h4 class="card-subtitle">Mission</h4>
+                        <p class="card-text mb-4"><i class="fa-solid fa-quote-left"></i> La missione di BoolBnB è aiutare a creare un mondo in cui puoi appartenere ovunque e in cui le persone possono vivere in un luogo, invece di limitarsi a viaggiare verso di esso. <i class="fa-solid fa-quote-right"></i> </p>
                     </div>
                     <hr class="d-none">
-                    <div class="business-item p-1 mb-4 d-none d-sm-inline">
-                        <h4 class="card-subtitle mb-2">Business</h4>
-                        <p class="card-text"><i class="fa-solid fa-quote-left"></i> BoolBnB è nato nel 2023 quando due host hanno accolto tre ospiti nella loro casa di San Francisco e da allora è cresciuto fino a superare i 4 milioni di host che hanno accolto 200 milioni di ospiti in arrivo in quasi tutti i paesi del mondo. Ogni giorno, gli host offrono soggiorni ed esperienze uniche che consentono agli ospiti di entrare in contatto con le comunità in modo più autentico. <i class="fa-solid fa-quote-right"></i> </p>
+                    <div class="business-item d-none d-sm-inline">
+                        <h4 class="card-subtitle">Business</h4>
+                        <p class="card-text mb-4"><i class="fa-solid fa-quote-left"></i> BoolBnB è nato nel 2023 quando due host hanno accolto tre ospiti nella loro casa di San Francisco e da allora è cresciuto fino a superare i 4 milioni di host che hanno accolto 200 milioni di ospiti in arrivo in quasi tutti i paesi del mondo. Ogni giorno, gli host offrono soggiorni ed esperienze uniche che consentono agli ospiti di entrare in contatto con le comunità in modo più autentico. <i class="fa-solid fa-quote-right"></i> </p>
                     </div>
                     <hr class="d-none">
-                    <div class="our-team-item p-1 mb-4">
-                        <h4 class="card-subtitle mb-2">Our Team</h4>
+                    <div class="our-team-item">
+                        <h4 class="card-subtitle">Our Team</h4>
                         <p class="card-text"><i class="fa-solid fa-quote-left"></i> Leonardo Maran - Maria Ximena - Paolo Napoli - Pietro Fecarotta - Roberto Papagni <i class="fa-solid fa-quote-right"></i></p>
                     </div>
                 </div>
@@ -60,27 +60,13 @@ export default {
 
 <style lang="scss" scoped>
 .chi-siamo {
-
-
-   /* & .evidence {
-        background-color: white;
-        border: 2px solid var(--red-color);
-        color: var(--red-color);
-        position: absolute;
-        left: 50%;
-        bottom: -175px;
-        transform: translate(-50%, 0);
-        padding: 8px 15px;
-        border-radius: 18px;
-      }
-    */
     position: relative;
     & .carousel-inner {
         width: 100%;
 
         & .carousel-item {
             & img {
-                max-height: 800px;
+                max-height: 600px;
                 filter: brightness(80%);
             }
         }
@@ -92,8 +78,8 @@ export default {
             backdrop-filter: blur(5px);            
             position: absolute;
             left: 50%;
-            top: 10%;
-            transform: translate(-50%, 0); 
+            top: 40%;
+            transform: translate(-50%, -40%); 
             background-color: transparent;
             border: none;
             box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px; 

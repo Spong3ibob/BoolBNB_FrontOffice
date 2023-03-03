@@ -175,7 +175,7 @@ export default {
         <div v-else class="ms-page-container">
             <form action="" class="py-1" @submit.prevent="this.filterByRadius()" @keypress.enter.prevent>
                 
-                <div class="row rooms-beds-container p-3">
+                <div class="row rooms-beds-container py-3">
                     <div class=" col-4 radius_range">
                         <label for="radius-range" class="form-label">Ricerca appartamenti a <strong class="text-capitalize">{{ this.$route.params.address }}</strong> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
                         <input id="radius-range" class="form-range" type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
