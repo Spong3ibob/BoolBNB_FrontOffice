@@ -9,4 +9,9 @@ export const store = reactive({
   filteredApartments: [],
   searchInput: '',
   servicesFilter: [],
+
+  // pagination info
+  currentPage: 1,
+  firstPage: 1,
+  lastPage: '',
 });

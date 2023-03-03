@@ -1,6 +1,7 @@
 <script>
 import { store } from "../../store";
 import AppCard from "./card-components/AppCard.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -11,31 +12,57 @@ export default {
       store,
     };
   },
+  methods: {
+    getPaginationResults(pageNumber) {
+      axios.get(`${this.store.backendUrl}/sponsored-apartments/?page=${pageNumber}`)
+      .then( (res) => {
+        this.store.filteredApartments = res.data.data;
+        
+        // Store pagination info
+        this.store.currentPage = res.data.current_page;
+        this.store.lastPage = res.data.last_page;
+      });
+    }
+  }
 };
 </script>
 
 <template>
+  <!-- Hero Top -->
   <div class="hero mb-5">
-    <img
-      class="w-100"
-      src="../../assets/img/hero.jpg"
-      alt=""
-    />
-    <h3 class="evidence m-text-cursive">APPARTAMENTI IN EVIDENZA</h3>
+    <img class="w-100" src="../../assets/img/hero.jpg" alt="" />
+    <h4 class="evidence m-text-cursive">APPARTAMENTI IN EVIDENZA</h4>
   </div>
-  <div
-    class="ms-page-container d-flex flex-wrap mt-4 mb-5"
-    v-if="this.store.filteredApartments.length !== 0"
-  >
-    <AppCard
-      v-for="filteredApartment in this.store.filteredApartments"
-      :data="filteredApartment"
-    />
+
+  <!-- Sponsors apartments -->
+  <div class="ms-page-container" v-if="this.store.filteredApartments.length !== 0">
+    <div class=" d-flex flex-wrap mt-4 mb-2">
+      <AppCard v-for="filteredApartment in this.store.filteredApartments" :data="filteredApartment"/>
+    </div>
+    
+    <!-- Sponsors pagination -->
+    <nav aria-label="Page navigation example" class="page-navigation d-flex justify-content-center">
+      <ul class="pagination mb-5">
+
+        <!-- Prev button -->
+        <li class="page-item">
+          <button class="page-link text-dark" :class="this.store.currentPage === this.store.firstPage ? 'disabled gray-disabled' : ''" @click="getPaginationResults(this.store.currentPage - 1)">Precedente</button>
+        </li>
+        
+        <!-- Single numeric buttons -->
+        <li class="page-item" :class="this.store.currentPage === numberPage ? 'disabled' : ''" v-for="numberPage in this.store.lastPage">
+          <button class="page-link text-dark" :class="this.store.currentPage === numberPage ? 'red-pagination' : ''" @click="getPaginationResults(numberPage)">{{ numberPage }}</button>
+        </li>
+
+        <!-- Next button -->
+        <li class="page-item">
+          <button class="page-link text-dark" :class="this.store.currentPage === this.store.lastPage ? 'disabled gray-disabled' : ''" @click="getPaginationResults(this.store.currentPage + 1)">Successiva</button>
+        </li>
+      </ul>
+    </nav>
   </div>
   <div v-else>
-    <div
-      class="ms-page-container d-flex justify-content-center align-items-center flex-wrap mt-5"
-    >
+    <div class="ms-page-container d-flex justify-content-center align-items-center flex-wrap mt-5">
       <div class="alert alert-danger mt-5">
         <i class="fa-solid fa-ban fa-lg fa-fw"></i> Nessun appartamento
         sponsorizzato.
@@ -59,7 +86,7 @@ export default {
     color: var(--red-color);
     position: absolute;
     left: 50%;
-    bottom: -26px;
+    bottom: -30px;
     transform: translate(-50%, 0);
     padding: 8px 15px;
     border-radius: 18px;
@@ -69,6 +96,22 @@ div.ms-page-container {
   & .single-apartment {
     width: calc(100% / 4 - 24px);
     margin: 0 12px;
+  }
+}
+
+.page-navigation {
+  & button {
+    border-color: var(--red-color) !important;
+  }
+  & button:focus {
+    box-shadow: none;
+  }
+  .red-pagination {
+    background-color: var(--red-color) !important;
+    color: white !important;
+  }
+  .gray-disabled {
+    background-color: rgba(211, 211, 211, 0.3) !important;
   }
 }
 </style>

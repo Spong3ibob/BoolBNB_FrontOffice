@@ -187,7 +187,7 @@ export default {
                         </div>
                     </div>
                     <div class="all-services p-2 d-flex justify-content-center align-items-center">
-                        <div class="service col-1" v-for="service in this.services">
+                        <div class="service col-1 p-3" v-for="service in this.services">
                             <div class=" d-flex flex-column justify-content-center align-items-center" @click="pushServicesFilter(service.name), sendRequestApi()">
                                 <div class="form-check-icon d-flex flex-column justify-content-center align-items-center"  v-html="service.icon" :id="service.name + '-' + service.id"></div>
                                 <div class="form-check-label d-flex flex-column justify-content-center align-items-center" :for="service.name + '-' + service.id">
@@ -247,7 +247,6 @@ export default {
         text-align: center;
         border-bottom: 1px solid white;
     }
-
     .card-container {
         width: 100%;
         height: 650px;

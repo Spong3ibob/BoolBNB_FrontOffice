@@ -77,9 +77,11 @@ export default {
     <div class="modal fade" id="boxMessage" tabindex="-1" aria-labelledby="boxMessageLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title fs-5" id="host-button"> <strong>Contatta l'host {{ info.user.name }}</strong> </h1>
-            <button type="button" class="my-btn" data-bs-dismiss="modal" disabled aria-label="Close"></button>
+        <div class="modal-header justify-content-center"> 
+            <button class="my-btn-nohover"></button>
+            <h1 class="modal-title fs-5 mx-3" id="host-button"> <strong>Contatta l'host {{ info.user.name }}</strong> </h1>
+            <button class="my-btn-nohover"></button>
+
         </div>
         <form @submit.prevent="publicFunction">
             <div class="modal-body">
@@ -213,6 +215,26 @@ export default {
         background: linear-gradient(158deg, #fa4546 0%, #d4029f 100%);
         color: #ffffff;
         border: none;
+    }
+    .my-btn-nohover {
+        width: 20%;
+        font-family: Roboto, sans-serif;
+        font-weight: 0;
+        font-size: 14px;
+        color: #fff;
+        background: linear-gradient(158deg, #fa4546 0%, #d4029f 100%);
+        padding: 10px 30px;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        border-radius: 15px;
+        transition : 113ms;
+        transform: translateY(0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        cursor: default;
     }
     .my-textarea{
         height: 200px;
