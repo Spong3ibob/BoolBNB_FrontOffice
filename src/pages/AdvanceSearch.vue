@@ -186,27 +186,16 @@ export default {
                             <input class="form-control" id="beds-number-input" type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
                         </div>
                     </div>
-<<<<<<< HEAD
-                    <div class="all-services p-2 d-flex justify-content-center align-items-center">
-                        <div class="service col-1 p-3" v-for="service in this.services">
-                            <div class=" d-flex flex-column justify-content-center align-items-center" @click="pushServicesFilter(service.name), sendRequestApi()">
-                                <div class="form-check-icon d-flex flex-column justify-content-center align-items-center"  v-html="service.icon" :id="service.name + '-' + service.id"></div>
-                                <div class="form-check-label d-flex flex-column justify-content-center align-items-center" :for="service.name + '-' + service.id">
-                                    {{ service.name }}
-=======
                     <div class="all-services">
-                        <div class="container-service d-flex flex-row justify-content-center align-items-center">
-                            <div class="service p-3" v-for="service in this.services">
-                                <div class=" d-flex flex-column justify-content-center align-items-center" @click="pushServicesFilter(service.name), sendRequestApi()">
-                                    <div class="form-check-icon d-flex flex-column justify-content-center align-items-center"  v-html="service.icon" :id="service.name + '-' + service.id"></div>
-                                    <div class="form-check-label d-flex flex-column justify-content-center align-items-center" :for="service.name + '-' + service.id">
-                                        {{ service.name }}
-                                    </div>
->>>>>>> responsive_advance_search
-                                </div>
+                        <div class="service-container d-flex justify-content-between">
+                            <div class="service-box d-flex flex-column align-items-center" v-for="service in this.services" @click="pushServicesFilter(service)">
+                                <span v-html="service.icon"></span>
+                                {{ service.name }}
                             </div>
                         </div>
                     </div>
+
+                    {{ this.store.servicesFilter }}
 
                     <button id="submit-form-search" class="d-none"></button>
                     <div class="d-flex justify-content-center">
@@ -287,10 +276,20 @@ export default {
             }
         }
     }
-
-   
-    
 }
 
-
+.service-container {
+    .service-box {
+        border-bottom: 3px solid transparent;
+        cursor: pointer;
+        &:hover {
+            border-color: rgba(0,0,0,0.18);
+            color: black !important;
+        }
+    }
+}
+.service-clicked {
+    color: black !important;
+    border-color: black !important;
+}
 </style>
