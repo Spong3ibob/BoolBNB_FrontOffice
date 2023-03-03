@@ -9,23 +9,11 @@
     >
       <!-- Informazioni  Via/Sponsor -->
       <div class="apartment-info-header ">
-        <div class="visuals d-none d-xl-inline">
-          <span class="header-info">Visualizzazioni</span>
-          <span class="spacer-dot">·</span>
-        </div>
-        <div class="review d-none d-xl-inline">
-          <span class="header-info">Recensioni/Messaggi</span>
-          <span class="spacer-dot">·</span>
-        </div>
         <div v-if="data.sponsorships.length" class="d-none d-lg-inline ">
-          <span class="header-info sponsor"
-            ><i class="icon fa-solid fa-medal"></i>Sponsorizzato</span
-          >
+          <span class="header-info sponsor"><i class="icon fa-solid fa-medal"></i>Sponsorizzato</span>
           <span class="spacer-dot">·</span>
         </div>
-        <span class="header-info text-decoration-underline address"
-          ><i> {{ data.full_address }}</i></span
-        >
+        <span class="header-info text-decoration-underline address"><i> {{ data.full_address }}</i></span>
       </div>
 
       <!-- Condividi Link -->
@@ -60,46 +48,16 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="myModelLabel">Share Modal</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <p>Condividi pagina tramite</p>
                 <div class="d-flex align-items-center icons">
-                  <a
-                    href="#"
-                    class="fs-5 d-flex align-items-center justify-content-center"
-                  >
-                    <span class="fab fa-facebook-f"></span>
-                  </a>
-                  <a
-                    href="#"
-                    class="fs-5 d-flex align-items-center justify-content-center"
-                  >
-                    <span class="fab fa-twitter"></span>
-                  </a>
-                  <a
-                    href="#"
-                    class="fs-5 d-flex align-items-center justify-content-center"
-                  >
-                    <span class="fab fa-instagram"></span>
-                  </a>
-                  <a
-                    href="#"
-                    class="fs-5 d-flex align-items-center justify-content-center"
-                  >
-                    <span class="fab fa-whatsapp"></span>
-                  </a>
-                  <a
-                    href="#"
-                    class="fs-5 d-flex align-items-center justify-content-center"
-                  >
-                    <span class="fab fa-telegram-plane"></span>
-                  </a>
+                  <a href="#" class="fs-5 d-flex align-items-center justify-content-center"><span class="fab fa-facebook-f"></span></a>
+                  <a href="#" class="fs-5 d-flex align-items-center justify-content-center"><span class="fab fa-twitter"></span></a>
+                  <a href="#" class="fs-5 d-flex align-items-center justify-content-center"><span class="fab fa-instagram"></span></a>
+                  <a href="#" class="fs-5 d-flex align-items-center justify-content-center"><span class="fab fa-whatsapp"></span></a>
+                  <a href="#" class="fs-5 d-flex align-items-center justify-content-center"><span class="fab fa-telegram-plane"></span></a>
                 </div>
                 <p class="m-0">Oppure copia il seguente link</p>
                 <div class="field d-flex align-items-center justify-content-between">
