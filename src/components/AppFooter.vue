@@ -49,7 +49,7 @@ export default {
         <h3 class="mb-3">Assistenza</h3>
         <ul class="mb-0 p-0">
           <li class="list-unstyled "><a href="">Centro Assistenza</a></li>
-          <li class="list-unstyled "><a href="">AirCover</a></li>
+          <li class="list-unstyled "><a href="">BoolCover</a></li>
           <li class="list-unstyled "><a href="">Accessibilità per tutti</a></li>
           <li class="list-unstyled "><a href="">Opzioni di cancellazione</a></li>
           <li class="list-unstyled "><a href="">La nostra risposta all'emergenza COVID-19</a></li>
@@ -68,8 +68,8 @@ export default {
       <nav>
         <h3 class="mb-3">Ospitare</h3>
         <ul class="mb-0 p-0">
-          <li class="list-unstyled "><a href="">Apri un Airbnb</a></li>
-          <li class="list-unstyled "><a href="">AirCover per gli host</a></li>
+          <li class="list-unstyled "><a href="">Apri un BoolBnB</a></li>
+          <li class="list-unstyled "><a href="">BoolCover per gli host</a></li>
           <li class="list-unstyled "><a href="">Esplora le risorse per host</a></li>
           <li class="list-unstyled "><a href="">Vai al forum della community</a></li>
           <li class="list-unstyled "><a href="">Come ospitare responsabilmente</a></li>
