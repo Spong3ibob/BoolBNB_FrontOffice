@@ -31,7 +31,7 @@ export default {
   <!-- Hero Top -->
   <div class="hero mb-5">
     <img class="w-100" src="../../assets/img/hero.jpg" alt="" />
-    <h3 class="evidence m-text-cursive">APPARTAMENTI IN EVIDENZA</h3>
+    <h4 class="evidence m-text-cursive">APPARTAMENTI IN EVIDENZA</h4>
   </div>
 
   <!-- Sponsors apartments -->
@@ -86,7 +86,7 @@ export default {
     color: var(--red-color);
     position: absolute;
     left: 50%;
-    bottom: -26px;
+    bottom: -30px;
     transform: translate(-50%, 0);
     padding: 8px 15px;
     border-radius: 18px;
@@ -98,14 +98,20 @@ div.ms-page-container {
     margin: 0 12px;
   }
 }
-.page-navigation button:focus {
-  box-shadow: none;
-}
-.red-pagination {
-  background-color: var(--red-color) !important;
-  color: white !important;
-}
-.gray-disabled {
-  background-color: lightgray !important;
+
+.page-navigation {
+  & button {
+    border-color: var(--red-color) !important;
+  }
+  & button:focus {
+    box-shadow: none;
+  }
+  .red-pagination {
+    background-color: var(--red-color) !important;
+    color: white !important;
+  }
+  .gray-disabled {
+    background-color: rgba(211, 211, 211, 0.3) !important;
+  }
 }
 </style>
