@@ -200,10 +200,10 @@ export default {
                             <input class="form-control w-25 align-self-center text-center" id="beds-number-input" type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
                         </div>
                     </div>
-                    <div class="all-services rounded-pill col-sm-12 p-2 px-4 mb-4">
+                    <div class="all-services rounded-pill col-sm-12 p-2 px-5 mb-4">
                         <div class="collections">
                             <ul class="collections-nav nav-tabs border-0 m-0 p-0 service-container d-flex justify-content-between">
-                                <div class="service-box d-flex flex-column align-items-center justify-content-center px-3" v-for="service in this.services" :id="service.name + '-' + service.id" @click="pushServicesFilter(service), sendRequestApi()">
+                                <div class="service-box d-flex flex-column align-items-center justify-content-center" v-for="service in this.services" :id="service.name + '-' + service.id" @click="pushServicesFilter(service), sendRequestApi()">
                                     <span v-html="service.icon"></span>
                                     <span>{{ service.name }}</span>
                                 </div>
@@ -371,7 +371,7 @@ export default {
   & .left {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 15px;
     transform: translate(0, -50%);
     border-radius: 50%;
     width: 20px;
@@ -382,7 +382,7 @@ export default {
   & .right {
     position: absolute;
     top: 50%;
-    right: 10px;
+    right: 15px;
     transform: translate(0, -50%);
     border-radius: 50%;
     width: 20px;
