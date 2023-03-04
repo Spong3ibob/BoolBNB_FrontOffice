@@ -12,8 +12,10 @@ export default {
 </script>
 
 <template>
-  <ListApartments />
-  <SectionAboutUs />
+  <div id="index-home">
+    <ListApartments />
+    <SectionAboutUs />
+  </div>
 </template>
 
 <style lang="scss" scoped></style>
