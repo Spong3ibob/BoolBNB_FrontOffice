@@ -44,69 +44,66 @@ export default {
                 notte
             </span>
             <div class="container-check my-3">
-                <div class="date-check p-4 d-">
-                    <div class="check-left ">
+                <div class="date-check">
+                    <div class="check-left p-1">
                         <h6>CHECK-IN</h6>
-                        <input type="date" v-model="this.ceckIn" required>
+                        <input class="" type="date" v-model="this.ceckIn" required>
                     </div>
-                    <div class="check-right">
+                    <div class="check-right p-1">
                         <h6>CHECK-OUT</h6>
-                        <input type="date" v-model="this.ceckOut" required>
+                        <input class="" type="date" v-model="this.ceckOut" required>
                     </div>
                 </div>
             </div>
-            <!-- Bottone prenota da implementare  -->
-            <!-- <button type="button" id="prenota-button" class="my-btn mb-3">Prenota</button> -->
-            <!-- Button trigger modal -->
+
+            <!-- Trigger message modal -->
             <div v-if="this.ceckIn !== '' && this.ceckOut !== ''">
                 <button type="submit" class="my-btn mx-auto" data-bs-toggle="modal" data-bs-target="#boxMessage" @click="setEmailMessage()">
                     Contatta l'host
                 </button>
-                <!-- Modal -->
             </div>
             <div v-else>
                 <button class="my-btn mx-auto">
                     Contatta l'host
                 </button>
-                <!-- Modal -->
             </div>
         </form>
     </div>
 
-    <!-- Modal Message -->
+    <!-- Modal send Message -->
     <div class="modal fade" id="boxMessage" tabindex="-1" aria-labelledby="boxMessageLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header justify-content-center"> 
-            <button class="my-btn-nohover"></button>
-            <h1 class="modal-title fs-5 mx-3" id="host-button"> <strong>Contatta l'host {{ info.user.name }}</strong> </h1>
-            <button class="my-btn-nohover"></button>
-
-        </div>
-        <form @submit.prevent="publicFunction">
-            <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="recipient-name">Nome</label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="inserisci nome" autocomplete="name" v-model="name" required>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center"> 
+                    <button class="my-btn-nohover"></button>
+                    <h1 class="modal-title fs-5 mx-3" id="host-button"> <strong>Contatta l'host {{ info.user.name }}</strong> </h1>
+                    <button class="my-btn-nohover"></button>
+                </div>
+                
+                <form @submit.prevent="publicFunction">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="recipient-name">Nome</label>
+                            <input type="text" class="form-control" id="recipient-name" placeholder="inserisci nome" autocomplete="name" v-model="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-email">Email Addres *</label>
+                            <input type="email" class="form-control" id="recipient-email" placeholder="inserisci email" autocomplete="email" v-model="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text">Contenuto messaggio *</label>
+                            <textarea class="form-control my-textarea" id="message-text" cols="30" rows="10"  required placeholder="Cotenuto messaggio*" v-model="message"></textarea>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="recipient-email">Email Addres *</label>
-                        <input type="email" class="form-control" id="recipient-email" placeholder="inserisci email" autocomplete="email" v-model="email" required>
+                    <div class="modal-footer">
+                        <button type="button" class="my-btn2" data-bs-dismiss="modal">Close</button>
+                        <div class="d-inline" v-if="(this.name !== '' && this.email !== '' && this.email.includes('@') )">
+                            <button type="submit" class="my-btn2" data-bs-dismiss="modal">Invia</button>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="message-text">Contenuto messaggio *</label>
-                        <textarea class="form-control my-textarea" id="message-text" cols="30" rows="10"  required placeholder="Cotenuto messaggio*" v-model="message"></textarea>
-                    </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                    <button type="button" class="my-btn2" data-bs-dismiss="modal">Close</button>
-                    <div class="d-inline" v-if="(this.name !== '' && this.email !== '' && this.email.includes('@') )">
-                        <button type="submit" class="my-btn2" data-bs-dismiss="modal">Invia</button>
-                    </div>
-            </div>
-        </form>
         </div>
-    </div>
     </div>        
 </template>
 
@@ -162,25 +159,31 @@ export default {
     }
     .date-check{
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
+        font-size: 15px !important;
+        & h6 {
+            text-align: center;
+        }
     }
     .check-left{
         display: flex;
         flex-direction: column;
-        align-items: center;
-
+        border-right: 0.5px solid  rgba(0, 0, 0, 0.346);
         input{
             border: none;
+            width: 100%;
+            margin: auto;
         }
     }
     .check-right{
         display: flex;
         flex-direction: column;
-        align-items: center;
-
+        border-left: 0.5px solid  rgba(0, 0, 0, 0.346);
         input{
             border: none;
+            width: 100%;
+            margin: auto;
         }
     }
 
