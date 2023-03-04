@@ -178,19 +178,19 @@ export default {
                     
                     <div class="row rooms-beds-container rounded-pill justify-content-around p-2 px-1 ms-1 mb-4">
                         <div class="col-md-5 col-sm-12 radius_range d-flex flex-column justify-content-center">
-                            <label for="radius-range" class="form-label align-self-center w-sm-50 ">Ricerca appartamenti a <strong class="text-capitalize">{{ this.$route.params.address }}</strong> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
+                            <label for="radius-range" class="form-label align-self-center w-sm-50 ">Ricerca appartamenti nel raggio di {{ this.searchFilters.radiusStart }}km | <strong class="text-capitalize">{{ this.$route.params.address }}</strong></label>
                             <input id="radius-range" class="form-range align-self-center w-sm-50 " type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
                         </div>
                         <div class="col-md-3 col-sm-12 rooms-number d-flex flex-column justify-content-center">
                             <label class="form-label align-self-center" for="rooms-number-input">Numero minimo di stanze*</label>
-                            <input class="form-control w-25 align-self-center " id="rooms-number-input" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
+                            <input class="form-control w-25 align-self-center text-center" id="rooms-number-input" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
                         </div>
                         <div class="col-md-3 col-sm-12 beds-number d-flex flex-column justify-content-center">
                             <label class="form-label align-self-center" for="beds-number-input">Numero minimo di letti*</label>
-                            <input class="form-control w-25 align-self-center" id="beds-number-input" type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
+                            <input class="form-control w-25 align-self-center text-center" id="beds-number-input" type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
                         </div>
                     </div>
-                    <div class="all-services rounded-pill col-sm-12 p-3 px-4 mb-4">
+                    <div class="all-services rounded-pill col-sm-12 p-2 px-4 mb-4">
                         <div class="service-container d-flex justify-content-between">
                             <div class="service-box d-flex flex-column align-items-center pb-1 me-3" v-for="service in this.services" :id="service.name + '-' + service.id" @click="pushServicesFilter(service), sendRequestApi()">
                                 <span v-html="service.icon"></span>
