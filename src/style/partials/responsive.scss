@@ -4,13 +4,18 @@
 
 // 1400px BREAKPOINT
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1440px) {
 
         // CONTAINERS
         .ms-page-container-small{
                 width: 100%;
                 max-width: 1080px;
         }
+        .ms-page-container{
+                width: 100%;
+                max-width: 1200px !important;
+        }
+        
 
         // // INDEX HOMEPAGE
         .grid{
@@ -67,6 +72,10 @@
 
                 .check-left{
                         margin-bottom: 10px !important;
+                        border-right: none !important;
+                }
+                .check-right{
+                        border-left: none !important;
                 }
         }
 }
@@ -122,9 +131,17 @@
 
                 .date-check{
                         flex-direction:row;
+                        justify-content: space-around !important;
 
-                        .check-left{
+                        .check-left, .check-right{
+                                width: 50%;
                                 margin-bottom: 0px !important;
+                                & input {
+                                        width: 50%;
+                                }
+                        }
+                        .check-left{
+                                border-right: 1px solid  rgba(0, 0, 0, 0.346) !important;
                         }
                 }
         }
@@ -178,7 +195,13 @@
                 & .card{
                         top: 37% !important;
                 }
-
+        }
+        .date-check{
+                .check-left, .check-right{
+                        & input {
+                                width: 70% !important;
+                        }
+                }
         }
 }
 
@@ -241,6 +264,13 @@
 
                         .check-left{
                                 margin-bottom: 10px !important;
+                                border: none !important;
+                        }
+
+                        .check-left, .check-right {
+                                & input {
+                                        width: 95% !important;
+                                }
                         }
                 }
         }

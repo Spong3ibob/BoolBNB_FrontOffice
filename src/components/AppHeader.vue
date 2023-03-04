@@ -86,8 +86,8 @@ export default {
         <!-- top left -->
         <div class="h-top-left w-25 d-flex">
           <RouterLink :to="{ name: 'homepage' }" class="d-flex align-items-center text-decoration-none">
-            <img src="../assets/img/logo-icon.png" alt="" style="width: 40px">
-            <h2 class="mb-0 ps-1 m-text-cursive d-none d-md-inline">BoolBnB</h2>
+            <img class="d-md-none d-inline" src="../../public/favicon.ico" alt="" style="width: 40px">
+            <h2 class="mb-0 d-none m-text-cursive d-md-inline">BoolBnB</h2>
           </RouterLink>
         </div >
 
