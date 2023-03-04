@@ -291,6 +291,7 @@ export default {
                 max-width: 1000px;
                 height: 627px;
                 border-radius: 20px;
+                margin-left: -8px;
             }
         }
     }
