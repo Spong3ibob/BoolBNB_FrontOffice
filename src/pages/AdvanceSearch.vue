@@ -192,7 +192,7 @@ export default {
                     </div>
                     <div class="all-services rounded-pill col-sm-12 p-3 px-4 mb-4">
                         <div class="service-container d-flex justify-content-between">
-                            <div class="service-box d-flex flex-column align-items-center pb-1 me-3" v-for="service in this.services" :id="service.name + '-' + service.id" @click="pushServicesFilter(service)">
+                            <div class="service-box d-flex flex-column align-items-center pb-1 me-3" v-for="service in this.services" :id="service.name + '-' + service.id" @click="pushServicesFilter(service), sendRequestApi()">
                                 <span v-html="service.icon"></span>
                                 <span>{{ service.name }}</span>
                             </div>
