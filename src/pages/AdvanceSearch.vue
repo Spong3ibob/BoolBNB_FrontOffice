@@ -166,70 +166,72 @@ export default {
 
 
 <template>
-    <div class="ms-page-container mt-3">
-        <div v-if="this.services.length === 0" class="my-5 pt-5 d-flex justify-content-center align-items-center">
-            <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>    
-        </div>
-        <div v-else class="ms-page-container">
-            <form action="" class="py-1" @submit.prevent="this.filterByRadius()" @keypress.enter.prevent>
-                
-                <div class="row rooms-beds-container rounded-pill justify-content-around p-2 px-1 ms-1 mb-4">
-                    <div class="col-md-5 col-sm-12 radius_range d-flex flex-column justify-content-center">
-                        <label for="radius-range" class="form-label align-self-center w-sm-50 ">Ricerca appartamenti a <strong class="text-capitalize">{{ this.$route.params.address }}</strong> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
-                        <input id="radius-range" class="form-range align-self-center w-sm-50 " type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
-                    </div>
-                    <div class="col-md-3 col-sm-12 rooms-number d-flex flex-column justify-content-center">
-                        <label class="form-label align-self-center" for="rooms-number-input">Numero minimo di stanze*</label>
-                        <input class="form-control w-25 align-self-center " id="rooms-number-input" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
-                    </div>
-                    <div class="col-md-3 col-sm-12 beds-number d-flex flex-column justify-content-center">
-                        <label class="form-label align-self-center" for="beds-number-input">Numero minimo di letti*</label>
-                        <input class="form-control w-25 align-self-center" id="beds-number-input" type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
-                    </div>
-                </div>
-                <div class="all-services rounded-pill col-sm-12 p-3 px-4 mb-4">
-                    <div class="service-container d-flex justify-content-between">
-                        <div class="service-box d-flex flex-column align-items-center pb-1 me-3" v-for="service in this.services" :id="service.name + '-' + service.id" @click="pushServicesFilter(service)">
-                            <span v-html="service.icon"></span>
-                            <span>{{ service.name }}</span>
+    <div id="advance-search">
+        <div class="ms-page-container mt-3">
+            <div v-if="this.services.length === 0" class="my-5 pt-5 d-flex justify-content-center align-items-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>    
+            </div>
+            <div v-else class="ms-page-container">
+                <form action="" class="py-1" @submit.prevent="this.filterByRadius()" @keypress.enter.prevent>
+                    
+                    <div class="row rooms-beds-container rounded-pill justify-content-around p-2 px-1 ms-1 mb-4">
+                        <div class="col-md-5 col-sm-12 radius_range d-flex flex-column justify-content-center">
+                            <label for="radius-range" class="form-label align-self-center w-sm-50 ">Ricerca appartamenti a <strong class="text-capitalize">{{ this.$route.params.address }}</strong> nel raggio di {{ this.searchFilters.radiusStart }}km</label>
+                            <input id="radius-range" class="form-range align-self-center w-sm-50 " type="range" min="1" max="35" v-model="this.searchFilters.radiusStart" step="1" required  @change="sendRequestApi()">
+                        </div>
+                        <div class="col-md-3 col-sm-12 rooms-number d-flex flex-column justify-content-center">
+                            <label class="form-label align-self-center" for="rooms-number-input">Numero minimo di stanze*</label>
+                            <input class="form-control w-25 align-self-center " id="rooms-number-input" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
+                        </div>
+                        <div class="col-md-3 col-sm-12 beds-number d-flex flex-column justify-content-center">
+                            <label class="form-label align-self-center" for="beds-number-input">Numero minimo di letti*</label>
+                            <input class="form-control w-25 align-self-center" id="beds-number-input" type="number" min="1" max="15" v-model="this.searchFilters.beds" required @change="sendRequestApi()">
                         </div>
                     </div>
-                </div>
-                <button id="submit-form-search" class="d-none"></button>
-            </form>
-        </div>
-        <div class="card-container d-flex justify-content-between">
-            <div class="col-left-card p-2">
-                <div class="d-flex justify-content-center mt-3 p-4">
-                    Appartamenti trovati &nbsp <strong>{{ this.apartments.length }} </strong>   
-                </div>
-                <div
-                class="apartment-search"
-                v-if="this.apartments.length !== 0"
-                >
-                    <AppCard
-                    v-for="apartment in this.apartments"
-                    :data="apartment"
-                    />
-                </div>
-                <div v-else>
+                    <div class="all-services rounded-pill col-sm-12 p-3 px-4 mb-4">
+                        <div class="service-container d-flex justify-content-between">
+                            <div class="service-box d-flex flex-column align-items-center pb-1 me-3" v-for="service in this.services" :id="service.name + '-' + service.id" @click="pushServicesFilter(service)">
+                                <span v-html="service.icon"></span>
+                                <span>{{ service.name }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="submit-form-search" class="d-none"></button>
+                </form>
+            </div>
+            <div class="card-container d-flex justify-content-between">
+                <div class="col-left-card p-2">
+                    <div class="d-flex justify-content-center mt-3 p-4">
+                        Appartamenti trovati &nbsp <strong>{{ this.apartments.length }} </strong>   
+                    </div>
                     <div
                     class="apartment-search"
+                    v-if="this.apartments.length !== 0"
                     >
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <i class="fa-solid fa-ban fa-lg fa-fw"></i> Ci dispiace in questa zona non sono ancora presenti degli appartamenti.
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <AppCard
+                        v-for="apartment in this.apartments"
+                        :data="apartment"
+                        />
+                    </div>
+                    <div v-else>
+                        <div
+                        class="apartment-search"
+                        >
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <i class="fa-solid fa-ban fa-lg fa-fw"></i> Ci dispiace in questa zona non sono ancora presenti degli appartamenti.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-right-map pt-2">
-                <div  class="alert alert-danger error-params-search w-50 fw-bold text-center" v-if="this.searchFilters.invalid_filter === true">
-                    Parametri di ricerca non validi.
+                <div class="col-right-map pt-2">
+                    <div  class="alert alert-danger error-params-search w-50 fw-bold text-center" v-if="this.searchFilters.invalid_filter === true">
+                        Parametri di ricerca non validi.
+                    </div>
+                    <div id='map' class='map'></div>
                 </div>
-                <div id='map' class='map'></div>
             </div>
         </div>
     </div>
