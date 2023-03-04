@@ -182,7 +182,7 @@ export default {
                     </div>
                     <div class="col-md-3 col-sm-12 rooms-number d-flex flex-column justify-content-center">
                         <label class="form-label align-self-center" for="rooms-number-input">Numero minimo di stanze*</label>
-                        <input class="form-control w-25 align-self-center" id="rooms-number-input" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
+                        <input class="form-control w-25 align-self-center " id="rooms-number-input" type="number" min="1" max="15" v-model="this.searchFilters.rooms" required @change="sendRequestApi()">
                     </div>
                     <div class="col-md-3 col-sm-12 beds-number d-flex flex-column justify-content-center">
                         <label class="form-label align-self-center" for="beds-number-input">Numero minimo di letti*</label>
@@ -242,6 +242,9 @@ export default {
     .rooms-beds-container {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         width: 100%;
+        & .form-control {     
+            height: 26px;
+        }
     }
     .advanced-header {
         border-top-left-radius: 15px;

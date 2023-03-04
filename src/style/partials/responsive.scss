@@ -288,28 +288,53 @@
 /*-----------------------------
    RESPONSIVE ADVANCE SEARCH
 -----------------------------*/
-
-// 1400px BREAKPOINT
-
-@media screen and (max-width: 1400px) {
+// 1440px in poi..
+@media screen and (min-width: 1440px){
 
         // CONTAINERS
         .ms-page-container{
-                width: 100%;
-                max-width: 1080px;
-        }        
+            max-width: 1000px !important;
+        }     
+        .rooms-beds-container{
+            max-width: 1000px !important;
+        }   
         
         // SERVIZI
         .all-services{
-                width: 1080px;
-        
-                & .container-service{
-                    width: 100%;
-                    overflow-x: auto;
-                    display: flex;
-                    flex-direction: row;
-                }
+            max-width: 1000px !important;
+    
+            & .container-service{
+                width: 1000px;
+                overflow-x: auto;
+                display: flex;
+                flex-direction: row;
             }
+        }
+}
+
+// 1440px BREAKPOINT
+
+@media screen and (max-width: 1440px) {
+
+        // CONTAINERS
+        .ms-page-container{
+            max-width: 1000px !important;
+        }     
+        .rooms-beds-container{
+            max-width: 1000px !important;
+        }   
+        
+        // SERVIZI
+        .all-services{
+            max-width: 1000px !important;
+    
+            & .container-service{
+                width: 1000px;
+                overflow-x: auto;
+                display: flex;
+                flex-direction: row;
+            }
+        }
 }
 
 // 1200px BREAKPOINT    
@@ -318,16 +343,15 @@
         
         // CONTAINERS
         .ms-page-container{
-                width: 100%;
-                max-width: 992px;
+                max-width: 900px;
         }
 
          // SERVIZI
          .all-services{
-                width: 992px;
+                max-width: 900px;
         
                 & .container-service{
-                    width: 100%;
+                    width: 900px;
                     overflow-x: auto;
                     display: flex;
                     flex-direction: row;
@@ -335,25 +359,36 @@
             }
 }
 
+//  1024px BREAKPOINT
+@media screen and (max-width: 1024px){
+    // CONTAINERS
+    .ms-page-container {
+        max-width: 900px;
+    }
+    // SERVIZI
+    .all-services{
+        margin: auto;
+        max-width: 900px;
+    }
+}
 //  991px BREAKPOINT
-
 @media screen and (max-width: 991px) {
 
         // CONTAINERS
         .ms-page-container{
-                width: 100%;
-                max-width: 720px;
+                max-width: 720px !important;
         }   
 
          //FILTER
          .rooms-beds-container{
+                max-width: 720px !important;
                 display: flex !important;
                 flex-direction: row !important;
         }
         
        // SERVIZI
        .all-services{
-                width: 720px;
+                max-width: 720px !important;
 
                 & .container-service{
                 width: 100%;
@@ -383,19 +418,27 @@
         } 
 
 }
-// 520px BREAKPOINT
-@media screen and (max-width: 320px) {
-        // HEADER
-        .h-top-right{
-                width: 30% !important;
+// 768px BREAKPOINT 
+@media screen and (max-width: 768) {
 
-        }
+    //CONTAINERS
+    .rooms-beds-container {
+        border-radius: 20px !important;
+        width: 80% !important;
+        margin: auto;
+    }
+    //SERVIZI
+    .all-services{
+        width: 90% !important;
+    }
 
-        // CONTAINERS
-        .ms-page-container-small{
-                width: 100%;
-                max-width: 320px !important;
-        } 
+}
+// 769px BREAKPOINT 
+@media screen and (max-width: 767px){
+    .rooms-beds-container {
+        border-radius: 20px !important;
+    }
+
 }
 
 // 500px BREAKPOINT
@@ -416,11 +459,17 @@
         .rooms-beds-container{
                 display: flex !important;
                 flex-direction: row !important;
+                //border-radius: 20px !important;
+                //box-shadow: none !important;
+                justify-content: center !important;
+                width: 100% !important;
+                margin: auto !important;
+                margin-bottom: 20px !important;
         }
         
        // SERVIZI
        .all-services{
-                width: 400px;
+                width: 90%;
 
                 & .container-service{
                 width: 100%;
@@ -450,13 +499,18 @@
         } 
 }
 
-// 375px BREAKPOINT
 
+
+// 425px BREAKPOINT
 @media screen and (max-width: 425px) {
     // MS PAGE CONTAINER
     .rooms-beds-container {
-        border-radius: 0px !important;
-        justify-content: flex-start !important;
+        border-radius: 20px !important;
+        //box-shadow: none !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin: auto !important;
+        margin-bottom: 20px !important;
     }
     .form-label {
         width: 60%;
@@ -465,4 +519,43 @@
     .form-range {
         justify-content: flex-start !important;
     }
+    .all-services {
+        width: 90% !important;
+        margin: 20px auto !important;
+    }
+}
+
+
+// 375px BREAKPOINT
+@media screen and (max-width: 375px){
+    .rooms-beds-container{
+        justify-content: center !important;
+        width: 100% !important;
+        margin: auto !important;
+    }
+    .all-services {
+        width: 90% !important;
+        margin: 20px auto !important;
+    }
+}
+
+
+// 320px BREAKPOINT
+@media screen and (max-width: 320px) {
+        // HEADER
+        .h-top-right{
+            width: 30% !important;
+        }
+
+        // CONTAINERS
+        .rooms-beds-container{
+            margin-bottom: 20px !important;
+        }
+        .all-services{
+            margin-top: 20px;
+        }
+        .ms-page-container-small{
+                width: 100%;
+                max-width: 320px !important;
+        } 
 }
