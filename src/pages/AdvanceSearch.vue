@@ -7,6 +7,7 @@ export default {
     data() {
         return {
             store,
+            idx: '',
             apartments: '',
             services: [],
             searchFilters: {
@@ -44,7 +45,7 @@ export default {
         },
         sendRequestApi() {
             const filters = this.searchFilters;
-            if( filters.radiusStart < 1 || filters.radiusStart > 35|| filters.rooms < 1 || filters.rooms > 15 || filters.beds < 1 || filters.beds > 15) {
+            if( filters.radiusStart < 1 || filters.radiusStart > 35 || filters.rooms < 1 || filters.rooms > 15 || filters.beds < 1 || filters.beds > 15) {
                 filters.invalid_filter = true
             } else {
                 filters.invalid_filter = false
@@ -141,6 +142,15 @@ export default {
                 }
             });
         },
+        autoScroll(action) {
+            let idx;
+            let nav = document.querySelector(".collections-nav");
+            if (action == 'enter-left' ) {
+                idx = nav.scrollLeft -= 200;
+            } else if ( action == 'enter-right' ) {
+                idx = nav.scrollLeft += 200;
+            }
+        }
     },
     created() {
         // Get all services
@@ -191,34 +201,41 @@ export default {
                         </div>
                     </div>
                     <div class="all-services rounded-pill col-sm-12 p-2 px-4 mb-4">
-                        <div class="service-container d-flex justify-content-between">
+                        <!-- <div class="service-container d-flex justify-content-between">
                             <div class="service-box d-flex flex-column align-items-center pb-1 me-3" v-for="service in this.services" :id="service.name + '-' + service.id" @click="pushServicesFilter(service), sendRequestApi()">
                                 <span v-html="service.icon"></span>
                                 <span>{{ service.name }}</span>
                             </div>
+                        </div> -->
+                        <div class="collections">
+                            <ul class="collections-nav nav-tabs m-0 p-0 service-container d-flex justify-content-between">
+                                <div class="service-box d-flex flex-column align-items-center justify-content-center px-3" v-for="service in this.services" :id="service.name + '-' + service.id" @click="pushServicesFilter(service), sendRequestApi()">
+                                    <span v-html="service.icon"></span>
+                                    <span>{{ service.name }}</span>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="arrow-container">
+                            <div class="left bg-dark" @click="autoScroll('enter-left')"><i class="fa-solid fa-caret-left"></i></div>
+                            <div class="right bg-dark" @click="autoScroll('enter-right')"><i class="fa-solid fa-caret-right"></i></div>
                         </div>
                     </div>
                     <button id="submit-form-search" class="d-none"></button>
                 </form>
             </div>
             <div class="card-container d-flex justify-content-between">
-                <div class="col-left-card p-2">
-                    <div class="d-flex justify-content-center mt-3 p-4">
+                <div class="col-left-card m-2">
+                    <div class="apartments-found">
                         Appartamenti trovati &nbsp <strong>{{ this.apartments.length }} </strong>   
                     </div>
-                    <div
-                    class="apartment-search"
-                    v-if="this.apartments.length !== 0"
-                    >
+                    <div class="apartment-search p-2" v-if="this.apartments.length !== 0">
                         <AppCard
                         v-for="apartment in this.apartments"
                         :data="apartment"
                         />
                     </div>
                     <div v-else>
-                        <div
-                        class="apartment-search"
-                        >
+                        <div class="apartment-search">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <i class="fa-solid fa-ban fa-lg fa-fw"></i> Ci dispiace in questa zona non sono ancora presenti degli appartamenti.
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -257,6 +274,7 @@ export default {
         border-bottom: 1px solid white;
     }
     .all-services{
+        position: relative;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;   
         .service-container {
             overflow-x: auto;
@@ -264,17 +282,26 @@ export default {
     }
     .card-container {
         width: 100%;
-        height: 650px;
+        height: 610px;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         border-radius: 20px;
-
+        margin-bottom: 15px;
         & .col-left-card {
             border-radius: 20px;
             width: 30%;
-            height: 100%;
+            max-height: 100%;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
+            position: relative;
+            border: 1px solid var(--red-color);
+            & .apartments-found {
+                position: sticky;
+                top: 0;
+                text-align: center;
+                background-color: var(--red-color);
+                color: white;
+            }
         }
 
         & .col-right-map {
@@ -291,7 +318,7 @@ export default {
             & .map {
                 width: 100%;
                 max-width: 1000px;
-                height: 627px;
+                height: 590px;
                 border-radius: 20px;
                 margin-left: -8px;
             }
@@ -312,5 +339,62 @@ export default {
 .service-clicked {
     color: black !important;
     border-color: black !important;
+}
+
+/*--------------------------------
+    AUTOSCROLL SERVICES
+-------------------------------*/
+.collections-nav {
+  overflow-x: hidden;
+  display: flex;
+  gap: 15px;
+  padding-left: 0rem;
+  margin-top: 2rem;
+  padding-bottom: 1.5rem;
+}
+.collections-nav::-webkit-scrollbar {
+  height: 0px !important;
+  /* width of the entire scrollbar */
+}
+
+.collections-nav::-webkit-scrollbar-track {
+  background: white;
+  /* color of the tracking area */
+  border-radius: 10px;
+}
+
+.collections-nav::-webkit-scrollbar-thumb {
+  background-color: white !important;
+  /* color of the scroll thumb */
+  border-radius: 10px;
+}
+
+.arrow-container {
+    display: flex;
+    justify-content: space-between;
+    color: white !important;
+    cursor: pointer;
+  & .left {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0, -50%);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+  }
+  & .right {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -50%);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+  }
 }
 </style>
