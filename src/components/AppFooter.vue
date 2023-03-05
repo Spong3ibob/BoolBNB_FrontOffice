@@ -26,7 +26,7 @@ export default {
         </div>
         <div class="d-none d-lg-inline">
           <span class="spacer-dot">·</span>
-          <span><a class="me-2 ps-3" href="">MDettagli dell'azienda</a></span>
+          <span><a class="me-2 ps-3" href="">Dettagli dell'azienda</a></span>
         </div>
       </div>
       <div class="footer__right d-flex align-items-center">
