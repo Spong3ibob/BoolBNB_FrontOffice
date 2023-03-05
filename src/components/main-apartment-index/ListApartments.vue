@@ -21,6 +21,7 @@ export default {
         // Store pagination info
         this.store.currentPage = res.data.current_page;
         this.store.lastPage = res.data.last_page;
+
         // scroll page when clicked 
         window.scroll({
           top: 250,

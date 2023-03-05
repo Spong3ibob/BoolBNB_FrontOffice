@@ -130,7 +130,6 @@ export default {
     },
   },
   mounted() {
-    tt.setProductInfo('Codepen Examples', '${analytics.productVersion}');
     var map = tt.map({
         key: 'S7Di8WQbB2pqxqTH8RYmhO63cZwgtNgp',
         container: 'map',
@@ -160,11 +159,11 @@ export default {
             .addTo(map);
     }
     let is_sponsored = false;
-    this.store.filteredApartments.forEach(element => {
-        if( this.data.id === element.id) {
-            is_sponsored = true;
-        }
-    });
+    for (let i = 0; i < this.store.filteredApartments.length; i++) {
+      if ( this.store.filteredApartments[i].id === this.data.id ) {
+        is_sponsored = true;
+      }
+    }
 
     if( is_sponsored === true ) {
         createMarker([this.data.longitude, this.data.latitude], '', ``, 'marker-content-yellow');
