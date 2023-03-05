@@ -72,9 +72,14 @@
       </div>
     </div>
     <!-- Button larger image on clickl -->
-    <div class="images-box d-flex">
-      <img :src="data.image_url" :alt="data.title" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: zoom-in;"/>
-    </div>
+      <div class="images-box d-flex">
+          <div>
+            <img :src="data.image_url" :alt="data.title" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: zoom-in;"/>
+          </div>
+          <div>
+            <div id='map' class='map'></div>
+          </div>
+        </div>
   </div>
 
   <!-- Button larger image on clickl -->
@@ -92,12 +97,15 @@
 </template>
 
 <script>
+import { store } from "../../store";
+
 export default {
   props: {
     data: Object,
   },
   data() {
     return {
+      store,
       fullPathUrl: ''
     }
   },
@@ -119,9 +127,53 @@ export default {
       setTimeout(() => {
         copyButton.innerHTML = 'Copia'
       }, 1100);
+    },
+  },
+  mounted() {
+    tt.setProductInfo('Codepen Examples', '${analytics.productVersion}');
+    var map = tt.map({
+        key: 'S7Di8WQbB2pqxqTH8RYmhO63cZwgtNgp',
+        container: 'map',
+        dragPan: !isMobileOrTablet(),
+        // Longitude and Latitude
+        center: [this.data.longitude, this.data.latitude],
+        zoom: 13
+    });
+    map.addControl(new tt.FullscreenControl());
+    map.addControl(new tt.NavigationControl());
+
+    function createMarker(position, color, popupText, classColor) {
+        var markerElement = document.createElement('div');
+        markerElement.className = 'marker';
+        var markerContentElement = document.createElement('div');
+        markerContentElement.className = classColor;
+        markerContentElement.style.backgroundColor = color;
+        markerElement.appendChild(markerContentElement);
+        var iconElement = document.createElement('div');
+        iconElement.className = 'marker-icon';
+        iconElement.style.backgroundImage =
+            'url(https://download.tomtom.com/open/manuals/vio/html/en-gb/embassy.png)';
+        markerContentElement.appendChild(iconElement);
+        // add marker to map
+        new tt.Marker({element: markerElement, anchor: 'bottom'})
+            .setLngLat(position)
+            .addTo(map);
+    }
+    let is_sponsored = false;
+    this.store.filteredApartments.forEach(element => {
+        if( this.data.id === element.id) {
+            is_sponsored = true;
+        }
+    });
+
+    if( is_sponsored === true ) {
+        createMarker([this.data.longitude, this.data.latitude], '', ``, 'marker-content-yellow');
+    } else {
+        createMarker([this.data.longitude, this.data.latitude], '', ``, 'marker-content-red');
     }
   },
   created() {
+    // get current path to copy
     this.fullPathUrl = window.location.href;
   }
 };
@@ -315,16 +367,22 @@ export default {
 }
 
 // Immagine
-.images-box {
-  margin-top: 0.625rem;
-  border-radius: 1rem;
-  overflow: hidden;
-  width: 40%;
-  img {
-    height: 100%;
-    width: 100%;
+  .images-box {
+    margin-top: 0.625rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 40%;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+    #map, .map {
+      border-radius: 1rem;
+      margin: 0 10px;
+      width: 750px !important; 
+      max-height: 315px !important;
+    }
   }
-}
 
 // Responsive <= 1440px
 
