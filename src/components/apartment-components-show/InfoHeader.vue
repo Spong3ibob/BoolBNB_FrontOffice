@@ -72,12 +72,12 @@
       </div>
     </div>
     <!-- Button larger image on clickl -->
-      <div class="images-box d-flex">
-          <div>
+      <div class="images-box d-flex justify-content-between">
+          <div class="image-box ">
             <img :src="data.image_url" :alt="data.title" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: zoom-in;"/>
           </div>
-          <div>
-            <div id='map' class='map'></div>
+          <div class="map-box ms-2">
+            <div id='map' class='map m-0'></div>
           </div>
         </div>
   </div>
@@ -371,16 +371,25 @@ export default {
     margin-top: 0.625rem;
     border-radius: 1rem;
     overflow: hidden;
-    width: 40%;
+    width: 100% !important;
     img {
       height: 100%;
       width: 100%;
+      border-radius: 2rem;
+    }
+    .image-box{
+        width: 50%;
+        height: 100%;
+    }
+    .map-box {
+        width:50%;
+
     }
     #map, .map {
-      border-radius: 1rem;
-      margin: 0 10px;
-      width: 750px !important; 
-      max-height: 315px !important;
+      position:relative;
+      border-radius: 2rem;
+      max-width: 100% !important ; 
+      width:100% ;
     }
   }
 
