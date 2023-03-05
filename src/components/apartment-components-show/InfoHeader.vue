@@ -383,13 +383,12 @@ export default {
     }
     .map-box {
         width:50%;
-
     }
     #map, .map {
       position:relative;
       border-radius: 2rem;
       max-width: 100% !important ; 
-      width:100% ;
+      width:100%;
     }
   }
 

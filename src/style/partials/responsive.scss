@@ -105,7 +105,14 @@
                 // LEFT COLUMN SHOW   
                 .images-box{
                         width: 100% !important;
+                        .image-box{
+                            width: 100%;
+                        }
+                        .map-box {
+                            display: none;
+                        }
                 }
+
 
 
                 /*----------------------------*/
