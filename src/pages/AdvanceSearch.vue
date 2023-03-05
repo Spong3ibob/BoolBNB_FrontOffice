@@ -347,20 +347,19 @@ export default {
   padding-bottom: 1.5rem;
 }
 .collections-nav::-webkit-scrollbar {
-  height: 0px !important;
+    display: none !important;
+    height: 0px !important;
   /* width of the entire scrollbar */
 }
 
 .collections-nav::-webkit-scrollbar-track {
   background: white;
   /* color of the tracking area */
-  border-radius: 10px;
 }
 
 .collections-nav::-webkit-scrollbar-thumb {
   background-color: white !important;
   /* color of the scroll thumb */
-  border-radius: 10px;
 }
 
 .arrow-container {

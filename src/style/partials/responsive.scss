@@ -395,6 +395,9 @@
                         flex-direction: row;
                     }
                 }
+                .arrow-container {
+                        display: none !important;
+                }
         }
         
         // 1440px BREAKPOINT
