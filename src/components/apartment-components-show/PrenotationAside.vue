@@ -29,6 +29,13 @@ export default {
             this.message = `Buongiorno signor ${this.info.user.name} la contatto per chiederle delle informazioni in merito al suo appartamento ${this.info.title}, situato a ${this.info.full_address}, per il periodo che va dal ${this.ceckIn} al ${this.ceckOut}`;
         }
     },
+    mounted() {
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementsByName("setTodaysDate")[0].setAttribute('min', today);
+
+        var today2 = new Date().toISOString().split('T')[0];
+        document.getElementsByName("setTodaysDate2")[0].setAttribute('min', today2);
+    }
 };
 </script>
 
@@ -47,11 +54,11 @@ export default {
                 <div class="date-check">
                     <div class="check-left p-1">
                         <h6>CHECK-IN</h6>
-                        <input class="" type="date" v-model="this.ceckIn" required>
+                        <input name="setTodaysDate" class="" type="date" v-model="this.ceckIn" required>
                     </div>
                     <div class="check-right p-1">
                         <h6>CHECK-OUT</h6>
-                        <input class="" type="date" v-model="this.ceckOut" required>
+                        <input name="setTodaysDate2" class="" type="date" v-model="this.ceckOut" required>
                     </div>
                 </div>
             </div>
